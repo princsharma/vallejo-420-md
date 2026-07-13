@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(rm -f components/site-header.tsx)",
+      "Bash(npx next *)"
+    ]
+  }
+}
