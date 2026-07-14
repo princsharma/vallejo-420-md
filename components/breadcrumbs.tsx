@@ -29,42 +29,37 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   };
 
   return (
-    <nav
-      aria-label="Breadcrumb"
-      className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8"
-      style={{ display: "flex", justifyContent: "flex-start", textAlign: "left" }}
-    >
-      <div
-        className="rounded-2xl bg-accent/40 px-4 sm:px-6"
-        style={{ display: "inline-block", flex: "0 0 auto", width: "fit-content" }}
-      >
-        <ol className="flex flex-wrap items-center gap-1.5 py-3.5 text-sm font-medium">
-          {allItems.map((item, index) => (
-            <li key={item.label} className="flex items-center gap-1.5">
-              {index > 0 && (
-                <ChevronRight aria-hidden="true" className="size-3.5 text-muted-foreground/40" />
-              )}
-              {item.href ? (
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-muted-foreground transition-colors hover:bg-background hover:text-primary"
-                >
-                  {index === 0 ? (
-                    <Home aria-hidden="true" className="size-3.5" />
-                  ) : null}
-                  {item.label}
-                </Link>
-              ) : (
-                <span
-                  aria-current="page"
-                  className="rounded-full bg-primary/10 px-2.5 py-1 font-semibold text-primary"
-                >
-                  {item.label}
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
+    <nav aria-label="Breadcrumb" className="w-full pt-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-fit rounded-2xl bg-accent/40 px-4 sm:px-6">
+          <ol className="flex flex-wrap items-center gap-1.5 py-3.5 text-sm font-medium">
+            {allItems.map((item, index) => (
+              <li key={item.label} className="flex items-center gap-1.5">
+                {index > 0 && (
+                  <ChevronRight aria-hidden="true" className="size-3.5 text-muted-foreground/40" />
+                )}
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-muted-foreground transition-colors hover:bg-background hover:text-primary"
+                  >
+                    {index === 0 ? (
+                      <Home aria-hidden="true" className="size-3.5" />
+                    ) : null}
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span
+                    aria-current="page"
+                    className="rounded-full bg-primary/10 px-2.5 py-1 font-semibold text-primary"
+                  >
+                    {item.label}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
       <script
         type="application/ld+json"
