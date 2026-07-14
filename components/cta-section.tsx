@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/booking-dialog";
 
 export function CtaSection() {
   return (
@@ -18,15 +17,13 @@ export function CtaSection() {
             24&ndash;48 hours, with a 100% money-back guarantee.
           </p>
           <div className="relative mt-8">
-            <Button
+            <BookingButton
               size="lg"
               variant="secondary"
               className="h-13 rounded-full px-8 text-base shadow-lg"
-              render={<Link href="#contact" />}
-              nativeButton={false}
             >
               Start Your Application
-            </Button>
+            </BookingButton>
           </div>
         </div>
       </div>

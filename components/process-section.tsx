@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/booking-dialog";
 
 const STEPS = [
   {
@@ -41,14 +40,12 @@ export function ProcessSection() {
               Get Your Medical Marijuana Card in Vallejo in 3 Easy Steps
             </h2>
           </div>
-          <Button
+          <BookingButton
             size="lg"
             className="h-13 rounded-full px-8 text-base shadow-lg shadow-primary/30"
-            render={<Link href="#contact" />}
-            nativeButton={false}
           >
             Apply Your Vallejo Card Now
-          </Button>
+          </BookingButton>
         </div>
 
         <div className="mt-12 space-y-5">

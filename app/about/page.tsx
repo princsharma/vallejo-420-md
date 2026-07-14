@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Minus, Plus, SquareCheckBig } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/booking-dialog";
 import {
   Accordion,
   AccordionContent,
@@ -68,8 +67,8 @@ export default function AboutPage() {
       <main className="flex-1 bg-background">
         {/* Hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
-          <div className="relative flex min-h-[26rem] items-center overflow-hidden rounded-4xl bg-accent px-8 sm:min-h-[30rem] sm:px-16">
-            <h1 className="relative z-10 max-w-lg text-balance text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
+          <div className="relative flex flex-col overflow-hidden rounded-4xl bg-accent px-8 pt-10 sm:min-h-[30rem] sm:flex-row sm:items-center sm:px-16 sm:pt-0">
+            <h1 className="relative z-10 max-w-lg text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Want To Know More About Us?
             </h1>
             <Image
@@ -78,7 +77,7 @@ export default function AboutPage() {
               width={1110}
               height={1311}
               priority
-              className="pointer-events-none absolute right-0 bottom-0 h-[92%] w-auto object-contain object-bottom"
+              className="pointer-events-none relative mx-auto mt-6 h-64 w-auto object-contain object-bottom sm:absolute sm:right-0 sm:bottom-0 sm:mt-0 sm:h-[92%]"
             />
           </div>
         </section>
@@ -218,14 +217,12 @@ export default function AboutPage() {
             </Accordion>
 
             <div className="mt-10 text-center">
-              <Button
+              <BookingButton
                 size="lg"
                 className="h-13 rounded-full px-8 text-base shadow-lg shadow-primary/30"
-                render={<Link href="/#contact" />}
-                nativeButton={false}
               >
                 Book Your Appointment
-              </Button>
+              </BookingButton>
             </div>
           </div>
         </section>

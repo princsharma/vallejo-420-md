@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import {
   Check,
   IdCard,
@@ -14,7 +13,7 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/booking-dialog";
 import {
   Card,
   CardContent,
@@ -127,8 +126,32 @@ export default function GetYourCardPage() {
         {/* Mini hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-4xl bg-accent px-6 py-10 sm:px-12 sm:py-14">
-            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-              <div className="relative mx-auto aspect-[1920/1798] w-full max-w-[17rem] sm:max-w-sm lg:mx-0">
+            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+              <div className="relative order-2 mx-auto aspect-[1920/1798] w-full max-w-[17rem] sm:max-w-sm lg:order-1 lg:mx-0">
+                <svg
+                  viewBox="0 0 200 200"
+                  aria-hidden
+                  className="pointer-events-none absolute -top-4 -left-4 h-24 w-24 text-primary/15 sm:h-32 sm:w-32"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M10 10 Q60 20 90 70 Q100 100 90 130" strokeWidth="1.5" />
+                  <path d="M30 30 Q40 45 60 50" strokeWidth="1.5" />
+                  <path d="M45 55 Q55 68 75 72" strokeWidth="1.5" />
+                  <path d="M60 85 Q72 95 88 96" strokeWidth="1.5" />
+                </svg>
+                <svg
+                  viewBox="0 0 200 200"
+                  aria-hidden
+                  className="pointer-events-none absolute -right-6 -bottom-6 h-28 w-28 rotate-180 text-primary/15 sm:h-36 sm:w-36"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M10 10 Q60 20 90 70 Q100 100 90 130" strokeWidth="1.5" />
+                  <path d="M30 30 Q40 45 60 50" strokeWidth="1.5" />
+                  <path d="M45 55 Q55 68 75 72" strokeWidth="1.5" />
+                  <path d="M60 85 Q72 95 88 96" strokeWidth="1.5" />
+                </svg>
                 <Image
                   src="/get-your-card-hero-section.webp"
                   alt="Licensed physician presenting Vallejo MMJ card options"
@@ -137,19 +160,17 @@ export default function GetYourCardPage() {
                   className="object-contain"
                 />
               </div>
-              <div>
+              <div className="order-1 lg:order-2">
                 <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
                   The Best Way to Get Your Vallejo MMJ Card Online!
                 </h1>
                 <div className="mt-6">
-                  <Button
+                  <BookingButton
                     size="lg"
                     className="h-13 rounded-full px-8 text-base shadow-lg shadow-primary/30"
-                    render={<Link href="#pricing" />}
-                    nativeButton={false}
                   >
                     Get an Appointment Now
-                  </Button>
+                  </BookingButton>
                 </div>
               </div>
             </div>
@@ -251,15 +272,13 @@ export default function GetYourCardPage() {
                     </ul>
                   </CardContent>
                   <CardFooter className="pb-8">
-                    <Button
+                    <BookingButton
                       size="lg"
                       variant={plan.highlighted ? "default" : "outline"}
                       className="h-12 w-full rounded-full text-base"
-                      render={<Link href="#contact" />}
-                      nativeButton={false}
                     >
                       Get Started
-                    </Button>
+                    </BookingButton>
                   </CardFooter>
                 </Card>
               ))}
@@ -271,8 +290,8 @@ export default function GetYourCardPage() {
         <section className="pb-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="relative overflow-hidden rounded-4xl bg-accent">
-              <div className="grid items-center sm:grid-cols-2">
-                <div className="px-8 py-16 sm:px-16">
+              <div className="grid items-center gap-6 pt-10 sm:grid-cols-2 sm:gap-0 sm:pt-0">
+                <div className="px-6 pb-8 sm:px-16 sm:py-16">
                   <h2 className="max-w-md text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                     Need Assistance? Contact Us Anytime!
                   </h2>
@@ -286,18 +305,16 @@ export default function GetYourCardPage() {
                     </a>
                   </p>
                   <div className="mt-8">
-                    <Button
+                    <BookingButton
                       size="lg"
-                      className="h-13 rounded-full px-8 text-base shadow-lg shadow-primary/30"
-                      render={<Link href="#contact" />}
-                      nativeButton={false}
+                      className="h-auto w-full whitespace-normal rounded-2xl py-3 text-center text-base shadow-lg shadow-primary/30 sm:h-13 sm:w-auto sm:rounded-full sm:px-8 sm:py-0"
                     >
                       Get Your 420 Medical Evaluation
-                    </Button>
+                    </BookingButton>
                   </div>
                 </div>
 
-                <div className="relative mx-auto aspect-[1014/1920] w-full max-w-[11rem] sm:max-w-[13rem]">
+                <div className="relative mx-auto aspect-[1014/1920] w-full max-w-[9rem] sm:max-w-[13rem]">
                   <Image
                     src="/get-your-card-second-last-section.webp"
                     alt="Friendly physician ready to help with your medical marijuana evaluation"

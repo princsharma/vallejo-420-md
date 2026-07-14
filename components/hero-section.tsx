@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Leaf } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/booking-dialog";
 
 export function HeroSection() {
   return (
@@ -20,14 +19,12 @@ export function HeroSection() {
                 same-day certification from licensed doctors in Vallejo.
               </p>
               <div className="mt-8">
-                <Button
+                <BookingButton
                   size="lg"
                   className="h-13 w-full rounded-full px-8 text-base shadow-lg shadow-primary/30 sm:w-auto"
-                  render={<Link href="#process" />}
-                  nativeButton={false}
                 >
                   Apply Your Card Now!
-                </Button>
+                </BookingButton>
               </div>
             </div>
 
