@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Learn more about Vallejo 420 MD's licensed doctors and our fast, confidential medical marijuana evaluation process.",
   alternates: {
-    canonical: "/about",
+    canonical: "/about/",
   },
 };
 

@@ -1,6 +1,6 @@
 import { siteConfig } from "@/lib/site-data";
 
-const routes = ["/", "/get-your-card", "/about", "/contact"];
+const routes = ["/", "/get-your-card/", "/about/", "/contact/"];
 
 export async function GET() {
   const lastmod = new Date().toISOString();

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Ready to start? Call Vallejo 420 MD today or book a consultation for your Vallejo MMJ card.",
   alternates: {
-    canonical: "/contact",
+    canonical: "/contact/",
   },
 };
 

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   description:
     "The best way to get your Vallejo MMJ card online. Same-day approval, 100% online and secure, trusted doctors.",
   alternates: {
-    canonical: "/get-your-card",
+    canonical: "/get-your-card/",
   },
 };
 

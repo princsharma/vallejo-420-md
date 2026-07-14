@@ -12,9 +12,9 @@ import { BookingButton } from "@/components/booking-dialog";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Get Your Card", href: "/get-your-card" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Get Your Card", href: "/get-your-card/" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 export function SiteHeader() {
@@ -119,7 +119,7 @@ export function SiteHeader() {
                 className="flex size-10 items-center justify-center rounded-full bg-primary-foreground p-2 transition-colors hover:bg-primary-foreground/90"
               >
                 <Image
-                  src="/yelp logo.svg"
+                  src="/yelp-logo.svg"
                   alt="Yelp"
                   width={24}
                   height={30}

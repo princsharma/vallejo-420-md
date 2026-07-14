@@ -27,7 +27,7 @@ export function SiteFooter() {
                 className="flex size-9 items-center justify-center rounded-full border border-border bg-card p-1.5 transition-colors hover:border-primary"
               >
                 <Image
-                  src="/yelp logo.svg"
+                  src="/yelp-logo.svg"
                   alt="Yelp"
                   width={24}
                   height={30}
