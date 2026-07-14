@@ -129,13 +129,14 @@ export default function AboutPage() {
                 src="/about-section-one.webp"
                 alt="Vallejo 420 MD medical team"
                 fill
+                sizes="(min-width: 1280px) 1216px, 100vw"
                 className="object-cover"
               />
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="mt-8 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CHECKLIST.map((item) => (
-                <div
+                <li
                   key={item}
                   className="flex items-center gap-3 rounded-2xl border border-border/60 bg-card px-5 py-4 shadow-sm transition-shadow hover:shadow-md"
                 >
@@ -145,9 +146,9 @@ export default function AboutPage() {
                   <span className="text-sm font-semibold text-foreground">
                     {item}
                   </span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
@@ -162,6 +163,7 @@ export default function AboutPage() {
                   width={1110}
                   height={1311}
                   aria-hidden
+                  loading="eager"
                   className="pointer-events-none absolute -top-8 -left-8 h-40 w-auto -scale-x-100 opacity-20"
                 />
                 <Image
@@ -170,12 +172,14 @@ export default function AboutPage() {
                   width={1110}
                   height={1311}
                   aria-hidden
+                  loading="eager"
                   className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-auto rotate-180 opacity-20"
                 />
                 <Image
                   src="/about-section-two.webp"
                   alt="Physician preparing for a patient consultation"
                   fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-contain object-bottom"
                 />
               </div>

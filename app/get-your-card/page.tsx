@@ -162,6 +162,7 @@ export default function GetYourCardPage() {
                   alt="Licensed physician presenting Vallejo MMJ card options"
                   fill
                   priority
+                  sizes="(min-width: 640px) 384px, 272px"
                   className="object-contain"
                 />
               </div>
@@ -185,9 +186,9 @@ export default function GetYourCardPage() {
         {/* Feature grid */}
         <section className="py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {FEATURES.map((feature) => (
-                <div
+                <li
                   key={feature.title}
                   className="rounded-3xl bg-muted/60 p-8 text-center"
                 >
@@ -200,9 +201,9 @@ export default function GetYourCardPage() {
                   <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
                     {feature.description}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
@@ -216,9 +217,9 @@ export default function GetYourCardPage() {
               Three Easy Steps to Get Your Vallejo MMJ Card!
             </h2>
 
-            <div className="mt-12 grid gap-10 sm:grid-cols-3">
+            <ol className="mt-12 grid list-none gap-10 sm:grid-cols-3">
               {STEPS.map((step) => (
-                <div key={step.number} className="text-center sm:text-left">
+                <li key={step.number} className="text-center sm:text-left">
                   <div className="relative mx-auto flex size-20 items-center justify-center rounded-full bg-muted/60 sm:mx-0">
                     <step.icon className="size-8 text-primary" />
                     <span className="absolute -top-1 -right-1 flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground shadow-md">
@@ -231,9 +232,9 @@ export default function GetYourCardPage() {
                   <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
                     {step.description}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </section>
 
@@ -324,6 +325,7 @@ export default function GetYourCardPage() {
                     src="/get-your-card-second-last-section.webp"
                     alt="Friendly physician ready to help with your medical marijuana evaluation"
                     fill
+                    sizes="(min-width: 640px) 208px, 144px"
                     className="object-contain object-bottom"
                   />
                 </div>

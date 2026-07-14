@@ -97,6 +97,7 @@ export function TrustSection() {
               src="/section-one.webp"
               alt="Patients experiencing natural relief"
               fill
+              sizes="(min-width: 1280px) 1216px, 100vw"
               className="object-cover"
             />
           </div>

@@ -48,9 +48,9 @@ export function ProcessSection() {
           </BookingButton>
         </div>
 
-        <div className="mt-12 space-y-5">
+        <ol className="mt-12 list-none space-y-5">
           {STEPS.map((step) => (
-            <div
+            <li
               key={step.number}
               className="flex flex-col gap-4 rounded-3xl border border-border/70 bg-card p-6 shadow-sm sm:flex-row sm:items-center sm:gap-6"
             >
@@ -62,6 +62,7 @@ export function ProcessSection() {
                   src={step.image}
                   alt={step.title}
                   fill
+                  sizes="56px"
                   className="object-cover"
                 />
               </div>
@@ -73,9 +74,9 @@ export function ProcessSection() {
                   {step.description}
                 </p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
