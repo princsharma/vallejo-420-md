@@ -10,12 +10,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "About Us | Vallejo 420 MD",
+  title: "About Us",
   description:
     "Learn more about Vallejo 420 MD's licensed doctors and our fast, confidential medical marijuana evaluation process.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const CHECKLIST = [
@@ -61,9 +65,29 @@ const FAQS = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Breadcrumbs items={[{ label: "About Us" }]} />
       <main className="flex-1 bg-background">
         {/* Hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">

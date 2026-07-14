@@ -22,13 +22,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Separator } from "@/components/ui/separator";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Get Your Card | Vallejo 420 MD",
+  title: "Get Your Card",
   description:
     "The best way to get your Vallejo MMJ card online. Same-day approval, 100% online and secure, trusted doctors.",
+  alternates: {
+    canonical: "/get-your-card",
+  },
 };
 
 const FEATURES = [
@@ -122,6 +126,7 @@ const PLANS = [
 export default function GetYourCardPage() {
   return (
     <>
+      <Breadcrumbs items={[{ label: "Get Your Card" }]} />
       <main className="flex-1 bg-background">
         {/* Mini hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">

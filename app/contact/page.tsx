@@ -2,19 +2,24 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Phone } from "lucide-react";
 
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/cta-section";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Contact | Vallejo 420 MD",
+  title: "Contact",
   description:
     "Ready to start? Call Vallejo 420 MD today or book a consultation for your Vallejo MMJ card.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <Breadcrumbs items={[{ label: "Contact" }]} />
       <main className="flex-1 bg-background">
         {/* Hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
