@@ -40,11 +40,11 @@ export function SiteFooter() {
           <div className="text-center">
             <p className="text-pretty text-base italic leading-relaxed text-foreground">
               &ldquo;Empowering Vallejo with safe, legal, and hassle-free
-              access to medical marijuana&mdash;because your wellness comes
+              access to medical marijuana-because your wellness comes
               first.&rdquo;
             </p>
             <p className="mt-3 text-sm font-semibold text-primary">
-              &mdash; Vallejo 420 MD
+              - Vallejo 420 MD
             </p>
           </div>
 
