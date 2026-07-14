@@ -107,7 +107,7 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <Badge variant="secondary" className="rounded-full px-4 py-1.5 text-primary">
+            <Badge variant="secondary" className="h-auto rounded-full px-6 py-2.5 text-base text-primary">
               Testimonials
             </Badge>
             <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

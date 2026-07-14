@@ -211,7 +211,7 @@ export default function AboutPage() {
         {/* FAQ */}
         <section className="pb-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <Badge variant="secondary" className="rounded-full px-4 py-1.5 text-primary">
+            <Badge variant="secondary" className="h-auto rounded-full px-6 py-2.5 text-base text-primary">
               FAQ
             </Badge>
             <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

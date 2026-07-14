@@ -76,6 +76,7 @@ const medicalBusinessJsonLd = {
   url: siteConfig.url,
   description: siteConfig.description,
   image: siteConfig.ogImage,
+  priceRange: "$55-$199",
   telephone: contactInfo.phoneHref.replace("tel:", ""),
   email: contactInfo.email,
   address: {
