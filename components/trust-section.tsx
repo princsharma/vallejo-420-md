@@ -76,7 +76,7 @@ export function TrustSection() {
   }, []);
 
   return (
-    <section className="bg-background py-24">
+    <section className="bg-background py-12 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-4xl bg-accent p-8 sm:p-12">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">

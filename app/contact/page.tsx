@@ -24,7 +24,7 @@ export default function ContactPage() {
         {/* Hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
           <div className="relative flex flex-col overflow-hidden rounded-4xl bg-accent px-8 pt-10 sm:min-h-[30rem] sm:flex-row sm:items-center sm:px-16 sm:pt-0">
-            <div className="relative z-10 max-w-xl">
+            <div className="relative max-w-xl">
               <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 Ready to Start? Call Us Today for Your Vallejo MMJ Card!
               </h1>

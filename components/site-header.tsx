@@ -71,7 +71,7 @@ export function SiteHeader() {
         </div>
 
         {open ? (
-          <div className="fixed inset-0 z-50 flex flex-col bg-primary text-primary-foreground md:hidden">
+          <div className="fixed inset-0 z-[100] flex flex-col bg-primary text-primary-foreground md:hidden">
             <div className="flex items-center justify-between px-5 py-4">
               <Image
                 src="/vallejo-logo.svg"

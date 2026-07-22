@@ -166,11 +166,11 @@ export default function GetYourCardPage() {
                   className="object-contain"
                 />
               </div>
-              <div className="order-1 lg:order-2">
+              <div className="order-1 text-center lg:order-2 lg:text-left">
                 <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
                   The Best Way to Get Your Vallejo MMJ Card Online!
                 </h1>
-                <div className="mt-6">
+                <div className="mt-6 flex justify-center lg:justify-start">
                   <BookingButton
                     size="lg"
                     className="h-13 rounded-full px-8 text-base shadow-lg shadow-primary/30"
@@ -209,11 +209,11 @@ export default function GetYourCardPage() {
 
         {/* How it works */}
         <section className="pb-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 sm:text-left lg:px-8">
             <Badge variant="secondary" className="h-auto rounded-full px-6 py-2.5 text-base text-primary">
               How It Works
             </Badge>
-            <h2 className="mt-4 max-w-xl text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto mt-4 max-w-xl text-balance text-3xl font-bold tracking-tight text-foreground sm:mx-0 sm:text-4xl">
               Three Easy Steps to Get Your Vallejo MMJ Card!
             </h2>
 

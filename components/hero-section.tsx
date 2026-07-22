@@ -10,15 +10,15 @@ export function HeroSection() {
         <div className="relative">
           {/* Content: heading/copy left, doctor photo right */}
           <div className="grid items-center gap-8 px-6 pb-10 pt-2 sm:px-10 sm:pb-14 sm:pt-4 lg:grid-cols-2 lg:gap-8">
-            <div>
+            <div className="text-center lg:text-left">
               <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-primary sm:text-5xl lg:text-[3.4rem]">
                 Get Your Medical Marijuana Card in Vallejo Today!
               </h1>
-              <p className="mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg lg:mx-0">
                 Get fast, hassle-free medical marijuana approval online with
                 same-day certification from licensed doctors in Vallejo.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex justify-center lg:justify-start">
                 <BookingButton
                   size="lg"
                   className="h-13 w-full rounded-full px-8 text-base shadow-lg shadow-primary/30 sm:w-auto"

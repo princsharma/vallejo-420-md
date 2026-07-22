@@ -103,9 +103,9 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section id="about" className="bg-background py-24">
+    <section id="about" className="bg-background py-12 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-end sm:justify-between sm:gap-8 sm:text-left">
           <div>
             <Badge variant="secondary" className="h-auto rounded-full px-6 py-2.5 text-base text-primary">
               Testimonials
@@ -115,7 +115,7 @@ export function TestimonialsSection() {
             </h2>
           </div>
 
-          <div ref={ref} className="flex gap-8">
+          <div ref={ref} className="flex justify-center gap-8 sm:justify-start">
             {STATS.map((stat) => (
               <StatCounter
                 key={stat.label}
@@ -129,7 +129,7 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-center">
+        <div className="mt-10 grid gap-8 sm:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-center">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl">
             <Image
               src="/section-two.webp"

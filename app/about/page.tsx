@@ -92,7 +92,7 @@ export default function AboutPage() {
         {/* Hero banner */}
         <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
           <div className="relative flex flex-col overflow-hidden rounded-4xl bg-accent px-8 pt-10 sm:min-h-[30rem] sm:flex-row sm:items-center sm:px-16 sm:pt-0">
-            <h1 className="relative z-10 max-w-lg text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="relative max-w-lg text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Want To Know More About Us?
             </h1>
             <Image
@@ -184,14 +184,17 @@ export default function AboutPage() {
                 />
               </div>
 
-              <div>
+              <div className="text-center sm:text-left">
                 <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                   Trusted &amp; Experienced Medical Marijuana Doctors
                 </h2>
-                <div className="mt-8 space-y-6">
+                <div className="mt-8 space-y-6 text-center sm:text-left">
                   {TRUST_POINTS.map((point) => (
-                    <div key={point.title} className="flex gap-3">
-                      <SquareCheckBig className="mt-0.5 size-5 shrink-0 text-primary" />
+                    <div
+                      key={point.title}
+                      className="flex flex-col items-center gap-3 sm:flex-row sm:items-start"
+                    >
+                      <SquareCheckBig className="size-5 shrink-0 text-primary sm:mt-0.5" />
                       <div>
                         <h3 className="font-semibold text-foreground">
                           {point.title}
@@ -210,7 +213,7 @@ export default function AboutPage() {
 
         {/* FAQ */}
         <section className="pb-20">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 sm:text-left lg:px-8">
             <Badge variant="secondary" className="h-auto rounded-full px-6 py-2.5 text-base text-primary">
               FAQ
             </Badge>
