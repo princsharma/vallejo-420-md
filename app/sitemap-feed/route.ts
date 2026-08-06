@@ -1,14 +1,13 @@
-import { siteConfig } from "@/lib/site-data";
-
-const routes = ["/", "/get-your-card/", "/about/", "/contact/"];
+import { absoluteUrl, sitemapPaths } from "@/lib/site-pages";
 
 export async function GET() {
   const lastmod = new Date().toISOString();
+  const routes = sitemapPaths();
 
   const urlEntries = routes
     .map(
       (route) => `  <url>
-    <loc>${siteConfig.url}${route}</loc>
+    <loc>${absoluteUrl(route)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${route === "/" ? "daily" : "weekly"}</changefreq>
     <priority>${route === "/" ? "1" : "0.5"}</priority>
