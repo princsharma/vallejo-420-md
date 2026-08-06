@@ -1,4 +1,4 @@
-import { contactInfo, siteConfig } from "@/lib/site-data";
+import { contactInfo, legalLinks, siteConfig } from "@/lib/site-data";
 import { absoluteUrl, pageByPath } from "@/lib/site-pages";
 
 function requirePage(path: string) {
@@ -63,6 +63,17 @@ export function buildLlmsTxt(): string {
     "",
     linkLine("/about/"),
     linkLine("/contact/"),
+    linkLine("/privacy-policy/"),
+    linkLine("/terms-of-use/"),
+    ...legalLinks
+      .filter(
+        (link) =>
+          link.href !== "/privacy-policy/" && link.href !== "/terms-of-use/"
+      )
+      .map(
+        (link) =>
+          `- [${link.label}](${absoluteUrl(link.href)}): ${link.label} for ${siteConfig.name}.`
+      ),
     `- [Sitemap](${absoluteUrl("/sitemap.xml")}): XML sitemap listing the main public pages on the site.`,
     "",
     "",

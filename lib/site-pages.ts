@@ -43,6 +43,20 @@ export const sitePages: SitePage[] = [
     inSitemap: true,
   },
   {
+    label: "Privacy Policy",
+    path: "/privacy-policy/",
+    description:
+      "How Vallejo 420 MD collects, uses, and protects personal and health data during medical marijuana evaluations in Vallejo, CA.",
+    inSitemap: true,
+  },
+  {
+    label: "Terms of Use",
+    path: "/terms-of-use/",
+    description:
+      "The terms that govern your use of Vallejo 420 MD's website and medical marijuana evaluation services in Vallejo, CA.",
+    inSitemap: true,
+  },
+  {
     label: "How It Works",
     path: "/#process",
     description:

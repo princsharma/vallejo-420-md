@@ -206,7 +206,10 @@ export function LeadCaptureForm() {
             aria-invalid={!!errors.termsAccepted}
           />
           <Label htmlFor="leadTermsAccepted" className="text-sm font-normal text-muted-foreground">
-            I accept the Terms and Conditions
+            I accept the{" "}
+            <a href="/terms-of-use/" className="text-primary underline-offset-2 hover:underline">
+              Terms and Conditions
+            </a>
           </Label>
         </div>
         {errors.termsAccepted && (

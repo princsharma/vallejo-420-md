@@ -18,3 +18,14 @@ export const contactInfo = {
   postalCode: "94590",
   streetAddress: "630 Tennessee St Unit 2",
 };
+
+export const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy/" },
+  { label: "HIPAA Compliance", href: "/hipaa-compliance-policy/" },
+  { label: "Consent for Telehealth", href: "/consent-to-telehealth/" },
+  { label: "Terms of Use", href: "/terms-of-use/" },
+  { label: "Refund Policy", href: "/refund-policy/" },
+  { label: "Accessibility Statement", href: "/accessibility-statement/" },
+  { label: "Editorial Policy", href: "/editorial-policy/" },
+  { label: "Disclaimer", href: "/disclaimer/" },
+] as const;

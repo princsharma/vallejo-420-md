@@ -1,5 +1,33 @@
 import Image from "next/image";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
+import {
+  Accessibility,
+  CheckCheck,
+  Clock,
+  EyeOff,
+  HandCoins,
+  Mail,
+  MapPin,
+  PenLine,
+  Phone,
+  ShieldCheck,
+  TriangleAlert,
+  Video,
+  type LucideIcon,
+} from "lucide-react";
+
+import { legalLinks } from "@/lib/site-data";
+
+const LEGAL_ICONS: Record<(typeof legalLinks)[number]["href"], LucideIcon> = {
+  "/privacy-policy/": EyeOff,
+  "/hipaa-compliance-policy/": ShieldCheck,
+  "/consent-to-telehealth/": Video,
+  "/terms-of-use/": CheckCheck,
+  "/refund-policy/": HandCoins,
+  "/accessibility-statement/": Accessibility,
+  "/editorial-policy/": PenLine,
+  "/disclaimer/": TriangleAlert,
+};
 
 export function SiteFooter() {
   return (
@@ -74,6 +102,30 @@ export function SiteFooter() {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="mt-14 border-t border-border/60 pt-10">
+          <h3 className="text-sm font-semibold tracking-wide text-foreground uppercase">
+            Legal, Compliance &amp; Editorial
+          </h3>
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
+            {legalLinks.map((link) => {
+              const Icon = LEGAL_ICONS[link.href];
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-3 rounded-2xl border border-transparent px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:border-border/70 hover:bg-card hover:text-primary"
+                  >
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border/70 bg-card text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                      <Icon className="size-4" aria-hidden />
+                    </span>
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
         <p className="mt-12 text-center text-xs text-muted-foreground">
