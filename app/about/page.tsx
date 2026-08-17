@@ -179,7 +179,8 @@ export default function AboutPage() {
               alt="Vallejo 420 MD physician"
               width={1110}
               height={1311}
-              priority
+              loading="eager"
+              fetchPriority="high"
               className="pointer-events-none relative mx-auto mt-6 h-64 w-auto object-contain object-bottom sm:absolute sm:right-0 sm:bottom-0 sm:mt-0 sm:h-[92%]"
             />
           </div>
@@ -274,7 +275,7 @@ export default function AboutPage() {
             <ol className="mt-10 grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {PLATFORM_STEPS.map((step) => (
                 <li key={step.number}>
-                  <span className="text-2xl font-bold text-primary/40">
+                  <span className="text-2xl font-bold text-primary/70">
                     {step.number}
                   </span>
                   <h3 className="mt-3 text-lg font-semibold text-foreground">

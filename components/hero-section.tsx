@@ -38,7 +38,8 @@ export function HeroSection() {
                   src="/hero-section.webp"
                   alt="Licensed physician for medical marijuana evaluations in Vallejo"
                   fill
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="(min-width: 1024px) 384px, (min-width: 640px) 320px, 90vw"
                   className="object-contain"
                 />

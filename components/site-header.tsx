@@ -31,7 +31,8 @@ export function SiteHeader() {
               alt="Vallejo 420 MD"
               width={168}
               height={72}
-              priority
+              loading="eager"
+              fetchPriority="high"
               className="h-10 w-auto sm:h-12"
             />
           </Link>
@@ -40,7 +41,7 @@ export function SiteHeader() {
             {NAV_LINKS.map((link) => {
               const active = pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
@@ -49,7 +50,7 @@ export function SiteHeader() {
                   )}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -92,14 +93,14 @@ export function SiteHeader() {
 
             <nav className="flex flex-1 flex-col items-center justify-center gap-8">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="text-2xl font-semibold text-primary-foreground/90 transition-colors hover:text-primary-foreground"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <BookingButton
                 variant="secondary"

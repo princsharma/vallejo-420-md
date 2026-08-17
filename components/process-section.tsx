@@ -54,7 +54,7 @@ export function ProcessSection() {
               key={step.number}
               className="flex flex-col gap-4 rounded-3xl border border-border/70 bg-card p-6 shadow-sm sm:flex-row sm:items-center sm:gap-6"
             >
-              <span className="text-2xl font-bold text-primary/40">
+              <span className="text-2xl font-bold text-primary/70">
                 {step.number}
               </span>
               <div className="relative size-14 shrink-0 overflow-hidden rounded-2xl">

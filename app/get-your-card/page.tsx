@@ -161,7 +161,8 @@ export default function GetYourCardPage() {
                   src="/get-your-card-hero-section.webp"
                   alt="Licensed physician presenting Vallejo MMJ card options"
                   fill
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="(min-width: 640px) 384px, 272px"
                   className="object-contain"
                 />
@@ -195,9 +196,9 @@ export default function GetYourCardPage() {
                   <div className="mx-auto flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <feature.icon className="size-6" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
+                  <h2 className="mt-4 text-lg font-semibold text-foreground">
                     {feature.title}
-                  </h3>
+                  </h2>
                   <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
                     {feature.description}
                   </p>
