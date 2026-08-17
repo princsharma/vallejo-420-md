@@ -32,7 +32,7 @@ export const sitePages: SitePage[] = [
     label: "About Us",
     path: "/about/",
     description:
-      "Company overview covering licensed doctors, confidential HIPAA-aligned evaluations, and Vallejo-focused medical marijuana care.",
+      "Meet the team behind Vallejo 420 MD and see how our California licensed physicians make medical marijuana evaluations simple, secure, and transparent.",
     inSitemap: true,
   },
   {
@@ -54,6 +54,55 @@ export const sitePages: SitePage[] = [
     path: "/terms-of-use/",
     description:
       "The terms that govern your use of Vallejo 420 MD's website and medical marijuana evaluation services in Vallejo, CA.",
+    inSitemap: true,
+  },
+  {
+    label: "HIPAA Compliance",
+    path: "/hipaa-compliance-policy/",
+    description:
+      "How Vallejo 420 MD protects patient health information under HIPAA during telehealth medical marijuana evaluations in Vallejo, CA.",
+    inSitemap: true,
+  },
+  {
+    label: "Consent for Telehealth",
+    path: "/consent-to-telehealth/",
+    description:
+      "What to expect from telehealth visits with Vallejo 420 MD, including how consultations work, your rights, and the risks and benefits involved.",
+    inSitemap: true,
+  },
+  {
+    label: "Refund Policy",
+    path: "/refund-policy/",
+    description:
+      "Vallejo 420 MD's refund policy for medical marijuana evaluations, including eligibility, missed appointment fees, and how to request a refund.",
+    inSitemap: true,
+  },
+  {
+    label: "Accessibility Statement",
+    path: "/accessibility-statement/",
+    description:
+      "How Vallejo 420 MD works to keep its website and telehealth services accessible to all users, including people with disabilities.",
+    inSitemap: true,
+  },
+  {
+    label: "Editorial Policy",
+    path: "/editorial-policy/",
+    description:
+      "How Vallejo 420 MD researches, fact-checks, and reviews medical marijuana content to keep it accurate, ethical, and useful.",
+    inSitemap: true,
+  },
+  {
+    label: "Disclaimer",
+    path: "/disclaimer/",
+    description:
+      "Vallejo 420 MD's disclaimer on medical information, our platform's role, and what our services are and aren't intended for in Vallejo, CA.",
+    inSitemap: true,
+  },
+  {
+    label: "Shipping Policy",
+    path: "/shipping-policy/",
+    description:
+      "How Vallejo 420 MD ships your medical marijuana card, including delivery timelines, tracking, and what to do if there's a problem.",
     inSitemap: true,
   },
   {

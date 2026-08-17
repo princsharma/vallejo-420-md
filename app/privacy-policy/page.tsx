@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo, siteConfig } from "@/lib/site-data";
@@ -228,7 +227,9 @@ export default function PrivacyPolicyPage() {
           <strong>{siteConfig.name}</strong>
           <br />
           Website:{" "}
-          <Link href="/">{siteConfig.title}</Link>
+          <a href={siteConfig.url} rel="noreferrer">
+            {siteConfig.url}
+          </a>
           <br />
           Email:{" "}
           <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>

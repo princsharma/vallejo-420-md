@@ -12,6 +12,7 @@ import {
   Phone,
   ShieldCheck,
   TriangleAlert,
+  Truck,
   Video,
   type LucideIcon,
 } from "lucide-react";
@@ -27,6 +28,7 @@ const LEGAL_ICONS: Record<(typeof legalLinks)[number]["href"], LucideIcon> = {
   "/accessibility-statement/": Accessibility,
   "/editorial-policy/": PenLine,
   "/disclaimer/": TriangleAlert,
+  "/shipping-policy/": Truck,
 };
 
 export function SiteFooter() {

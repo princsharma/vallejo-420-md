@@ -28,4 +28,5 @@ export const legalLinks = [
   { label: "Accessibility Statement", href: "/accessibility-statement/" },
   { label: "Editorial Policy", href: "/editorial-policy/" },
   { label: "Disclaimer", href: "/disclaimer/" },
+  { label: "Shipping Policy", href: "/shipping-policy/" },
 ] as const;

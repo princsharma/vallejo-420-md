@@ -27,7 +27,7 @@ export function SiteHeader() {
         <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-10 sm:py-5">
           <Link href="/" className="flex shrink-0 items-center">
             <Image
-              src="/vallejo-logo.webp"
+              src="/vallejo420md-logo.webp"
               alt="Vallejo 420 MD"
               width={168}
               height={72}

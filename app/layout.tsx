@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   verification: {
-    google: "6QEZWGjGY4UccsbVA61fv6Ds0kfuCr5kz4b98-AgsQ4",
+    google: "qA6rzXJVggMuktplzyAQ4ZbQjTnD2qGF0LzpgKjFlz8",
   },
   robots: {
     index: true,
@@ -130,6 +130,15 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
       <GoogleTagManager gtmId="GTM-5WZRCTX9" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-68881RSH4R" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-68881RSH4R');`,
+        }}
+      />
       <body className="min-h-full flex flex-col">
         <noscript>
           <iframe

@@ -63,17 +63,7 @@ export function buildLlmsTxt(): string {
     "",
     linkLine("/about/"),
     linkLine("/contact/"),
-    linkLine("/privacy-policy/"),
-    linkLine("/terms-of-use/"),
-    ...legalLinks
-      .filter(
-        (link) =>
-          link.href !== "/privacy-policy/" && link.href !== "/terms-of-use/"
-      )
-      .map(
-        (link) =>
-          `- [${link.label}](${absoluteUrl(link.href)}): ${link.label} for ${siteConfig.name}.`
-      ),
+    ...legalLinks.map((link) => linkLine(link.href)),
     `- [Sitemap](${absoluteUrl("/sitemap.xml")}): XML sitemap listing the main public pages on the site.`,
     "",
     "",
