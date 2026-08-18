@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { sendGTMEvent } from "@next/third-parties/google";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -144,10 +143,13 @@ export function LeadCaptureForm() {
       .replace(/\//g, "_")
       .replace(/=+$/, "");
 
-    sendGTMEvent({
-      event: "heallyValidatedSubmit",
-      utm_source: heallyUtmSource,
-    });
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "heallyValidatedSubmit",
+        utm_source: heallyUtmSource,
+      });
+    }
 
     window.location.href = `https://mymmj.getheally.com/patient_admin/prefill?redirect=sched&preset=${preset}&utm_source=${encodeURIComponent(heallyUtmSource)}`;
   }

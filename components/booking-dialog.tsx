@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import type { VariantProps } from "class-variance-authority";
 import { CalendarHeart } from "lucide-react";
 
+import dynamic from "next/dynamic";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +14,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { LeadCaptureForm } from "@/components/lead-capture-form";
+
+const LeadCaptureForm = dynamic(
+  () => import("@/components/lead-capture-form").then((mod) => mod.LeadCaptureForm),
+  {
+    loading: () => (
+      <div className="flex h-64 items-center justify-center">
+        <div className="size-6 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+      </div>
+    ),
+  }
+);
 
 interface BookingButtonProps extends VariantProps<typeof buttonVariants> {
   className?: string;

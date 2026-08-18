@@ -135,7 +135,7 @@ export function TestimonialsSection() {
               src="/section-two.webp"
               alt="Doctor discussing medical marijuana treatment with a patient"
               fill
-              sizes="(min-width: 640px) 384px, 100vw"
+              sizes="(min-width: 640px) 384px, 320px"
               className="object-cover"
             />
           </div>

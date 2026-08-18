@@ -31,8 +31,8 @@ export function SiteHeader() {
               alt="Vallejo 420 MD"
               width={168}
               height={72}
-              loading="eager"
-              fetchPriority="high"
+              priority
+              unoptimized
               className="h-10 w-auto sm:h-12"
             />
           </Link>

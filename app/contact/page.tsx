@@ -45,8 +45,9 @@ export default function ContactPage() {
               alt="Vallejo 420 MD physician"
               width={929}
               height={1327}
-              loading="eager"
-              fetchPriority="high"
+              priority
+              unoptimized
+              sizes="(min-width: 640px) 450px, 260px"
               className="pointer-events-none relative mx-auto mt-6 h-64 w-auto object-contain object-bottom sm:absolute sm:right-0 sm:bottom-0 sm:mt-0 sm:h-[92%]"
             />
           </div>

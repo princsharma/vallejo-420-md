@@ -160,11 +160,11 @@ export default function GetYourCardPage() {
                 <Image
                   src="/get-your-card-hero-section.webp"
                   alt="Licensed physician presenting Vallejo MMJ card options"
-                  fill
-                  loading="eager"
-                  fetchPriority="high"
-                  sizes="(min-width: 640px) 384px, 272px"
-                  className="object-contain"
+                  width={1920}
+                  height={1798}
+                  priority
+                  unoptimized
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div className="order-1 text-center lg:order-2 lg:text-left">

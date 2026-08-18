@@ -37,11 +37,11 @@ export function HeroSection() {
                 <Image
                   src="/hero-section.webp"
                   alt="Licensed physician for medical marijuana evaluations in Vallejo"
-                  fill
-                  loading="eager"
-                  fetchPriority="high"
-                  sizes="(min-width: 1024px) 384px, (min-width: 640px) 320px, 90vw"
-                  className="object-contain"
+                  width={473}
+                  height={665}
+                  priority
+                  unoptimized
+                  className="h-full w-full object-contain"
                 />
               </div>
 
