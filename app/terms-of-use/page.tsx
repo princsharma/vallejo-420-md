@@ -22,26 +22,26 @@ export default function TermsOfUsePage() {
     >
       <section className="space-y-4">
         <h2>Disclaimer</h2>
-        <p className="font-semibold uppercase tracking-wide text-foreground">
+        <p className="text-foreground">
           Please carefully review these Terms of Use before accessing or using
           the Vallejo 420 MD website or services. These Terms contain important
           information regarding your legal rights, disclaimers of warranties,
           and limitations of liability.
         </p>
-        <p className="font-semibold uppercase tracking-wide text-foreground">
+        <p className="text-foreground">
           By accessing, browsing, registering for, or using this website or any
           services provided through the platform, you acknowledge that you have
           read, understood, and agree to be legally bound by these Terms of Use,
           our Privacy Policy, and any other policies referenced herein.
         </p>
-        <p className="font-semibold uppercase tracking-wide text-foreground">
+        <p className="text-foreground">
           Vallejo 420 MD operates as a technology platform that connects you
           with independent licensed physicians for medical marijuana evaluations
           in California. Vallejo 420 MD does not provide medical advice,
           diagnosis, or treatment and does not guarantee that any individual
           will receive a medical marijuana recommendation.
         </p>
-        <p className="font-semibold uppercase tracking-wide text-foreground">
+        <p className="text-foreground">
           Your continued use of the website following any modifications to these
           Terms constitutes your acceptance of those changes.
         </p>

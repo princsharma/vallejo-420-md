@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Get your medical marijuana card in Vallejo through a fast, secure, and 100% online process.",
   url: "https://vallejo420md.com",
-  ogImage: "https://vallejo420md.com/wp-content/uploads/2025/03/marijuana-doctor.webp",
+  ogImage: "https://vallejo420md.com/hero-section.webp",
 };
 
 export const contactInfo = {
