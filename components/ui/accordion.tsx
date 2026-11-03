@@ -1,5 +1,3 @@
-"use client"
-
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
 
 import { cn } from "@/lib/utils"
@@ -56,13 +54,15 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Panel
       data-slot="accordion-content"
-      className={cn(
-        "h-[var(--accordion-panel-height)] overflow-hidden text-sm transition-[height] duration-150 ease-out [&[data-ending-style]]:h-0 [&[data-starting-style]]:h-0",
-        className
-      )}
+      className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
       {...props}
     >
-      <div className="pb-4 pt-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4">
+      <div
+        className={cn(
+          "h-(--accordion-panel-height) pt-0 pb-4 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
+          className
+        )}
+      >
         {children}
       </div>
     </AccordionPrimitive.Panel>

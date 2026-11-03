@@ -3,9 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import sharp from "sharp";
 
-import { BRAND_DARK_HEX } from "@/lib/brand-colors";
-
-export const alt = "Medical Marijuana Card in Vallejo, CA | Vallejo 420 MD";
+export const alt = "Vallejo 420 MD - Get Your Medical Marijuana Card in Vallejo Today";
 export const size = {
   width: 1200,
   height: 630,
@@ -31,7 +29,7 @@ export default async function Image() {
           display: "flex",
           width: "100%",
           height: "100%",
-          background: "#F8FAF7",
+          background: "#dcefdf",
         }}
       >
         <div
@@ -53,22 +51,22 @@ export default async function Image() {
               fontSize: 62,
               fontWeight: 700,
               lineHeight: 1.15,
-              color: BRAND_DARK_HEX,
+              color: "#0d3f2e",
             }}
           >
-            Medical Marijuana Card in Vallejo, CA
+            Get Your Medical Marijuana Card in Vallejo Today!
           </div>
           <div
             style={{
               display: "flex",
               marginTop: 28,
-              fontSize: 26,
+              fontSize: 28,
               lineHeight: 1.4,
-              color: "#58665D",
+              color: "#3d5346",
             }}
           >
-            Online evaluation with a licensed California doctor, clear
-            pricing, and a local office at 630 Tennessee St.
+            Fast, hassle-free online approval with same-day certification
+            from licensed doctors.
           </div>
         </div>
         <div
@@ -78,7 +76,7 @@ export default async function Image() {
             justifyContent: "center",
             width: "38%",
             height: "100%",
-            background: BRAND_DARK_HEX,
+            background: "#0d3f2e",
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

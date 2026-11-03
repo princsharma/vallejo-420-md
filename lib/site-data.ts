@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Vallejo 420 MD",
   fullName: "Vallejo 420 MD",
-  title: "Medical Marijuana Card in Vallejo, CA | Vallejo 420 MD",
+  title: "Get Your Medical Marijuana Card in Vallejo, CA",
   description:
-    "Get a medical marijuana card in Vallejo, CA. Online evaluation with a licensed California doctor, clear pricing and a local office at 630 Tennessee St.",
+    "Get your medical marijuana card in Vallejo through a fast, secure, and 100% online process.",
   url: "https://vallejo420md.com",
   ogImage: "https://vallejo420md.com/hero-section.webp",
 };

@@ -2,67 +2,77 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 
 import { BookingButton } from "@/components/booking-dialog";
 
 const NAV_LINKS = [
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Benefits", href: "/#benefits" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "Home", href: "/" },
+  { label: "Get Your Card", href: "/get-your-card/" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-border bg-white/95 backdrop-blur">
-      <div className="ds-container">
-        <div className="flex items-center justify-between gap-4 py-4">
-          <Link href="/" aria-label="Vallejo 420 MD home" className="flex shrink-0 items-center">
+    <header className="relative z-10 bg-background">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-10 sm:py-5">
+          <Link href="/" className="flex shrink-0 items-center">
             <Image
               src="/vallejo420md-logo.webp"
               alt="Vallejo 420 MD"
-              width={288}
-              height={128}
+              width={168}
+              height={72}
               priority
               unoptimized
               className="h-10 w-auto sm:h-12"
             />
           </Link>
 
-          <nav className="hidden items-center gap-0 lg:gap-1 md:flex">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-lg px-3 py-2 text-md font-semibold tracking-[0.1px] text-foreground transition-colors hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden items-center gap-1 rounded-full border border-border/70 bg-muted/40 px-1.5 py-1.5 md:flex">
+            {NAV_LINKS.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "rounded-full px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-white hover:shadow-sm dark:hover:bg-white/10",
+                    active && "bg-white shadow-sm dark:bg-white/10"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <BookingButton
-            className="hidden h-11 shrink-0 rounded-lg px-5 text-md font-semibold shadow-none md:inline-flex"
+            className="hidden rounded-full px-6 shadow-lg shadow-primary/30 sm:inline-flex"
             size="lg"
           >
-            Book evaluation
+            Book a Consultation
           </BookingButton>
           <button
             type="button"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex size-11 items-center justify-center rounded-lg border border-border text-dark-green md:hidden"
+            className="inline-flex items-center justify-center rounded-full border border-border/70 bg-muted/40 p-2 text-primary md:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
 
         {open ? (
-          <div className="fixed inset-0 z-[100] flex flex-col bg-dark-green text-white md:hidden">
+          <div className="fixed inset-0 z-[100] flex flex-col bg-primary text-primary-foreground md:hidden">
             <div className="flex items-center justify-between px-5 py-4">
               <Image
                 src="/vallejo-logo.svg"
@@ -75,7 +85,7 @@ export function SiteHeader() {
                 type="button"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="inline-flex size-11 items-center justify-center rounded-lg border border-white/30 text-white"
+                className="inline-flex items-center justify-center rounded-full border border-primary-foreground/30 p-2 text-primary-foreground"
               >
                 <X className="size-5" />
               </button>
@@ -87,7 +97,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-2xl font-semibold text-white/90 transition-colors hover:text-white"
+                  className="text-2xl font-semibold text-primary-foreground/90 transition-colors hover:text-primary-foreground"
                 >
                   {link.label}
                 </Link>
@@ -95,11 +105,29 @@ export function SiteHeader() {
               <BookingButton
                 variant="secondary"
                 size="lg"
-                className="mt-2 h-12 rounded-lg px-8 text-dark-green"
+                className="mt-2 rounded-full px-8"
               >
-                Book evaluation
+                Book a Consultation
               </BookingButton>
             </nav>
+
+            <div className="flex items-center justify-center gap-3 pb-10">
+              <a
+                href="https://www.yelp.com/biz/vallejo-420-evaluations-vallejo"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Yelp"
+                className="flex size-10 items-center justify-center rounded-full bg-primary-foreground p-2 transition-colors hover:bg-primary-foreground/90"
+              >
+                <Image
+                  src="/yelp-logo.svg"
+                  alt="Yelp"
+                  width={24}
+                  height={30}
+                  className="h-full w-auto object-contain"
+                />
+              </a>
+            </div>
           </div>
         ) : null}
       </div>

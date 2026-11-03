@@ -59,11 +59,7 @@ type LeadErrors = {
   termsAccepted?: string;
 };
 
-type LeadCaptureFormProps = {
-  submitLabel?: string;
-};
-
-export function LeadCaptureForm({ submitLabel = "Get Your Card" }: LeadCaptureFormProps) {
+export function LeadCaptureForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -161,9 +157,7 @@ export function LeadCaptureForm({ submitLabel = "Get Your Card" }: LeadCaptureFo
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
       <div className={`grid gap-2 ${fieldEnter}`} style={staggerDelay(0)}>
-        <Label htmlFor="leadName" className="ds-label text-foreground">
-          Full name*
-        </Label>
+        <Label htmlFor="leadName">Name (First &amp; Last)*</Label>
         <Input
           id="leadName"
           name="leadName"
@@ -171,44 +165,40 @@ export function LeadCaptureForm({ submitLabel = "Get Your Card" }: LeadCaptureFo
           value={name}
           onChange={handleNameChange}
           aria-invalid={!!errors.name}
-          className="h-12 rounded-lg px-3.5"
+          className="h-11 rounded-xl px-3.5"
         />
         {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
       </div>
       <div className={`grid gap-2 ${fieldEnter}`} style={staggerDelay(1)}>
-        <Label htmlFor="leadEmail" className="ds-label text-foreground">
-          Email address*
-        </Label>
+        <Label htmlFor="leadEmail">Email*</Label>
         <Input
           id="leadEmail"
           name="leadEmail"
           type="email"
-          placeholder="you@example.com"
+          placeholder="jane@example.com"
           value={email}
           onChange={handleEmailChange}
           aria-invalid={!!errors.email}
-          className="h-12 rounded-lg px-3.5"
+          className="h-11 rounded-xl px-3.5"
         />
         {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
       </div>
       <div className={`grid gap-2 ${fieldEnter}`} style={staggerDelay(2)}>
-        <Label htmlFor="leadPhone" className="ds-label text-foreground">
-          Phone number*
-        </Label>
+        <Label htmlFor="leadPhone">Phone Number*</Label>
         <Input
           id="leadPhone"
           name="leadPhone"
           type="tel"
-          placeholder="(707) 555-0100"
+          placeholder="555-555-5555"
           value={phone}
           onChange={handlePhoneChange}
           aria-invalid={!!errors.phone}
-          className="h-12 rounded-lg px-3.5"
+          className="h-11 rounded-xl px-3.5"
         />
         {errors.phone && <p className="text-sm text-destructive">{errors.phone}</p>}
       </div>
       <div className={`grid gap-1.5 ${fieldEnter} mt-1`} style={staggerDelay(3)}>
-        <div className="flex items-start gap-2.5 rounded-lg bg-warm-white p-3">
+        <div className="flex items-start gap-2.5 rounded-xl bg-muted/50 p-3">
           <Checkbox
             id="leadTermsAccepted"
             name="leadTermsAccepted"
@@ -229,17 +219,9 @@ export function LeadCaptureForm({ submitLabel = "Get Your Card" }: LeadCaptureFo
         )}
       </div>
       <div className={fieldEnter} style={staggerDelay(4)}>
-        <Button
-          type="submit"
-          size="lg"
-          className="mt-1 h-12 w-full rounded-lg text-base font-semibold"
-          disabled={submitting}
-        >
-          {submitting ? "Processing..." : submitLabel}
+        <Button type="submit" size="xl" className="mt-1 w-full" disabled={submitting}>
+          {submitting ? "Processing..." : "Get Your Card"}
         </Button>
-        <p className="ds-small text-center text-muted-foreground">
-          By continuing, you agree to be contacted about your evaluation.
-        </p>
       </div>
     </form>
   );

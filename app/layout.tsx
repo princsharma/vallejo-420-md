@@ -1,25 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Geist_Mono, Source_Serif_4 } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { BRAND_DARK_HEX } from "@/lib/brand-colors";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
 import { DeferredAnalytics } from "@/components/analytics/deferred-analytics";
 import { contactInfo, siteConfig } from "@/lib/site-data";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
   preload: true,
-});
-
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-source-serif",
-  weight: ["600", "700"],
-  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -76,17 +67,17 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: BRAND_DARK_HEX,
+  themeColor: "#0d3f2e",
 };
 
 const medicalBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": ["MedicalBusiness", "LocalBusiness"],
+  "@type": "MedicalBusiness",
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  image: `${siteConfig.url}/opengraph-image`,
-  priceRange: "$55-$99",
+  image: siteConfig.ogImage,
+  priceRange: "$55-$199",
   telephone: contactInfo.phoneHref.replace("tel:", ""),
   email: contactInfo.email,
   address: {
@@ -128,12 +119,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "h-full antialiased font-sans",
-        geistMono.variable,
-        dmSans.variable,
-        sourceSerif.variable
-      )}
+      className={cn("h-full", "antialiased", geistMono.variable, inter.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
         <DeferredAnalytics gtmId="GTM-5WZRCTX9" gaId="G-68881RSH4R" />

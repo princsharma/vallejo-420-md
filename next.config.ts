@@ -1,11 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Phone/LAN testing uses the Network URL (e.g. http://192.168.x.x:3000). Next.js 16+
-  // blocks /_next dev assets from other hostnames unless listed here.
-  allowedDevOrigins: process.env.NEXT_ALLOWED_DEV_ORIGINS
-    ? process.env.NEXT_ALLOWED_DEV_ORIGINS.split(",").map((origin) => origin.trim()).filter(Boolean)
-    : ["192.168.1.19"],
   // Normalizes to /path/ everywhere; Next.js auto-redirects /path -> /path/.
   // Static file URLs (sitemap.xml, robots.txt, anything with an extension)
   // are exempt per the docs, so those are unaffected.
