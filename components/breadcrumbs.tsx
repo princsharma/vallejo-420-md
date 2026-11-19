@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 
 import { siteConfig } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 
 export type Crumb = {
   label: string;
@@ -12,7 +13,19 @@ export type Crumb = {
  * Visible breadcrumb trail plus a matching BreadcrumbList JSON-LD script,
  * built from the same `items` prop so the two can never drift apart.
  */
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+export function Breadcrumbs({
+  items,
+  className,
+  alignWithPage = false,
+  compact = false,
+}: {
+  items: Crumb[];
+  className?: string;
+  /** Use ds-container gutters instead of max-w-7xl + extra horizontal padding. */
+  alignWithPage?: boolean;
+  /** Tighter padding inside the breadcrumb pill. */
+  compact?: boolean;
+}) {
   const allItems: Crumb[] = [{ label: "Home", href: "/" }, ...items];
 
   const breadcrumbJsonLd = {
@@ -29,19 +42,36 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="w-full pt-4">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="w-fit rounded-2xl bg-accent/40 px-4 sm:px-6">
-          <ol className="flex flex-wrap items-center gap-1.5 py-3.5 text-sm font-medium">
+    <nav aria-label="Breadcrumb" className={cn("w-full pt-4 pb-6", className)}>
+      <div
+        className={cn(
+          "flex justify-center",
+          alignWithPage
+            ? "w-full"
+            : "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        )}
+      >
+        <div
+          className={cn(
+            "w-fit rounded-2xl bg-accent/40",
+            compact ? "px-3 sm:px-4" : "px-4 sm:px-6"
+          )}
+        >
+          <ol
+            className={cn(
+              "flex flex-wrap items-center gap-1.5",
+              compact ? "py-2.5 sm:py-3" : "py-3.5"
+            )}
+          >
             {allItems.map((item, index) => (
-              <li key={item.label} className="flex items-center gap-1.5">
+              <li key={item.label} className="flex items-center gap-1.5 ds-h3 text-primary">
                 {index > 0 && (
-                  <ChevronRight aria-hidden="true" className="size-3.5 text-muted-foreground/40" />
+                  <ChevronRight aria-hidden="true" className="size-3.5 text-primary" />
                 )}
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-muted-foreground transition-colors hover:bg-background hover:text-primary"
+                    className="ds-body flex items-center gap-1.5 rounded-full px-2.5 py-1 text-black/90 transition-colors hover:bg-background hover:text-primary"
                   >
                     {index === 0 ? (
                       <Home aria-hidden="true" className="size-3.5" />
@@ -51,7 +81,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
                 ) : (
                   <span
                     aria-current="page"
-                    className="rounded-full bg-primary/10 px-2.5 py-1 font-semibold text-primary"
+                    className="ds-body rounded-full px-2.5 py-1 font-semibold text-dark-green"
                   >
                     {item.label}
                   </span>

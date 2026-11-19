@@ -6,21 +6,21 @@ import { BookingButton } from "@/components/booking-dialog";
 const STEPS = [
   {
     number: "01",
-    image: "/section-three-one.webp",
+    image: "/media/section-three-one.webp",
     title: "Sign Up and Schedule",
     description:
       "Sign up easily, fill out a quick form, and schedule your appointment at a time that works best for you.",
   },
   {
     number: "02",
-    image: "/section-three-two.webp",
+    image: "/media/section-three-two.webp",
     title: "Connect with Our MMJ Doctor",
     description:
       "Join a video call with a licensed medical marijuana doctor who will evaluate your condition with care and expertise.",
   },
   {
     number: "03",
-    image: "/section-three-three.webp",
+    image: "/media/section-three-three.webp",
     title: "Get Prescription Letter",
     description:
       "The doctor will issue a prescription letter, allowing you to immediately access medical marijuana from a state-approved dispensary.",
@@ -70,7 +70,7 @@ export function ProcessSection() {
                 <h3 className="text-lg font-semibold text-foreground">
                   {step.title}
                 </h3>
-                <p className="mt-1 text-pretty text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 text-pretty text-sm leading-relaxed text-black/90">
                   {step.description}
                 </p>
               </div>

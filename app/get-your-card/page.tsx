@@ -129,7 +129,7 @@ export default function GetYourCardPage() {
       <Breadcrumbs items={[{ label: "Get Your Card" }]} />
       <main className="flex-1 bg-background">
         {/* Mini hero banner */}
-        <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-7xl px-5 pt-8 md:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-4xl bg-accent px-6 py-10 sm:px-12 sm:py-14">
             <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
               <div className="relative order-2 mx-auto aspect-[1920/1798] w-full max-w-[17rem] sm:max-w-sm lg:order-1 lg:mx-0">
@@ -158,7 +158,7 @@ export default function GetYourCardPage() {
                   <path d="M60 85 Q72 95 88 96" strokeWidth="1.5" />
                 </svg>
                 <Image
-                  src="/get-your-card-hero-section.webp"
+                  src="/media/get-your-card-hero-section.webp"
                   alt="Licensed physician presenting Vallejo MMJ card options"
                   width={1920}
                   height={1798}
@@ -185,8 +185,8 @@ export default function GetYourCardPage() {
         </section>
 
         {/* Feature grid */}
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="py-24 md:py-20">
+          <div className="mx-auto max-w-7xl px-5 md:px-6 lg:px-8">
             <ul className="grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {FEATURES.map((feature) => (
                 <li
@@ -199,7 +199,7 @@ export default function GetYourCardPage() {
                   <h2 className="mt-4 text-lg font-semibold text-foreground">
                     {feature.title}
                   </h2>
-                  <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-pretty text-sm leading-relaxed text-black/90">
                     {feature.description}
                   </p>
                 </li>
@@ -209,8 +209,8 @@ export default function GetYourCardPage() {
         </section>
 
         {/* How it works */}
-        <section className="pb-20">
-          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 sm:text-left lg:px-8">
+        <section className="pb-24 md:pb-20">
+          <div className="mx-auto max-w-7xl px-5 text-center md:px-6 md:text-left lg:px-8">
             <Badge variant="secondary" className="h-auto rounded-full px-6 py-2.5 text-base text-primary">
               How It Works
             </Badge>
@@ -230,7 +230,7 @@ export default function GetYourCardPage() {
                   <h3 className="mt-5 text-lg font-semibold text-foreground">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-pretty text-sm leading-relaxed text-black/90">
                     {step.description}
                   </p>
                 </li>
@@ -240,8 +240,8 @@ export default function GetYourCardPage() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="pb-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="pricing" className="pb-28 md:pb-24">
+          <div className="mx-auto max-w-7xl px-5 md:px-6 lg:px-8">
             <div className="grid gap-8 pt-6 sm:grid-cols-3 sm:items-center">
               {PLANS.map((plan) => (
                 <Card
@@ -262,14 +262,14 @@ export default function GetYourCardPage() {
                     <CardTitle className="text-xl">{plan.name}</CardTitle>
                     <CardDescription className="text-3xl font-bold text-primary">
                       {plan.price}
-                      <span className="text-base font-medium text-muted-foreground">
+                      <span className="text-base font-medium text-black/90">
                         /Yr
                       </span>
                     </CardDescription>
                   </CardHeader>
                   <Separator />
                   <CardContent className="flex-1 py-10">
-                    <ul className="space-y-5 text-left text-sm text-muted-foreground">
+                    <ul className="space-y-5 text-left text-sm text-black/90">
                       {plan.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-3">
                           <Check className="mt-0.5 size-4 shrink-0 text-primary" />
@@ -294,15 +294,15 @@ export default function GetYourCardPage() {
         </section>
 
         {/* Contact CTA */}
-        <section className="pb-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="pb-28 md:pb-24">
+          <div className="mx-auto max-w-7xl px-5 md:px-6 lg:px-8">
             <div className="relative overflow-hidden rounded-4xl bg-accent">
               <div className="grid items-center gap-6 pt-10 sm:grid-cols-2 sm:gap-0 sm:pt-0">
                 <div className="px-6 pb-8 sm:px-16 sm:py-16">
                   <h2 className="max-w-md text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                     Need Assistance? Contact Us Anytime!
                   </h2>
-                  <p className="mt-4 text-sm text-muted-foreground">
+                  <p className="mt-4 text-sm text-black/90">
                     Call us today at{" "}
                     <a
                       href="tel:+17073835600"
@@ -323,7 +323,7 @@ export default function GetYourCardPage() {
 
                 <div className="relative mx-auto aspect-[1014/1920] w-full max-w-[9rem] sm:max-w-[13rem]">
                   <Image
-                    src="/get-your-card-second-last-section.webp"
+                    src="/media/get-your-card-second-last-section.webp"
                     alt="Friendly physician ready to help with your medical marijuana evaluation"
                     fill
                     sizes="(min-width: 640px) 208px, 144px"

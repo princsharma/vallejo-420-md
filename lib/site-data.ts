@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Vallejo 420 MD",
   fullName: "Vallejo 420 MD",
-  title: "Get Your Medical Marijuana Card in Vallejo, CA",
+  title: "Medical Marijuana Card in Vallejo, CA | Vallejo 420 MD",
   description:
-    "Get your medical marijuana card in Vallejo through a fast, secure, and 100% online process.",
+    "Get a medical marijuana card in Vallejo, CA. Online evaluation with a licensed California doctor, clear pricing and a local office at 630 Tennessee St.",
   url: "https://vallejo420md.com",
   ogImage: "https://vallejo420md.com/hero-section.webp",
 };
@@ -20,13 +20,14 @@ export const contactInfo = {
 };
 
 export const legalLinks = [
-  { label: "Privacy Policy", href: "/privacy-policy/" },
-  { label: "HIPAA Compliance", href: "/hipaa-compliance-policy/" },
-  { label: "Consent for Telehealth", href: "/consent-to-telehealth/" },
-  { label: "Terms of Use", href: "/terms-of-use/" },
-  { label: "Refund Policy", href: "/refund-policy/" },
-  { label: "Accessibility Statement", href: "/accessibility-statement/" },
-  { label: "Editorial Policy", href: "/editorial-policy/" },
-  { label: "Disclaimer", href: "/disclaimer/" },
-  { label: "Shipping Policy", href: "/shipping-policy/" },
+  // { label: "Policies & Compliance", href: "/policy/" },
+  { label: "Privacy Policy", href: "/policy/privacy-policy/" },
+  { label: "HIPAA Compliance", href: "/policy/hipaa-compliance-policy/" },
+  { label: "Consent for Telehealth", href: "/policy/consent-to-telehealth/" },
+  { label: "Terms of Use", href: "/policy/terms-of-use/" },
+  { label: "Refund Policy", href: "/policy/refund-policy/" },
+  { label: "Accessibility Statement", href: "/policy/accessibility-statement/" },
+  { label: "Editorial Policy", href: "/policy/editorial-policy/" },
+  { label: "Disclaimer", href: "/policy/disclaimer/" },
+  { label: "Shipping Policy", href: "/policy/shipping-policy/" },
 ] as const;

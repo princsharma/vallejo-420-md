@@ -94,7 +94,7 @@ export function TrustSection() {
 
           <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl sm:aspect-[21/9]">
             <Image
-              src="/section-one.webp"
+              src="/media/section-one.webp"
               alt="Patients experiencing natural relief"
               fill
               sizes="(min-width: 1280px) 1216px, (min-width: 768px) 90vw, 360px"

@@ -1,138 +1,200 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Accessibility,
-  CheckCheck,
-  Clock,
-  EyeOff,
-  HandCoins,
   Mail,
   MapPin,
-  PenLine,
   Phone,
+  Info,
+  MessageCircle,
+  Stethoscope,
+  Users,
+  CircleHelp,
+  Scale,
   ShieldCheck,
-  TriangleAlert,
+  FileCheck,
+  FileText,
+  RotateCcw,
+  Accessibility,
+  PenLine,
+  AlertCircle,
   Truck,
-  Video,
-  type LucideIcon,
 } from "lucide-react";
 
-import { legalLinks } from "@/lib/site-data";
+import { contactInfo, legalLinks } from "@/lib/site-data";
+import { Label } from "./ui/label";
 
-const LEGAL_ICONS: Record<(typeof legalLinks)[number]["href"], LucideIcon> = {
-  "/privacy-policy/": EyeOff,
-  "/hipaa-compliance-policy/": ShieldCheck,
-  "/consent-to-telehealth/": Video,
-  "/terms-of-use/": CheckCheck,
-  "/refund-policy/": HandCoins,
-  "/accessibility-statement/": Accessibility,
-  "/editorial-policy/": PenLine,
-  "/disclaimer/": TriangleAlert,
-  "/shipping-policy/": Truck,
+const EXPLORE_LINKS = [
+  { label: "About Us", href: "/about-us/", Icon: Info },
+  { label: "Contact Us", href: "/contact/", Icon: MessageCircle },
+  { label: "Our Doctors", href: "/our-doctors/", Icon: Stethoscope },
+  { label: "Editorial Team", href: "/editorial-team/", Icon: Users },
+  { label: "FAQs", href: "/faq", Icon: CircleHelp },
+  { label: "Legal Policies", href: "/policy", Icon: Scale },
+];
+
+const LEGAL_ICONS: Record<string, typeof FileText> = {
+  "Privacy Policy": ShieldCheck,
+  "HIPAA Compliance": ShieldCheck,
+  "Consent for Telehealth": FileCheck,
+  "Terms of Use": FileText,
+  "Refund Policy": RotateCcw,
+  "Accessibility Statement": Accessibility,
+  "Editorial Policy": PenLine,
+  Disclaimer: AlertCircle,
+  "Shipping Policy": Truck,
 };
+
+const VISIT_ITEMS = [
+  {
+    id: "address",
+    Icon: MapPin,
+    content: (
+      <address className="text-md not-italic leading-6 text-white/85">
+        {contactInfo.streetAddress}
+        <br />
+        {contactInfo.addressLocality}, {contactInfo.addressRegion}{" "}
+        {contactInfo.postalCode}
+      </address>
+    ),
+  },
+  {
+    id: "phone",
+    Icon: Phone,
+    content: (
+      <a
+        href={contactInfo.phoneHref}
+        className="text-md text-white/85 hover:text-white"
+      >
+        {contactInfo.phone}
+      </a>
+    ),
+  },
+  {
+    id: "email",
+    Icon: Mail,
+    content: (
+      <a
+        href={`mailto:${contactInfo.email}`}
+        className="text-md break-all text-white/85 hover:text-white"
+      >
+        {contactInfo.email}
+      </a>
+    ),
+  },
+] as const;
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="border-t border-border/60 bg-accent">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-3">
+    <footer id="contact" className="bg-[var(--brand-footer)] text-white">
+      <div className="ds-container py-16">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+          {/* Logo */}
+          <div className="lg:col-span-1">
+            <Link
+              href="/"
+              aria-label="Vallejo 420 MD home"
+              className="inline-flex shrink-0"
+            >
+              <Image
+                src="/media/vallejo-3.webp"
+                alt="Vallejo 420 MD"
+                width={288}
+                height={128}
+                unoptimized
+                className="h-10 w-auto sm:h-11"
+              />
+            </Link>
+
+            <p className="ds-body mt-4 max-w-sm text-white/75">
+              Vallejo’s trusted choice for online medical marijuana evaluations.
+            </p>
+          </div>
+
+          {/* Resource */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">
-              Opening Hours
-            </h3>
-            <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-              <Clock className="size-4 shrink-0 text-primary" />
-              Mon &ndash; Sun, 9 AM &ndash; 6 PM
-            </p>
+            <h2 className="text-md font-semibold tracking-[0.4px] text-white">
+              Resource
+            </h2>
 
-            <h3 className="mt-8 text-sm font-semibold text-foreground">
-              Social Media
-            </h3>
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="https://www.yelp.com/biz/vallejo-420-evaluations-vallejo"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Yelp"
-                className="flex size-9 items-center justify-center rounded-full border border-border bg-card p-1.5 transition-colors hover:border-primary"
-              >
-                <Image
-                  src="/yelp-logo.svg"
-                  alt="Yelp"
-                  width={24}
-                  height={30}
-                  className="h-full w-auto object-contain"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <p className="text-pretty text-base italic leading-relaxed text-foreground">
-              &ldquo;Empowering Vallejo with safe, legal, and hassle-free
-              access to medical marijuana-because your wellness comes
-              first.&rdquo;
-            </p>
-            <p className="mt-3 text-sm font-semibold text-primary">
-              - Vallejo 420 MD
-            </p>
-          </div>
-
-          <div className="sm:text-right">
-            <h3 className="text-sm font-semibold text-foreground">
-              Contact Info
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2 sm:justify-end">
-                <Phone className="mt-0.5 size-4 shrink-0 text-primary" />
-                <a href="tel:+17073835600" className="hover:text-primary">
-                  (707) 383-5600
-                </a>
-              </li>
-              <li className="flex items-start gap-2 sm:justify-end">
-                <Mail className="mt-0.5 size-4 shrink-0 text-primary" />
-                <a
-                  href="mailto:contact@vallejo420md.com"
-                  className="hover:text-primary"
-                >
-                  contact@vallejo420md.com
-                </a>
-              </li>
-              <li className="flex items-start gap-2 sm:justify-end">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
-                <span>630 Tennessee St Unit 2, Vallejo, CA 94590</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-14 border-t border-border/60 pt-10">
-          <h3 className="text-sm font-semibold tracking-wide text-foreground uppercase">
-            Legal, Compliance &amp; Editorial
-          </h3>
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
-            {legalLinks.map((link) => {
-              const Icon = LEGAL_ICONS[link.href];
-              return (
-                <li key={link.href}>
+            <ul className="mt-4 space-y-2 text-md text-white/80">
+              {EXPLORE_LINKS.map(({ label, href, Icon }) => (
+                <li key={href}>
                   <Link
-                    href={link.href}
-                    className="group flex items-center gap-3 rounded-2xl border border-transparent px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:border-border/70 hover:bg-card hover:text-primary"
+                    href={href}
+                    className="flex items-center gap-3 hover:text-white"
                   >
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border/70 bg-card text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
-                      <Icon className="size-4" aria-hidden />
-                    </span>
-                    {link.label}
+                    <Icon className="size-5" strokeWidth={2} />
+
+
+                    {label}
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+          </div>
+
+          {/* Information */}
+          <div>
+            <h2 className="text-md font-semibold tracking-[0.4px] text-white">
+              Information
+            </h2>
+
+            <ul className="mt-4 space-y-2 text-md text-white/80">
+              {legalLinks.map((link) => {
+                const Icon = LEGAL_ICONS[link.label] || FileText;
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="flex items-center gap-3 hover:text-white"
+                    >
+
+                      <Icon className="size-5 color-amber" strokeWidth={2} />
+
+
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Contact Details -  */}
+          <div>
+            <h2 className="text-md font-semibold tracking-[0.4px] text-white">
+              Contact Details
+            </h2>
+
+            <ul className="mt-4 space-y-4">
+              {VISIT_ITEMS.map(({ id, Icon, content }) => (
+                <li key={id} className="flex items-start gap-3">
+                  <Icon className="size-5 shrink-0 mt-1" strokeWidth={2} />
+                  <div className="min-w-0">{content}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
-        <p className="mt-12 text-center text-xs text-muted-foreground">
-          Copyright &copy; {new Date().getFullYear()} - Vallejo 420 MD
-        </p>
+        {/* Footer Bottom - Unchanged */}
+        <div className="mt-12 border-t border-white/15 pt-6 text-sm leading-5 text-white/60">
+          <p className="text-md mt-2 mx-auto text-center">
+            Vallejo 420 MD is not a pharmacy, dispensary, or cannabis retailer and does not sell, distribute, or supply medical marijuana or cannabis products.
+          </p>
+
+          <p className="text-sm mx-auto mt-2 text-center">
+            We connect patients with independent, California-licensed physicians who conduct online medical marijuana evaluations.
+          </p>
+
+          <p className="mt-2 text-sm mx-auto text-center">
+            © {new Date().getFullYear()} Vallejo 420 MD. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

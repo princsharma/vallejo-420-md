@@ -1,6 +1,26 @@
 import type { NextConfig } from "next";
+import os from "os";
+
+/** LAN IPv4 hostnames for phone/tablet testing (Next.js matches hostname only, no port). */
+function getLocalIPv4DevOrigins(): string[] {
+  const hosts = new Set<string>(["127.0.0.1", "192.168.*.*", "10.*.*.*"]);
+  for (const nets of Object.values(os.networkInterfaces())) {
+    if (!nets) continue;
+    for (const net of nets) {
+      if (net.family === "IPv4" && !net.internal) {
+        hosts.add(net.address);
+      }
+    }
+  }
+  return [...hosts];
+}
 
 const nextConfig: NextConfig = {
+  // Phone/LAN testing uses the Network URL (e.g. http://192.168.x.x:3000). Next.js 16+
+  // blocks /_next dev assets from other hostnames unless listed here (breaks FAQ, forms, HMR).
+  allowedDevOrigins: process.env.NEXT_ALLOWED_DEV_ORIGINS
+    ? process.env.NEXT_ALLOWED_DEV_ORIGINS.split(",").map((origin) => origin.trim()).filter(Boolean)
+    : getLocalIPv4DevOrigins(),
   // Normalizes to /path/ everywhere; Next.js auto-redirects /path -> /path/.
   // Static file URLs (sitemap.xml, robots.txt, anything with an extension)
   // are exempt per the docs, so those are unaffected.
@@ -16,6 +36,37 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "@base-ui/react"],
+  },
+  async redirects() {
+    const policySlugs = [
+      "privacy-policy",
+      "hipaa-compliance-policy",
+      "consent-to-telehealth",
+      "terms-of-use",
+      "refund-policy",
+      "shipping-policy",
+      "accessibility-statement",
+      "editorial-policy",
+      "disclaimer",
+    ];
+
+    return [
+      ...policySlugs.map((slug) => ({
+        source: `/${slug}`,
+        destination: `/policy/${slug}`,
+        permanent: true,
+      })),
+      {
+        source: "/about",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
+        source:"/get-your-card/",
+        destination:"/",
+        permanent:true
+      }
+    ];
   },
   async rewrites() {
     return [

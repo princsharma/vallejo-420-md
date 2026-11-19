@@ -75,7 +75,7 @@ function StatCounter({
         {count.toLocaleString()}
         {suffix}
       </p>
-      <p className="text-sm text-muted-foreground">{label}</p>
+      <p className="text-sm text-black/90">{label}</p>
     </div>
   );
 }
@@ -132,7 +132,7 @@ export function TestimonialsSection() {
         <div className="mt-10 grid gap-8 sm:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-center">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl">
             <Image
-              src="/section-two.webp"
+              src="/media/section-two.webp"
               alt="Doctor discussing medical marijuana treatment with a patient"
               fill
               sizes="(min-width: 640px) 384px, 320px"
@@ -149,7 +149,7 @@ export function TestimonialsSection() {
                       <Star key={i} className="size-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-pretty text-base leading-relaxed text-muted-foreground">
+                  <p className="text-pretty text-base leading-relaxed text-black/90">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                   <div className="mt-2 flex items-center gap-3">

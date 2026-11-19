@@ -14,7 +14,7 @@ export function HeroSection() {
               <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-primary sm:text-5xl lg:text-[3.4rem]">
                 Get Your Medical Marijuana Card in Vallejo Today!
               </h1>
-              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg lg:mx-0">
+              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-7 text-black/90 sm:text-lg lg:mx-0">
                 Get fast, hassle-free medical marijuana approval online with
                 same-day certification from licensed doctors in Vallejo.
               </p>
@@ -35,7 +35,7 @@ export function HeroSection() {
               />
               <div className="relative aspect-[473/665] overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary/15 via-secondary to-primary/25">
                 <Image
-                  src="/hero-section.webp"
+                  src="/media/hero-section.webp"
                   alt="Licensed physician for medical marijuana evaluations in Vallejo"
                   width={473}
                   height={665}
@@ -47,7 +47,7 @@ export function HeroSection() {
 
               <div className="absolute -bottom-6 left-1/2 w-[85%] -translate-x-1/2 rounded-2xl border border-border/60 bg-card/95 p-4 text-center shadow-lg backdrop-blur">
                 <Leaf className="mx-auto mb-1 size-4 text-primary/50" />
-                <p className="text-pretty text-xs italic leading-relaxed text-muted-foreground">
+                <p className="text-pretty text-xs italic leading-relaxed text-black/90">
                   &ldquo;As a trusted physician, I ensure safe, legal, and
                   stress-free medical marijuana evaluations for your
                   well-being.&rdquo;

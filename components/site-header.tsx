@@ -2,102 +2,151 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 
 import { BookingButton } from "@/components/booking-dialog";
 
 const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Get Your Card", href: "/get-your-card/" },
-  { label: "About", href: "/about/" },
-  { label: "Contact", href: "/contact/" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Benefits", href: "/#benefits" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Our Doctors", href: "/our-doctors/" },
+  {label: "Contact", href: "/contact/" },
 ];
+
+const MOBILE_MEDIA = "(max-width: 767px)";
+
+function isMobileViewport() {
+  return typeof window !== "undefined" && window.matchMedia(MOBILE_MEDIA).matches;
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+
+  useEffect(() => {
+    const desktopMq = window.matchMedia("(min-width: 768px)");
+    const closeOnDesktop = () => {
+      if (desktopMq.matches) setOpen(false);
+    };
+    desktopMq.addEventListener("change", closeOnDesktop);
+    return () => desktopMq.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!open || !isMobileViewport()) return;
+
+    const scrollY = window.scrollY;
+    const { body, documentElement: html } = document;
+
+    const previous = {
+      bodyOverflow: body.style.overflow,
+      bodyPosition: body.style.position,
+      bodyTop: body.style.top,
+      bodyWidth: body.style.width,
+      htmlOverflow: html.style.overflow,
+    };
+
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+
+    return () => {
+      body.style.overflow = previous.bodyOverflow;
+      body.style.position = previous.bodyPosition;
+      body.style.top = previous.bodyTop;
+      body.style.width = previous.bodyWidth;
+      html.style.overflow = previous.htmlOverflow;
+      window.scrollTo(0, scrollY);
+    };
+  }, [open]);
 
   return (
-    <header className="relative z-10 bg-background">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-10 sm:py-5">
-          <Link href="/" className="flex shrink-0 items-center">
+    <header
+      className={`sticky top-0 border-b border-border bg-white/95 ${
+        open ? "z-[110]" : "z-20 backdrop-blur"
+      }`}
+    >
+      <div className="ds-container">
+        <div className="mx-auto flex w-full max-w-lg items-center justify-between gap-4 py-4 md:max-w-none">
+          <Link href="/" aria-label="Vallejo 420 MD home" className="flex shrink-0 items-center">
             <Image
-              src="/vallejo420md-logo.webp"
+              src="/media/vallejo-2.webp"
               alt="Vallejo 420 MD"
-              width={168}
-              height={72}
+              width={288}
+              height={128}
               priority
               unoptimized
-              className="h-10 w-auto sm:h-12"
+              className="h-10 w-auto md:h-12"
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 rounded-full border border-border/70 bg-muted/40 px-1.5 py-1.5 md:flex">
-            {NAV_LINKS.map((link) => {
-              const active = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-white hover:shadow-sm dark:hover:bg-white/10",
-                    active && "bg-white shadow-sm dark:bg-white/10"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+          <nav className="hidden items-center gap-0 md:flex lg:gap-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-md rounded-lg px-3 py-2 font-semibold tracking-[0.1px] text-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           <BookingButton
-            className="hidden rounded-full px-6 shadow-lg shadow-primary/30 sm:inline-flex"
+            className="text-md hidden h-11 shrink-0 rounded-lg px-5 font-semibold shadow-none md:inline-flex"
             size="lg"
           >
-            Book a Consultation
+            Book evaluation
           </BookingButton>
           <button
             type="button"
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-full border border-border/70 bg-muted/40 p-2 text-primary md:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-lg border border-border text-dark-green md:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
+      </div>
 
-        {open ? (
-          <div className="fixed inset-0 z-[100] flex flex-col bg-primary text-primary-foreground md:hidden">
-            <div className="flex items-center justify-between px-5 py-4">
+      {open ? (
+        <div
+          id="mobile-menu"
+          className="fixed inset-0 z-[100] flex flex-col overflow-y-auto overscroll-contain bg-dark-green px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-5 text-white shadow-[0_18px_32px_rgba(11,93,42,0.18)] md:hidden"
+        >
+          <div className="mx-auto flex w-full max-w-lg flex-1 flex-col">
+            <div className="flex items-center justify-between pb-4">
               <Image
-                src="/vallejo-logo.svg"
+                src="/media/VALLEJO 2.webp"
                 alt="Vallejo 420 MD"
-                width={168}
-                height={72}
+                width={288}
+                height={128}
+                unoptimized
                 className="h-10 w-auto brightness-0 invert"
               />
               <button
                 type="button"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center rounded-full border border-primary-foreground/30 p-2 text-primary-foreground"
+                className="inline-flex size-11 items-center justify-center rounded-lg border border-white/30 text-white"
               >
                 <X className="size-5" />
               </button>
             </div>
 
-            <nav className="flex flex-1 flex-col items-center justify-center gap-8">
+            <nav className="flex w-full flex-col items-stretch gap-3">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-2xl font-semibold text-primary-foreground/90 transition-colors hover:text-primary-foreground"
+                  className="w-full rounded-full border border-white/10 bg-white/4 px-4 py-3 text-center text-lg font-semibold tracking-[0.02em] text-white transition-colors hover:border-white/30 hover:bg-white/8 hover:text-amber"
                 >
                   {link.label}
                 </Link>
@@ -105,32 +154,14 @@ export function SiteHeader() {
               <BookingButton
                 variant="secondary"
                 size="lg"
-                className="mt-2 rounded-full px-8"
+                className="mt-2 h-12 w-full rounded-lg bg-white px-8 text-dark-green hover:bg-light-green"
               >
-                Book a Consultation
+                Book evaluation
               </BookingButton>
             </nav>
-
-            <div className="flex items-center justify-center gap-3 pb-10">
-              <a
-                href="https://www.yelp.com/biz/vallejo-420-evaluations-vallejo"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Yelp"
-                className="flex size-10 items-center justify-center rounded-full bg-primary-foreground p-2 transition-colors hover:bg-primary-foreground/90"
-              >
-                <Image
-                  src="/yelp-logo.svg"
-                  alt="Yelp"
-                  width={24}
-                  height={30}
-                  className="h-full w-auto object-contain"
-                />
-              </a>
-            </div>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </header>
   );
 }

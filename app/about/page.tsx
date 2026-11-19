@@ -158,14 +158,15 @@ export default function AboutPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "About Us" }]} />
-      <main className="flex-1 bg-background">
-        <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
-          <div className="relative flex flex-col overflow-hidden rounded-4xl bg-accent px-8 pt-10 sm:min-h-[30rem] sm:flex-row sm:items-center sm:px-16 sm:pt-0">
+      <main className="flex-1 bg-warm-white">
+        <section className="bg-warm-white">
+          <div className="ds-container pt-8 md:pt-10 lg:pt-12">
+          <div className="relative flex flex-col overflow-hidden rounded-4xl bg-section-green px-8 pt-10 sm:min-h-[30rem] sm:flex-row sm:items-center sm:px-16 sm:pt-0">
             <div className="relative max-w-xl">
               <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 About
               </h1>
-              <p className="mt-5 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="mt-5 text-pretty text-base leading-relaxed text-black/90 sm:text-lg">
                 Vallejo 420 MD is a 100% online medical marijuana telehealth
                 platform built to make cannabis care in Vallejo simple,
                 affordable, and legally compliant. We connect qualifying
@@ -175,7 +176,7 @@ export default function AboutPage() {
               </p>
             </div>
             <Image
-              src="/about-hero-section.webp"
+              src="/media/about-hero-section.webp"
               alt="Vallejo 420 MD physician"
               width={1110}
               height={1311}
@@ -185,11 +186,12 @@ export default function AboutPage() {
               className="pointer-events-none relative mx-auto mt-6 h-64 w-auto object-contain object-bottom sm:absolute sm:right-0 sm:bottom-0 sm:mt-0 sm:h-[92%]"
             />
           </div>
+          </div>
         </section>
 
-        <section className="py-16">
-          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <p className="text-pretty leading-relaxed text-muted-foreground">
+        <section className="ds-section-compact bg-white">
+          <div className="ds-container mx-auto max-w-3xl text-center">
+            <p className="text-pretty leading-relaxed text-black/90">
               Vallejo 420 MD is backed by a team that has been helping patients
               across the country get compliant medical marijuana evaluations
               since 2020. We&apos;re bringing that same experience directly to
@@ -199,18 +201,18 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-accent py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-section-green">
+          <div className="ds-container">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Why We Exist
             </h2>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               Accessing medical cannabis shouldn&apos;t feel confusing,
               intimidating, or overpriced. Yet many patients run into
               complicated regulations, long wait times, and unreliable
               information. We exist to make that experience simpler.
             </p>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               Our purpose is to give you clear guidance, transparent pricing,
               and legitimate medical evaluations without unnecessary friction.
               By combining technology with compassionate, patient centered care,
@@ -225,7 +227,7 @@ export default function AboutPage() {
                   <h3 className="mt-4 text-lg font-semibold text-foreground">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-pretty text-sm leading-relaxed text-black/90">
                     {item.description}
                   </p>
                 </li>
@@ -234,12 +236,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-white">
+          <div className="ds-container">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Meet Our Leadership Team
             </h2>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               Our leadership team brings together experience in healthcare
               operations, digital technology, ethical marketing, and patient
               focused telehealth services.
@@ -247,14 +249,14 @@ export default function AboutPage() {
 
             <ul className="mt-10 grid list-none gap-8 md:grid-cols-2">
               {LEADERSHIP.map((person) => (
-                <li key={person.name} className="border-t border-border/60 pt-6">
+                <li key={person.name}>
                   <h3 className="text-xl font-semibold text-foreground">
                     {person.name}
                   </h3>
                   <p className="mt-1 text-sm font-medium text-primary">
                     {person.role}
                   </p>
-                  <p className="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-3 text-pretty text-sm leading-relaxed text-black/90">
                     {person.bio}
                   </p>
                 </li>
@@ -263,12 +265,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-accent py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-section-green">
+          <div className="ds-container">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               How Our Platform Works
             </h2>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               Our platform is fully secure and HIPAA compliant, with a process
               designed to be simple and patient friendly.
             </p>
@@ -282,14 +284,14 @@ export default function AboutPage() {
                   <h3 className="mt-3 text-lg font-semibold text-foreground">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-pretty text-sm leading-relaxed text-black/90">
                     {step.description}
                   </p>
                 </li>
               ))}
             </ol>
 
-            <div className="mt-10 max-w-3xl space-y-4 text-pretty leading-relaxed text-muted-foreground">
+            <div className="mt-10 max-w-3xl space-y-4 text-pretty leading-relaxed text-black/90">
               <p>
                 All medical evaluations on Vallejo 420 MD are provided by
                 California licensed physicians authorized to recommend medical
@@ -308,14 +310,14 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-white">
+          <div className="ds-container">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
                 <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                   Medical Credibility and Compliance
                 </h2>
-                <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
+                <p className="mt-4 text-pretty leading-relaxed text-black/90">
                   Medical integrity is at the core of everything we do. Our
                   platform supports physicians in delivering California
                   compliant evaluations while keeping the experience clear and
@@ -334,7 +336,7 @@ export default function AboutPage() {
                   ))}
                 </ul>
 
-                <div className="mt-8 space-y-4 text-pretty text-sm leading-relaxed text-muted-foreground">
+                <div className="mt-8 space-y-4 text-pretty text-sm leading-relaxed text-black/90">
                   <p>
                     Our platform guides each step of the medical marijuana
                     evaluation process with clarity and ease, from the initial
@@ -351,9 +353,9 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-accent">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-section-green">
                 <Image
-                  src="/about-section-one.webp"
+                  src="/media/about-section-one.webp"
                   alt="Vallejo 420 MD medical team"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -364,12 +366,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-accent py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-section-green">
+          <div className="ds-container">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Transparent Pricing
             </h2>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               We believe patients deserve clear, honest pricing with no
               surprises, which is why all our costs are communicated upfront and
               limited to the medical evaluation itself.
@@ -387,7 +389,7 @@ export default function AboutPage() {
               ))}
             </ul>
 
-            <p className="mt-8 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-8 max-w-3xl text-pretty leading-relaxed text-black/90">
               You pay only for your medical evaluation. Any required California
               state registration fees are paid directly to the state, not
               through our platform.
@@ -395,12 +397,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-white">
+          <div className="ds-container">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Our Guiding Principles
             </h2>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               The values and vision behind our commitment to patient trust and
               transparency.
             </p>
@@ -411,7 +413,7 @@ export default function AboutPage() {
                   <h3 className="text-lg font-semibold text-foreground">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-3 text-pretty text-sm leading-relaxed text-black/90">
                     {item.description}
                   </p>
                 </li>
@@ -420,12 +422,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-accent py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-section-green">
+          <div className="ds-container">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What Not to Expect
             </h2>
-            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-pretty leading-relaxed text-black/90">
               We believe transparency builds trust. Here&apos;s what falls
               outside the scope of services Vallejo 420 MD provides.
             </p>
@@ -441,7 +443,7 @@ export default function AboutPage() {
                     <h3 className="font-semibold text-foreground">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-pretty text-sm leading-relaxed text-black/90">
                       {item.description}
                     </p>
                   </div>
@@ -451,8 +453,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="ds-section bg-white">
+          <div className="ds-container">
             <div className="relative overflow-hidden rounded-4xl bg-primary px-8 py-14 text-primary-foreground shadow-xl sm:px-16">
               <Badge
                 variant="secondary"
@@ -463,7 +465,7 @@ export default function AboutPage() {
               <h2 className="mt-5 max-w-3xl text-balance text-3xl font-bold tracking-tight sm:text-4xl">
                 Your trusted partner for medical cannabis care in Vallejo
               </h2>
-              <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-primary-foreground/85">
+              <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-black/90">
                 Backed by a team that&apos;s helped thousands of patients
                 nationwide, now bringing that same safe, stress free approach to
                 California. Complete the process in 15 to 30 minutes. 100%
@@ -486,7 +488,7 @@ export default function AboutPage() {
                   nativeButton={false}
                 >
                   <Phone className="size-4" />
-                  Call Now — {contactInfo.phone}
+                  Call Now: {contactInfo.phone}
                 </Button>
                 <Button
                   size="lg"
@@ -496,11 +498,11 @@ export default function AboutPage() {
                   nativeButton={false}
                 >
                   <Mail className="size-4" />
-                  Email — {contactInfo.email}
+                  Email: {contactInfo.email}
                 </Button>
                 <p className="inline-flex items-center gap-2 px-2 text-sm text-primary-foreground/85">
                   <MessageCircle className="size-4 shrink-0" aria-hidden />
-                  Live Chat — Connect with our support anytime.
+                  Live Chat: Connect with our support anytime.
                 </p>
               </div>
             </div>

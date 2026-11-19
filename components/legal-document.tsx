@@ -16,18 +16,23 @@ export function LegalDocument({
 }) {
   return (
     <>
-      <Breadcrumbs items={[{ label: crumb }]} />
+      <Breadcrumbs
+        items={[
+          { label: "Policies & Compliance", href: "/policy/" },
+          { label: crumb },
+        ]}
+      />
       <main className="flex-1 bg-background">
-        <article className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-          <header className="border-b border-border/60 pb-8">
+        <article className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+          <header className="border-b border-border/60 pb-5">
             <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               {title}
             </h1>
-            <p className="mt-3 text-sm text-muted-foreground">
+            <p className="mt-2 text-sm text-black/90 sm:text-base">
               Last updated: {lastUpdated}
             </p>
           </header>
-          <div className="legal-prose mt-10 space-y-8 text-base leading-relaxed text-muted-foreground [&_a]:font-medium [&_a]:text-primary [&_a]:underline-offset-2 hover:[&_a]:underline [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:leading-relaxed [&_p]:text-pretty [&_strong]:font-semibold [&_strong]:text-foreground [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
+          <div className="legal-prose ds-lead mt-6 space-y-8 text-pretty text-black/90 [&_a]:font-medium [&_a]:text-primary [&_a]:underline-offset-2 hover:[&_a]:underline [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:leading-[27px] [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:leading-[27px] [&_p]:text-pretty [&_strong]:font-semibold [&_strong]:text-foreground [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
             {children}
           </div>
         </article>

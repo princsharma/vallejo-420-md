@@ -14,7 +14,7 @@ export function CtaSection() {
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-pretty text-primary-foreground/80">
             Book your appointment today and talk to a licensed doctor within
-            24&ndash;48 hours, with a 100% money-back guarantee.
+            24-48 hours, with a 100% money-back guarantee.
           </p>
           <div className="relative mt-8">
             <BookingButton

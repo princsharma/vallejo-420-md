@@ -72,7 +72,7 @@ export function RemovedPage() {
           >
             <div className="w-full max-w-[560px] overflow-hidden rounded-[2rem] border border-[#CFD9D1] bg-[#E8EFE9] shadow-xl shadow-[#0E3B2E]/10">
               <Image
-                src="/gone-410-illustration.jpg"
+                src="/media/gone-410-illustration.jpg"
                 alt="An empty white box beside a medical folder with a cannabis leaf and a green stethoscope"
                 width={1024}
                 height={768}
