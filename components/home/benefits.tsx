@@ -83,8 +83,8 @@ export function HomeBenefits() {
           <article className="flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-border bg-white md:col-span-1">
             <div className="relative min-h-[200px] w-full flex-1 md:min-h-[240px]">
               <Image
-                src="/media/benefits-online-evaluation.webp"
-                alt="Patient completing a medical marijuana evaluation online from home"
+                src="/media/patient-video-consultation-doctor-on-tablet.webp"
+                alt="woman doing a Vallejo 420 MD online doctor video call"
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
                 className="object-cover object-center"

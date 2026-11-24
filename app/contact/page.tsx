@@ -51,7 +51,7 @@ export default function ContactPage() {
               <div className="order-1 lg:order-2">
                 <div className="relative overflow-hidden rounded-4xl border border-border bg-accent shadow-sm">
                   <Image
-                    src="/media/contact-us-vallejo.webp"
+                    src="/media/medical-marijuana-telehealth-contact-support.webp"
                     alt="Vallejo 420 MD team member ready to help"
                     width={1536}
                     height={1024}

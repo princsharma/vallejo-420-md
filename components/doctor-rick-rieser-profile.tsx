@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ExternalLink, Phone } from "lucide-react";
+import { ExternalLink, Phone, Stethoscope } from "lucide-react";
 
 import { BookingButton } from "@/components/booking-dialog";
 import { DoctorPhotoPlaceholder } from "@/components/doctor-photo-placeholder";
@@ -159,9 +159,10 @@ export function DoctorRickRieserProfileView({
             <span className="text-amber">Vallejo 420 MD</span>
           </h2>
           <div className="ds-lead mt-6 space-y-4 text-pretty text-black/90 text-center mx-auto">
-            {profile.evaluationsParagraphs.map((paragraph) => (
+            {/* {profile.evaluationsParagraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-            ))}
+            ))} */}
+            <p>{profile.evaluationsParagraphs}</p>
           </div>
         </div>
       </section>
@@ -179,9 +180,14 @@ export function DoctorRickRieserProfileView({
             Conditions patients often discuss
           </p> */}
           <ul className="mt-5 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {DISCUSSED_CONDITIONS.map(({ label, icon: Icon }) => (
+            {profile.conditions.map((condition) => {
+              const matchingCondition = DISCUSSED_CONDITIONS.find(
+                ({ label }) => label === condition,
+              );
+              const Icon = matchingCondition?.icon ?? Stethoscope;
+              return (
               <li
-                key={label}
+                key={condition}
                 className="group flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-4 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_8px_24px_rgb(11_93_42_/_8%)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-light-green text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
@@ -192,10 +198,11 @@ export function DoctorRickRieserProfileView({
                   />
                 </span>
                 <span className="ds-body font-semibold text-dark-green">
-                  {label}
+                  {condition}
                 </span>
               </li>
-            ))}
+              );
+            })}
           </ul>
           <p className="ds-body mt-6 text-center text-black/90">
             {profile.conditionsDisclaimer}
@@ -271,12 +278,12 @@ export function DoctorRickRieserProfileView({
 
       <section className="ds-section bg-white">
         <div className="ds-container max-w-3xl">
-          <h2 className="ds-h2 text-balance">
+          <h2 className="ds-h2 text-balance mx-auto text-center">
             <span className="text-dark-green">Frequently Asked </span>
             <span className="text-amber">Questions</span>
           </h2>
           <Accordion
-            className="mt-8 w-full gap-3"
+            className="mx-auto mt-8 w-full max-w-4xl gap-4"
             defaultValue={["dr-faq-0"]}
             keepMounted
           >
@@ -302,6 +309,19 @@ export function DoctorRickRieserProfileView({
                       </a>
                       .
                     </p>
+                  ) : faq.question.includes("What conditions") ? (
+                    <p>
+                      Medical history involving chronic pain, arthritis, cancer,
+                      PTSD, and{" "}
+                      <Link
+                        href="/#conditions"
+                        className="font-semibold text-dark-green underline-offset-2 hover:underline"
+                      >
+                        other qualifying conditions
+                      </Link>{" "}
+                      may be reviewed. The physician determines eligibility based
+                      on individual medical circumstances.
+                    </p>
                   ) : (
                     <p>{faq.answer}</p>
                   )}
@@ -319,7 +339,7 @@ export function DoctorRickRieserProfileView({
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_0%,color-mix(in_oklch,var(--primary-foreground),transparent_85%),transparent)]"
               aria-hidden
             />
-            <h2 className="relative ds-h2 text-balance text-white mx-auto  text-center">
+            <h2 className="relative ds-h2 text-balance text-white mx-auto text-center">
               {profile.closingTitle.endsWith(" Today") ? (
                 <>
                   {profile.closingTitle.slice(0, -6)}
@@ -335,7 +355,7 @@ export function DoctorRickRieserProfileView({
               ))} */}
               <p>{profile.closingParagraphs}</p>
             </div>
-            <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="relative mt-8 flex flex-col  items-center justify-center gap-3 sm:flex-row">
               <BookingButton
                 size="lg"
                 className="h-12 w-full rounded-lg bg-amber px-6 text-base font-semibold text-white shadow-lg hover:bg-[#d4922f] sm:w-auto"

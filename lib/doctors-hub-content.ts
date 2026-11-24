@@ -19,6 +19,7 @@ import {
   Stethoscope,
   Video,
   Wifi,
+   Utensils,
 } from "lucide-react";
 
 /** Shared hero background for Our Doctors hub and individual doctor profiles. */
@@ -83,16 +84,13 @@ export const WHY_CHOOSE_ITEMS: {
 /** Commonly discussed conditions; not a guarantee of eligibility. */
 export const DISCUSSED_CONDITIONS: { label: string; icon: LucideIcon }[] = [
   { label: "Chronic Pain", icon: Activity },
-  { label: "Arthritis", icon: Bone },
-  { label: "Cancer", icon: Ribbon },
-  { label: "Anxiety Disorders", icon: Brain },
-  { label: "PTSD", icon: Heart },
+  { label: "Anxiety", icon: Brain },
   { label: "Insomnia", icon: Moon },
-  { label: "Neurological Conditions", icon: Stethoscope },
-  {
-    label: "Other Qualifying Medical Conditions",
-    icon: FileCheck,
-  },
+  { label: "Migraines", icon: Brain },
+  { label: "PTSD", icon: Heart },
+  { label: "Nausea", icon: Stethoscope },
+  { label: "Muscle Spasms", icon: Activity },
+  { label: "Loss of Appetite", icon: Utensils },
 ];
 
 export const DISCUSSED_CONDITIONS_DISCLAIMER =
@@ -181,12 +179,12 @@ export const DOCTORS_HUB_FAQS: DoctorsHubFaq[] = [
     question:
       "Are your doctors licensed to recommend medical marijuana in California?",
     answer:
-      "Yes. Every doctor holds an active California medical license. You can check a license on the Medical Board of California website.",
+      "Yes. All physicians conducting evaluations through Vallejo 420 MD hold active California medical licenses. You can verify a physician's license status through the Medical Board of California's online license lookup.",
   },
   {
     question: "Do I need to visit an office in Vallejo?",
     answer:
-      "No. We conduct evaluations by secure video when telehealth is clinically appropriate. If the doctor needs more information, the doctor will tell you.",
+      "No. We conduct evaluations through secure video consultations when telehealth is clinically appropriate. If the doctor needs additional information, they will let you know.",
   },
   {
     question: "How long does the consultation take?",
@@ -220,12 +218,6 @@ export const DOCTORS_HUB_FAQS: DoctorsHubFaq[] = [
       "A valid recommendation allows you to buy from state-licensed dispensaries. Each dispensary sets its own check-in process, so ask what it requires before you go.",
   },
   {
-    question:
-      "Do the same doctors handle renewals and first-time evaluations?",
-    answer:
-      "Our doctors handle both. Renewals are often quicker, and many patients can see the same doctor again.",
-  },
-  {
     question: "Do I need a county medical marijuana ID card?",
     answer:
       "No. The county ID card is voluntary. Solano County Public Health administers the program. Contact them for current requirements and fees.",
@@ -233,6 +225,6 @@ export const DOCTORS_HUB_FAQS: DoctorsHubFaq[] = [
   {
     question: "How do doctors protect my privacy?",
     answer:
-      "We use a HIPAA-compliant platform, and we don't sell your information. Read our Privacy Policy and HIPAA Compliance pages for details.",
+      "We use a HIPAA-compliant platform, and we don't sell your information. For details, read our Privacy Policy and HIPAA Compliance pages.",
   },
 ];

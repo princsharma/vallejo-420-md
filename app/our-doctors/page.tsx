@@ -67,7 +67,7 @@ function FaqAnswer({ question }: { question: string }) {
     return (
       <p>
         We use a HIPAA-compliant platform, and we don&apos;t sell your
-        information. Read our{" "}
+        information. For details, read our{" "}
         <Link
           href="/policy/privacy-policy/"
           className="font-semibold text-dark-green underline-offset-2 hover:underline"
@@ -81,7 +81,7 @@ function FaqAnswer({ question }: { question: string }) {
         >
           HIPAA Compliance
         </Link>{" "}
-        pages for details.
+        pages.
       </p>
     );
   }
@@ -109,20 +109,18 @@ export default function OurDoctorsPage() {
             {/* Heading */}
             <h1 className="ds-h1 mx-auto mt-8 max-w-4xl text-center text-primary md:mt-10">
               <span className="block whitespace-normal text-white">
-                Meet Our Licensed Medical
+                Meet Our Medical Marijuana
               </span>
               <span className="block whitespace-normal text-amber">
-                Marijuana Doctors Serving Vallejo, CA
+                Doctors in Vallejo
               </span>
             </h1>
 
             {/* Description */}
             <p className="ds-lead mx-auto mt-5 max-w-4xl text-center leading-relaxed text-white/80">
-              Vallejo 420 MD connects patients in Vallejo and Solano County
-              with California-licensed physicians for medical marijuana
-              evaluations. You meet with the doctor by secure video from home.
-              If the doctor decides that medical marijuana is appropriate for
-              you, you receive a recommendation.
+              Vallejo 420 MD connects patients in Vallejo and Solano County with California-licensed
+              physicians for online medical marijuana evaluations. You meet with the doctor through  a secure video call
+              from home. If the doctor decides that medical marijuana is appropriate for you, they will issue a  recommendation.
             </p>
 
             {/* Trust Cards */}
@@ -162,9 +160,8 @@ export default function OurDoctorsPage() {
               <span className="text-amber">Doctors</span>
             </h2>
             <p className="ds-lead mx-auto mt-4 max-w-2xl text-pretty text-center text-black/90">
-              Every doctor on our team holds an active California medical
-              license and reviews each patient personally. You can read about
-              their backgrounds before you book.
+              Our team consists of California-licensed physicians who personally evaluate every patient.
+               You can review each doctor&apos;s qualifications and professional background before scheduling your appointment.
             </p>
             <ul className="mt-10 grid list-none gap-6 md:grid-cols-2">
               {doctors.map((doctor) => (
@@ -222,9 +219,8 @@ export default function OurDoctorsPage() {
               {WHY_CHOOSE_ITEMS.map((item, index) => (
                 <li
                   key={item.title}
-                  className={`rounded-2xl border border-border bg-[#CFEED2] p-6 transition-all hover:border-primary/40 hover:shadow-sm md:p-8 lg:col-span-2 ${
-                    index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : ""
-                  }`}
+                  className={`rounded-2xl border border-border bg-[#CFEED2] p-6 transition-all hover:border-primary/40 hover:shadow-sm md:p-8 lg:col-span-2 ${index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : ""
+                    }`}
                 >
                   <span className="flex size-11 items-center justify-center rounded-xl bg-amber text-white">
                     <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
@@ -254,7 +250,7 @@ export default function OurDoctorsPage() {
               </p>
             </div>
 
-         
+
             <ul className="mt-5 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {DISCUSSED_CONDITIONS.map(({ label, icon: Icon }) => (
                 <li
@@ -274,11 +270,8 @@ export default function OurDoctorsPage() {
                 </li>
               ))}
             </ul>
-            <p className="ds-body mt-6 text-center text-black/90">
-              {DISCUSSED_CONDITIONS_DISCLAIMER}
-            </p>
-
-            <div className="mt-8 flex items-start gap-3 text-left sm:items-center">
+       
+            <div className="mt-8 flex items-center justify-center gap-3 text-center">
               <ShieldCheck
                 className="size-6 shrink-0 text-dark-green"
                 strokeWidth={1.8}
@@ -301,7 +294,7 @@ export default function OurDoctorsPage() {
                 <span className="text-amber">Evaluate Patients</span>
               </h2>
               <p className="ds-lead ds-mt-after-heading text-pretty text-black/90">
-                You complete four steps, all from your phone or computer.
+               The entire four-step process can be completed from your phone or computer.
               </p>
               <ol className="mt-8 flex list-none flex-col gap-4">
                 {EVALUATION_STEPS.map((step) => (
@@ -365,27 +358,21 @@ export default function OurDoctorsPage() {
           </div>
         </section>
 
-        {/* <section className="ds-section bg-dark-green">
+         {/* <section className="ds-section bg-dark-green">
           <div className="ds-container">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
               <div className="min-w-0">
-                <h2 className="ds-h2 text-balance">
+                <h2 className="ds-h2 text-balance mx-auto text-center">
                   <span className="text-white">Serving Vallejo and </span>
                   <span className="text-amber">Nearby Areas</span>
                 </h2>
-                <p className="ds-body mt-4 text-pretty text-white/85">
+                <p className="ds-body mt-4 text-pretty text-white/85 mx-auto text-center">
                   Our video visits are available to patients in California. Most
                   of our patients live in and around Vallejo, including{" "}
                   <span className="font-semibold text-white">
                     {VALLEJO_NEIGHBORHOODS}
                   </span>
                   .
-                </p>
-                <p className="ds-body mt-4 text-pretty text-white/85">
-                  A recommendation allows you to shop at state-licensed
-                  dispensaries. Rules for local sales and delivery vary by city,
-                  so check current Vallejo and California Department of Cannabis
-                  Control guidance before you shop.
                 </p>
               </div>
               <div className="min-w-0">
@@ -409,9 +396,15 @@ export default function OurDoctorsPage() {
                   ))}
                 </ul>
               </div>
+                 <p className="ds-body mt-4 text-pretty text-white/85">
+                  A recommendation allows you to shop at state-licensed
+                  dispensaries. Rules for local sales and delivery vary by city,
+                  so check current Vallejo and California Department of Cannabis
+                  Control guidance before you shop.
+                </p>
             </div>
           </div>
-        </section> */}
+        </section>  */}
 
 
         <section className="ds-section bg-white">
@@ -448,39 +441,39 @@ export default function OurDoctorsPage() {
 
         <section className="bg-dark-green pb-16 pt-12 md:pb-20 md:pt-16">
           <div className="ds-container">
-            
-              <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_0%,color-mix(in_oklch,var(--primary-foreground),transparent_85%),transparent)]"
-                aria-hidden
-              />
-              <h2 className="relative ds-h2 text-balance text-white text-center mx-auto">
-                Ready to Talk to a{" "}
-                <span className="text-amber">Vallejo Doctor?</span>
-              </h2>
-              <p className="relative mx-auto mt-4 max-w-2xl text-pretty ds-lead text-center  text-primary-foreground/85">
-                Complete your intake online and meet with a California-licensed
-                physician by video. If the doctor determines that you qualify,
-                you can receive a recommendation in accordance with California
-                law.
-              </p>
-              <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-                <BookingButton
-                  size="lg"
-                  className="h-12 w-full rounded-lg px-6 text-base font-semibold shadow-lg sm:w-auto"
-                >
-                  Start My Evaluation
-                </BookingButton>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-12 w-full rounded-lg border-primary-foreground/40 bg-primary-foreground/10 px-6 text-base font-semibold text-primary-foreground  sm:w-auto"
-                  render={<Link href="/contact/" />}
-                  nativeButton={false}
-                >
-                  Contact Support
-                </Button>
-              </div>
+
+            <div
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_0%,color-mix(in_oklch,var(--primary-foreground),transparent_85%),transparent)]"
+              aria-hidden
+            />
+            <h2 className="relative ds-h2 text-balance text-white text-center mx-auto">
+              Ready to Talk to a{" "}
+              <span className="text-amber">Vallejo Doctor?</span>
+            </h2>
+            <p className="relative mx-auto mt-4 max-w-2xl text-pretty ds-lead text-center  text-primary-foreground/85">
+              Complete your intake online and meet with a California-licensed
+              physician by video. If the doctor determines that you qualify,
+              you can receive a recommendation in accordance with California
+              law.
+            </p>
+            <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              <BookingButton
+                size="lg"
+                className="h-12 w-full rounded-lg px-6 text-base font-semibold shadow-lg sm:w-auto"
+              >
+                Start My Evaluation
+              </BookingButton>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-12 w-full rounded-lg border-primary-foreground/40 bg-primary-foreground/10 px-6 text-base font-semibold text-primary-foreground  sm:w-auto"
+                render={<Link href="/contact/" />}
+                nativeButton={false}
+              >
+                Contact Support
+              </Button>
             </div>
+          </div>
 
         </section>
       </main>

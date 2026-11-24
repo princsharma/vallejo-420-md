@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ChevronRight, Mail, Menu, Phone, UserRound, X } from "lucide-react";
 
 import { BookingButton } from "@/components/booking-dialog";
+import { contactInfo } from "@/lib/site-data";
 
 const NAV_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
@@ -71,25 +72,28 @@ export function SiteHeader() {
       }`}
     >
       <div className="ds-container">
-        <div className="mx-auto flex w-full max-w-lg items-center justify-between gap-4 py-4 md:max-w-none">
-          <Link href="/" aria-label="Vallejo 420 MD home" className="flex shrink-0 items-center">
+        <div className="mx-auto flex w-full max-w-lg items-center justify-between gap-3 py-4 md:max-w-none md:gap-2">
+          <Link
+            href="/"
+            aria-label="Vallejo 420 MD home"
+            className="flex shrink-0 items-center rounded-md p-1"
+          >
             <Image
               src="/media/vallejo-2.webp"
               alt="Vallejo 420 MD"
-              width={288}
-              height={128}
+              width={120}
+              height={45}
               priority
-              unoptimized
-              className="h-10 w-auto md:h-12"
+              className="h-9 w-[96px] object-contain md:h-8 md:w-[88px] lg:h-10 lg:w-[112px]"
             />
           </Link>
 
-          <nav className="hidden items-center gap-0 md:flex lg:gap-1">
+          <nav className="hidden min-w-0 flex-nowrap items-center justify-center gap-0 md:flex md:flex-1">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-md rounded-lg px-3 py-2 font-semibold tracking-[0.1px] text-foreground transition-colors hover:text-primary"
+                className="shrink-0 whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-semibold tracking-normal text-foreground transition-colors hover:text-primary lg:px-3 lg:text-base lg:tracking-[0.1px]"
               >
                 {link.label}
               </Link>
@@ -97,7 +101,7 @@ export function SiteHeader() {
           </nav>
 
           <BookingButton
-            className="text-md hidden h-11 shrink-0 rounded-lg px-5 font-semibold shadow-none md:inline-flex"
+            className="hidden h-10 shrink-0 rounded-lg px-3 text-sm font-semibold shadow-none md:inline-flex lg:h-11 lg:px-5 lg:text-base"
             size="lg"
           >
             Book evaluation
@@ -110,7 +114,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             className="inline-flex size-11 items-center justify-center rounded-lg border border-border text-dark-green md:hidden"
           >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
         </div>
       </div>
@@ -118,46 +122,76 @@ export function SiteHeader() {
       {open ? (
         <div
           id="mobile-menu"
-          className="fixed inset-0 z-[100] flex flex-col overflow-y-auto overscroll-contain bg-dark-green px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-5 text-white shadow-[0_18px_32px_rgba(11,93,42,0.18)] md:hidden"
+          className="fixed inset-0 z-[100] flex flex-col overflow-y-auto overscroll-contain border-t-4 border-primary bg-white pb-[max(1.75rem,env(safe-area-inset-bottom))] text-foreground shadow-[0_18px_32px_rgba(11,93,42,0.18)] md:hidden"
         >
-          <div className="mx-auto flex w-full max-w-lg flex-1 flex-col">
-            <div className="flex items-center justify-between pb-4">
-              <Image
-                src="/media/VALLEJO 2.webp"
-                alt="Vallejo 420 MD"
-                width={288}
-                height={128}
-                unoptimized
-                className="h-10 w-auto brightness-0 invert"
-              />
+          <div className="mx-auto flex w-full max-w-lg flex-1 flex-col px-4">
+            <div className="flex min-h-[60px] items-center gap-2 border-b border-border">
+                <div className="flex min-w-0 flex-1 items-center">
+                <Link
+                  href="/"
+                  aria-label="Vallejo 420 MD home"
+                  onClick={() => setOpen(false)}
+                    className="flex h-10 w-[104px] shrink-0 items-center justify-center rounded-md  px-1"
+                >
+                  <Image
+                    src="/media/vallejo-2.webp"
+                    alt="Vallejo 420 MD"
+                      width={96}
+                      height={38}
+                      className="h-[38px] w-24 object-contain"
+                  />
+                </Link>
+                </div>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  aria-label="Email Vallejo 420 MD"
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-dark-green hover:bg-light-green"
+                >
+                  <Mail className="size-4" aria-hidden />
+                </a>
+                <a
+                  href={contactInfo.phoneHref}
+                  aria-label={`Call ${contactInfo.phone}`}
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-dark-green hover:bg-light-green"
+                >
+                  <Phone className="size-4" aria-hidden />
+                </a>
+                <Link
+                  href="/contact/"
+                  aria-label="Get your medical marijuana card"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-md  bg-white text-dark-green hover:bg-light-green"
+                >
+                  <UserRound className="size-4" aria-hidden />
+                </Link>
+                <BookingButton
+                  size="sm"
+                  className="h-9 shrink-0 rounded-md bg-primary px-2.5 text-[11px] font-bold uppercase text-white hover:bg-dark-green"
+                >
+                  Start here
+                </BookingButton>
               <button
                 type="button"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="inline-flex size-11 items-center justify-center rounded-lg border border-white/30 text-white"
+                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-foreground hover:bg-muted"
               >
-                <X className="size-5" />
+                  <X className="size-4" />
               </button>
             </div>
 
-            <nav className="flex w-full flex-col items-stretch gap-3">
+            <nav className="flex w-full flex-col">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="w-full rounded-full border border-white/10 bg-white/4 px-4 py-3 text-center text-lg font-semibold tracking-[0.02em] text-white transition-colors hover:border-white/30 hover:bg-white/8 hover:text-amber"
+                    className="flex min-h-12 w-[4/5] items-center justify-between border-b border-border py-3  mt-4 text-left text-sm font-medium text-foreground transition-colors hover:text-primary"
                 >
                   {link.label}
+                    <ChevronRight className="size-4 text-dark-green" aria-hidden />
                 </Link>
               ))}
-              <BookingButton
-                variant="secondary"
-                size="lg"
-                className="mt-2 h-12 w-full rounded-lg bg-white px-8 text-dark-green hover:bg-light-green"
-              >
-                Book evaluation
-              </BookingButton>
             </nav>
           </div>
         </div>

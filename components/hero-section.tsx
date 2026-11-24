@@ -35,7 +35,7 @@ export function HeroSection() {
               />
               <div className="relative aspect-[473/665] overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary/15 via-secondary to-primary/25">
                 <Image
-                  src="/media/hero-section.webp"
+                  src="/media/vallejo-hero-image.webp"
                   alt="Licensed physician for medical marijuana evaluations in Vallejo"
                   width={473}
                   height={665}

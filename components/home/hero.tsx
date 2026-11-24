@@ -75,7 +75,7 @@ export function HomeHero() {
           <div className="relative overflow-visible rounded-[2rem] shadow-[0_20px_60px_rgb(11_128_66_/_14%)]">
             <div className="overflow-hidden rounded-[2rem] border border-light-green/50 bg-white ring-1 ring-light-green/30">
               <Image
-                src="/media/vallejo-hero-image.webp"
+                src="/media/vallejo-hero.webp"
                 alt="Patient completing an online medical marijuana evaluation by video with a California-licensed physician"
                 width={1260}
                 height={420}

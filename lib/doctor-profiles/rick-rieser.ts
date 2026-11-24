@@ -81,8 +81,10 @@ export const rickRieserProfile: DoctorExtendedProfile = {
   ],
   evaluationsTitle: "Medical Cannabis Evaluations at Vallejo 420 MD",
   evaluationsParagraphs: [
-    "At Vallejo 420 MD, patients can access convenient online medical cannabis evaluations through consultations with California-licensed physicians. Dr. Rick Rieser, MD, takes an individualized approach to each evaluation, reviewing patients' medical histories, current health concerns, and relevant treatment information.",
-    "During the video consultation, he assesses whether medical cannabis may be an appropriate option based on each patient's individual medical circumstances and California guidelines. If medically appropriate, a written medical cannabis recommendation may be provided following the evaluation.",
+    "At Vallejo 420 MD, patients can connect with a licensed physician through an online medical marijuana evaluation process.",
+    "Dr. Rick Rieser takes an individualized approach to each consultation, reviewing relevant medical information and discussing the patient's health concerns.",
+    "The evaluation process is designed to help patients understand their eligibility and available options under California medical cannabis guidelines.",
+    "A physician recommendation is provided only when medically appropriate following an evaluation.",
   ],
   conditionsTitle: "Conditions Reviewed During Medical Cannabis Evaluations",
   conditionsIntro:
@@ -133,7 +135,7 @@ export const rickRieserProfile: DoctorExtendedProfile = {
       number: "1",
       title: "Sign Up and Schedule",
       description:
-        "Complete the online registration process and select an available appointment.",
+        "Complete your online registration and choose a convenient appointment time.",
     },
     {
       number: "2",
@@ -168,12 +170,12 @@ export const rickRieserProfile: DoctorExtendedProfile = {
     {
       question: "How long does a medical marijuana consultation take?",
       answer:
-        "Appointment duration can vary depending on the patient's medical history and the evaluation required. Contact Vallejo 420 MD for current appointment details.",
+        "Most appointments generally take 15–20 minutes, although the duration may vary depending on your medical history and the evaluation required. Contact Vallejo 420 MD for current appointment details.",
     },
     {
       question: "Will I automatically receive a medical marijuana recommendation?",
       answer:
-        "No. A recommendation is not guaranteed. The physician must complete an appropriate medical evaluation and determine whether medical cannabis is appropriate.",
+        "No. You must first complete an evaluation with a licensed physician. The doctor will review your medical history and determine whether you qualify for a medical marijuana recommendation under California law. Approval is not guaranteed.",
     },
     {
       question: "How can I schedule an appointment with Dr. Rick Rieser?",

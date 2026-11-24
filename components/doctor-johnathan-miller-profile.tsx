@@ -77,7 +77,7 @@ export function DoctorJohnathanMillerProfileView({
                 <dt className="ds-label shrink-0 text-black/90">
                   {item.label}
                 </dt>
-                <dd className="ds-body text-pretty  text-dark-green">
+                <dd className="text-sm text-pretty font-semibold text-dark-green">
                   {item.value}
                 </dd>
               </div>
@@ -280,7 +280,7 @@ export function DoctorJohnathanMillerProfileView({
             <span className="text-amber">Questions</span>
           </h2>
           <Accordion
-            className="mt-8 w-full gap-3"
+            className="mx-auto max-w-4xl  mt-8 w-full gap-4"
             defaultValue={["miller-faq-0"]}
             keepMounted
           >

@@ -88,13 +88,13 @@ const DOCTORS = [
   {
     name: "Dr. Rick Rieser, MD",
     role: "General Medicine · California license to be verified",
-    photoSrc: "/media/Rick-Rieser.webp",
+    photoSrc: "/media/rick-rieser.webp",
     bio: "Dr. Rieser's specialty, clinical experience, and role in medical cannabis evaluations should be confirmed against reliable professional records before publication.",
   },
   {
     name: "Dr. Johnathan Miller, MD",
     role: "General Medicine · California license to be verified",
-    photoSrc: "/media/Johnathan-Miller.webp",
+    photoSrc: "/media/johnathan-miller.webp",
     bio: "Dr. Miller's professional credentials, years of experience, and role in medical cannabis evaluations should be confirmed before publication.",
   },
 ];
@@ -201,8 +201,8 @@ export default function AboutUsPage() {
               <div className="order-1 lg:order-2">
                 <div className="relative overflow-hidden rounded-4xl border border-border bg-accent shadow-sm">
                   <Image
-                    src="/media/about-hub.webp"
-                    alt="Calm, welcoming space for Vallejo 420 MD online medical cannabis evaluations"
+                    src="/media/virtual-telehealth-appointment-physician-consultation.webp"
+                    alt="Vallejo doctor on video call consultation with patient on laptop screen"
                     width={1600}
                     height={1000}
                     priority

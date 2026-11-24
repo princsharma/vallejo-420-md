@@ -228,7 +228,7 @@ export default function EditorialTeamPage() {
                                 Our Medical Writers
                             </h3>
                             <div className="mt-4 grid gap-5 md:grid-cols-2">
-                                {MEDICAL_WRITERS.map((writer) => (
+                                {MEDICAL_WRITERS.map(({ profileHref: _profileHref, ...writer }) => (
                                     <EditorialProfileCard key={writer.name} {...writer} />
                                 ))}
                             </div>
