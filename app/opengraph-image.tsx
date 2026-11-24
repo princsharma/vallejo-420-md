@@ -14,8 +14,8 @@ export const contentType = "image/png";
 
 export default async function Image() {
   const [logoWebp, photoWebp] = await Promise.all([
-    readFile(join(process.cwd(), "public/vallejo420md-logo.webp")),
-    readFile(join(process.cwd(), "public/hero-section.webp")),
+    readFile(join(process.cwd(), "public/media/vallejo420md-logo.webp")),
+    readFile(join(process.cwd(), "public/media/hero-section.webp")),
   ]);
   const [logoPng, photoPng] = await Promise.all([
     sharp(logoWebp).png().toBuffer(),
