@@ -10,6 +10,16 @@ import {
 } from "@/components/ui/accordion";
 import { homeFaqs } from "@/lib/home-content";
 import { SiteFooter } from "@/components/site-footer";
+import { Metadata } from "next";
+
+
+export const metadata:Metadata = {
+    title:"Frequently Asked Questions | Vallejo 420 MD",
+    description:"Find answers to common questions about medical marijuana cards in Vallejo, CA, including eligibility, costs, online evaluations, and renewals.",
+    alternates: {
+        canonical:"/faq/"
+    }
+}
 
 export default function FaqPage() {
     return (
