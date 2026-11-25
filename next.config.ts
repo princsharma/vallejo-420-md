@@ -62,7 +62,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/get-your-cards",
+        source: "/get-your-card",
         destination: "/",
         permanent:true
       }
