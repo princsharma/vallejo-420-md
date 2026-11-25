@@ -21,9 +21,8 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: process.env.NEXT_ALLOWED_DEV_ORIGINS
     ? process.env.NEXT_ALLOWED_DEV_ORIGINS.split(",").map((origin) => origin.trim()).filter(Boolean)
     : getLocalIPv4DevOrigins(),
-  // Normalizes to /path/ everywhere; Next.js auto-redirects /path -> /path/.
-  // Static file URLs (sitemap.xml, robots.txt, anything with an extension)
-  // are exempt per the docs, so those are unaffected.
+  // Canonicalizes to /path/ while allowing exact redirects to run first.
+  // Proxy handles slash normalization; static file URLs remain exempt.
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   compress: true,
@@ -65,7 +64,7 @@ const nextConfig: NextConfig = {
       {
         source: "/get-your-cards",
         destination: "/",
-        statusCode: 301,
+        permanent:true
       }
     ];
   },
