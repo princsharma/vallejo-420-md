@@ -82,6 +82,7 @@ export const viewport: Viewport = {
 const medicalBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": ["MedicalBusiness", "LocalBusiness"],
+  "@id": `${siteConfig.url}/#business`,
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
@@ -116,6 +117,7 @@ const medicalBusinessJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteConfig.url}/#website`,
   name: siteConfig.name,
   url: siteConfig.url,
 };
