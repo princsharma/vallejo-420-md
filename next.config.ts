@@ -61,11 +61,21 @@ const nextConfig: NextConfig = {
         destination: "/about-us",
         permanent: true,
       },
-      {
-        source: "/get-your-card",
-        destination: "/",
-        permanent:true
-      }
+    {
+  source: "/get-your-card",
+  destination: "/",
+  statusCode: 301,
+},
+{
+  source: "/get-your-card",
+  destination: "/",
+  statusCode: 301,
+},
+{
+  source: "/get-your-card/",
+  destination: "/",
+  statusCode: 301,
+},
     ];
   },
   async rewrites() {

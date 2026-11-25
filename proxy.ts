@@ -51,7 +51,19 @@ export function proxy(request: NextRequest) {
   ) {
     const url = request.nextUrl.clone();
     url.pathname = `${pathname}/`;
-    return NextResponse.redirect(url, 308);
+    return NextResponse.redirect(url, 301);
+  }
+
+
+   if (
+    pathname === "/get-your-card" ||
+    pathname === "/get-your-card/"
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    url.search = "";
+
+    return NextResponse.redirect(url, 301);
   }
 
   const normalizedPathname = withTrailingSlash(pathname);

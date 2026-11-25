@@ -79,8 +79,8 @@ export function SiteHeader() {
             className="flex shrink-0 items-center rounded-md p-1"
           >
             <Image
-              src="/media/vallejo-2.webp"
-              alt="Vallejo 420 MD"
+              src="/media/vallejo-420-md-logo.webp"
+              alt="vallejo 420 md logo"
               width={120}
               height={45}
               priority
