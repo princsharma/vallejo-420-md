@@ -60,7 +60,7 @@ const nextConfig: NextConfig = {
       })),
       {
         source: "/about",
-        destination: "/about-us",
+        destination: "/about-us/",
         permanent: true,
       },
       {
