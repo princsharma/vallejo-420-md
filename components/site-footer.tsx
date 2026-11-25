@@ -11,6 +11,7 @@ import {
   Users,
   CircleHelp,
   Scale,
+  createLucideIcon,
   ShieldCheck,
   FileCheck,
   FileText,
@@ -24,6 +25,12 @@ import {
 import { contactInfo, legalLinks } from "@/lib/site-data";
 import { Label } from "./ui/label";
 
+const ShieldLock = createLucideIcon("shield-lock", [
+  ["path", { d: "M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11", key: "shield" }],
+  ["rect", { x: "8", y: "11", width: "8", height: "7", rx: "1", key: "lock-body" }],
+  ["path", { d: "M10 11V8a2 2 0 1 1 4 0v3", key: "lock-shackle" }],
+]);
+
 const EXPLORE_LINKS = [
   { label: "About Us", href: "/about-us/", Icon: Info },
   { label: "Contact Us", href: "/contact/", Icon: MessageCircle },
@@ -35,7 +42,7 @@ const EXPLORE_LINKS = [
 
 const LEGAL_ICONS: Record<string, typeof FileText> = {
   "Privacy Policy": ShieldCheck,
-  "HIPAA Compliance": ShieldCheck,
+  "HIPAA Compliance": ShieldLock,
   "Consent for Telehealth": FileCheck,
   "Terms of Use": FileText,
   "Refund Policy": RotateCcw,
@@ -121,7 +128,7 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2 text-md text-white/80">
               {EXPLORE_LINKS.map(({ label, href, Icon }) => (
                 <li key={href}>
-                  <Link
+                  <Link 
                     href={href}
                     className="flex items-center gap-3 hover:text-white"
                   >
