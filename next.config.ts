@@ -19,7 +19,9 @@ const nextConfig: NextConfig = {
   // Phone/LAN testing uses the Network URL (e.g. http://192.168.x.x:3000). Next.js 16+
   // blocks /_next dev assets from other hostnames unless listed here (breaks FAQ, forms, HMR).
   allowedDevOrigins: process.env.NEXT_ALLOWED_DEV_ORIGINS
-    ? process.env.NEXT_ALLOWED_DEV_ORIGINS.split(",").map((origin) => origin.trim()).filter(Boolean)
+    ? process.env.NEXT_ALLOWED_DEV_ORIGINS.split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean)
     : getLocalIPv4DevOrigins(),
   // Canonicalizes to /path/ while allowing exact redirects to run first.
   // Proxy handles slash normalization; static file URLs remain exempt.
@@ -61,21 +63,21 @@ const nextConfig: NextConfig = {
         destination: "/about-us",
         permanent: true,
       },
-    {
-  source: "/get-your-card",
-  destination: "/",
-  statusCode: 301,
-},
-{
-  source: "/get-your-card",
-  destination: "/",
-  statusCode: 301,
-},
-{
-  source: "/get-your-card/",
-  destination: "/",
-  statusCode: 301,
-},
+      {
+        source: "/get-your-card",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/get-your-card",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/get-your-card/",
+        destination: "/",
+        statusCode: 301,
+      },
     ];
   },
   async rewrites() {

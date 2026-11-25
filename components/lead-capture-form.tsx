@@ -150,7 +150,7 @@ export function LeadCaptureForm({ submitLabel = "Get Your Card" }: LeadCaptureFo
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "heallyValidatedSubmit",
+        event: "vallejo_form_submitted",
         utm_source: heallyUtmSource,
       });
     }
