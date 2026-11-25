@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
   // Static file URLs (sitemap.xml, robots.txt, anything with an extension)
   // are exempt per the docs, so those are unaffected.
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -62,9 +63,9 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source:"/get-your-card/",
-        destination:"/",
-        permanent:true
+        source: "/get-your-cards",
+        destination: "/",
+        statusCode: 301,
       }
     ];
   },

@@ -42,13 +42,25 @@ function gonePageResponse() {
 }
 
 export function proxy(request: NextRequest) {
-  const pathname = withTrailingSlash(request.nextUrl.pathname);
+  const { pathname } = request.nextUrl;
 
-  if (pathname === GONE_PAGE_PATH) {
+  if (
+    pathname !== "/" &&
+    !pathname.endsWith("/") &&
+    !pathname.match(/((?!\.well-known(?:\/.*)?)(?:[^/]+\/)*[^/]+\.\w+)/)
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = `${pathname}/`;
+    return NextResponse.redirect(url, 308);
+  }
+
+  const normalizedPathname = withTrailingSlash(pathname);
+
+  if (normalizedPathname === GONE_PAGE_PATH) {
     return gonePageResponse();
   }
 
-  if (isGoneUrl(pathname)) {
+  if (isGoneUrl(normalizedPathname)) {
     return goneResponse(request);
   }
 
