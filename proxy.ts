@@ -53,8 +53,7 @@ export function proxy(request: NextRequest) {
     url.pathname = `${pathname}/`;
     return NextResponse.redirect(url, 301);
   }
-
-
+  
    if (
     pathname === "/get-your-card" ||
     pathname === "/get-your-card/"

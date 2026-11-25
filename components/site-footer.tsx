@@ -29,8 +29,8 @@ const EXPLORE_LINKS = [
   { label: "Contact Us", href: "/contact/", Icon: MessageCircle },
   { label: "Our Doctors", href: "/our-doctors/", Icon: Stethoscope },
   { label: "Editorial Team", href: "/editorial-team/", Icon: Users },
-  { label: "FAQs", href: "/faq", Icon: CircleHelp },
-  { label: "Legal Policies", href: "/policy", Icon: Scale },
+  { label: "FAQs", href: "/faq/", Icon: CircleHelp },
+  { label: "Legal Policies", href: "/policy/", Icon: Scale },
 ];
 
 const LEGAL_ICONS: Record<string, typeof FileText> = {

@@ -55,7 +55,7 @@ const nextConfig: NextConfig = {
     return [
       ...policySlugs.map((slug) => ({
         source: `/${slug}`,
-        destination: `/policy/${slug}`,
+        destination: `/policy/${slug}/`,
         permanent: true,
       })),
       {
@@ -70,11 +70,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/get-your-card",
-        destination: "/",
-        statusCode: 301,
-      },
-      {
-        source: "/get-your-card/",
         destination: "/",
         statusCode: 301,
       },

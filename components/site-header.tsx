@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Benefits", href: "/#benefits" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "/faq/" },
   { label: "Our Doctors", href: "/our-doctors/" },
   {label: "Contact", href: "/contact/" },
 ];
