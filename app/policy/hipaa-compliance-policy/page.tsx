@@ -1,17 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo, siteConfig } from "@/lib/site-data";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
-  title: "HIPAA Compliance  | Vallejo 420 MD",
+export const metadata = createPolicyMetadata({
+  title: "HIPAA Compliance | Vallejo 420 MD",
   description:
     "Understand how Vallejo 420 MD protects medical records, personal health information, and patient privacy through HIPAA safeguards.",
-  alternates: {
-    canonical: "/policy/hipaa-compliance-policy/",
-  },
-};
+  canonical: "/policy/hipaa-compliance-policy/",
+});
 
 export default function HipaaCompliancePage() {
   return (

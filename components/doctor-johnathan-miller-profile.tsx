@@ -16,6 +16,7 @@ import {
   DISCUSSED_CONDITIONS_DISCLAIMER,
   DOCTORS_PAGE_HERO_BG,
 } from "@/lib/doctors-hub-content";
+import { INTERACTIVE_CARD_HOVER } from "@/lib/interactive-card-hover";
 
 export function DoctorJohnathanMillerProfileView({
   doctor,
@@ -102,7 +103,7 @@ export function DoctorJohnathanMillerProfileView({
             {profile.education.map((item, index) => (
               <li
                 key={item.title}
-                className={`rounded-2xl border border-border bg-[#CFEED2] p-6 md:p-8 ${
+                className={`rounded-2xl border border-border bg-light-green p-6 md:p-8 ${INTERACTIVE_CARD_HOVER} ${
                   index === 2 ? "sm:col-span-2 sm:mx-auto sm:w-1/2" : ""
                 }`}
               >
@@ -204,7 +205,7 @@ export function DoctorJohnathanMillerProfileView({
             {profile.expectSteps.map((step) => (
               <li
                 key={step.number}
-                className="flex gap-4 rounded-2xl border border-border bg-[#CFEED2] p-5 md:p-6"
+                className={`flex gap-4 rounded-2xl border border-border bg-light-green p-5 md:p-6 ${INTERACTIVE_CARD_HOVER}`}
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-amber text-sm font-bold text-white">
                   {step.number}
@@ -242,7 +243,7 @@ export function DoctorJohnathanMillerProfileView({
             {profile.whyItems.map((item, index) => (
               <li
                 key={item.title}
-                className={`rounded-2xl border border-border bg-[#CFEED2] p-6 md:p-8 lg:col-span-2 ${
+                className={`rounded-2xl border border-border bg-light-green p-6 md:p-8 lg:col-span-2 ${INTERACTIVE_CARD_HOVER} ${
                   index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : ""
                 }`}
               >
@@ -288,7 +289,7 @@ export function DoctorJohnathanMillerProfileView({
               <AccordionItem
                 key={faq.question}
                 value={`miller-faq-${index}`}
-                className="rounded-2xl border border-border bg-warm-white px-4 shadow-sm"
+                className={`rounded-2xl border border-border bg-warm-white px-4 shadow-sm ${INTERACTIVE_CARD_HOVER}`}
               >
                 <AccordionTrigger className="items-center gap-4 rounded-xl px-2 py-5 text-left ds-faq font-bold text-dark-green hover:no-underline md:py-6 [&_[data-slot=accordion-trigger-icon]]:size-5 [&_[data-slot=accordion-trigger-icon]]:text-dark-green">
                   {faq.question}

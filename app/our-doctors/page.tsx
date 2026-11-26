@@ -18,7 +18,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { doctors, doctorProfilePath } from "@/lib/doctors";
+import { doctors, doctorProfilePath, doctorsHubOgImageSrc } from "@/lib/doctors";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
+import { siteConfig } from "@/lib/site-data";
 import {
   DOCTORS_PAGE_HERO_BG,
   DOCTORS_HUB_FAQS,
@@ -31,16 +33,51 @@ import {
   VALLEJO_NEIGHBORHOODS,
   WHY_CHOOSE_ITEMS,
 } from "@/lib/doctors-hub-content";
+import { INTERACTIVE_CARD_HOVER } from "@/lib/interactive-card-hover";
 
 const nearbyAreaChipClassName =
   "flex min-h-[2.75rem] w-full items-center justify-center rounded-xl border border-white/10 bg-white px-3 py-2.5 text-center ds-small font-semibold text-dark-green shadow-[0_8px_24px_rgb(11_93_42_/_12%)] transition-[border-color,background-color,color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-[#d4922f] hover:bg-[#d4922f] hover:text-white hover:shadow-[0_8px_24px_rgb(212_146_47_/_22%)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
+const DOCTORS_HUB_TITLE = "Medical Marijuana Doctors in Vallejo, CA | Vallejo 420 MD";
+const DOCTORS_HUB_DESCRIPTION =
+  "Learn about the California-licensed doctors at Vallejo 420 MD. Verify their licenses, read their backgrounds, and book a video evaluation from home.";
+const DOCTORS_HUB_OG_ALT =
+  "California-licensed physicians at Vallejo 420 MD ready to help patients";
+
+const doctorsHubOgImageUrl = new URL(
+  doctorsHubOgImageSrc,
+  getMetadataBaseUrl(),
+).toString();
+
 export const metadata: Metadata = {
-  title: "Medical Marijuana Doctors in Vallejo, CA | Vallejo 420 MD",
-  description:
-    "Learn about the California-licensed doctors at Vallejo 420 MD. Verify their licenses, read their backgrounds, and book a video evaluation from home.",
+  title: DOCTORS_HUB_TITLE,
+  description: DOCTORS_HUB_DESCRIPTION,
   alternates: {
     canonical: "/our-doctors/",
+  },
+  openGraph: {
+    title: DOCTORS_HUB_TITLE,
+    description: DOCTORS_HUB_DESCRIPTION,
+    url: new URL("/our-doctors/", getMetadataBaseUrl()).toString(),
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: doctorsHubOgImageUrl,
+        secureUrl: doctorsHubOgImageUrl,
+        width: 1200,
+        height: 630,
+        alt: DOCTORS_HUB_OG_ALT,
+        type: "image/webp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DOCTORS_HUB_TITLE,
+    description: DOCTORS_HUB_DESCRIPTION,
+    images: [doctorsHubOgImageUrl],
   },
 };
 
@@ -166,7 +203,9 @@ export default function OurDoctorsPage() {
             <ul className="mt-10 grid list-none gap-6 md:grid-cols-2">
               {doctors.map((doctor) => (
                 <li key={doctor.slug} className="min-h-0">
-                  <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-section-green shadow-[0_4px_20px_rgb(11_93_42_/_6%)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgb(11_93_42_/_10%)]">
+                  <article
+                    className={`flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-section-green shadow-[0_4px_20px_rgb(11_93_42_/_6%)] ${INTERACTIVE_CARD_HOVER}`}
+                  >
                     <DoctorPhotoPlaceholder
                       label={doctor.name}
                       photoSrc={doctor.photoSrc}
@@ -219,8 +258,9 @@ export default function OurDoctorsPage() {
               {WHY_CHOOSE_ITEMS.map((item, index) => (
                 <li
                   key={item.title}
-                  className={`rounded-2xl border border-border bg-[#CFEED2] p-6 transition-all hover:border-primary/40 hover:shadow-sm md:p-8 lg:col-span-2 ${index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : ""
-                    }`}
+                  className={`rounded-2xl border border-border bg-light-green p-6 md:p-8 lg:col-span-2 ${INTERACTIVE_CARD_HOVER} ${
+                    index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : ""
+                  }`}
                 >
                   <span className="flex size-11 items-center justify-center rounded-xl bg-amber text-white">
                     <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
@@ -299,7 +339,9 @@ export default function OurDoctorsPage() {
               <ol className="mt-8 flex list-none flex-col gap-4">
                 {EVALUATION_STEPS.map((step) => (
                   <li key={step.number}>
-                    <article className="rounded-2xl border border-border bg-warm-white p-5 transition-all hover:border-primary/40 hover:shadow-sm md:p-6">
+                    <article
+                      className={`rounded-2xl border border-border bg-warm-white p-5 md:p-6 ${INTERACTIVE_CARD_HOVER}`}
+                    >
                       <div className="flex items-start gap-3">
                         <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-amber text-white">
                           <step.icon
@@ -328,7 +370,9 @@ export default function OurDoctorsPage() {
                 ))}
               </ol>
             </div>
-            <aside className="h-fit rounded-2xl border border-border bg-white p-6 md:p-8 lg:sticky lg:top-24">
+            <aside
+              className={`h-fit rounded-2xl border border-border bg-white p-6 md:p-8 lg:sticky lg:top-24 ${INTERACTIVE_CARD_HOVER}`}
+            >
               <div className="flex items-center gap-3">
                 {/* <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-amber text-white">
                   <ClipboardList
@@ -343,7 +387,7 @@ export default function OurDoctorsPage() {
                 {PREP_CHECKLIST.map((item) => (
                   <li
                     key={item.label}
-                    className="flex gap-3 rounded-xl border border-border bg-[#CFEED2] p-4 transition-colors hover:border-primary/40"
+                    className={`flex gap-3 rounded-xl border border-border bg-light-green p-4 ${INTERACTIVE_CARD_HOVER}`}
                   >
                     <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-amber text-white">
                       <item.icon className="size-4" strokeWidth={2} aria-hidden />
@@ -423,7 +467,7 @@ export default function OurDoctorsPage() {
                 <AccordionItem
                   key={faq.question}
                   value={`doctors-faq-${index}`}
-                  className="rounded-2xl border border-border bg-warm-white px-4 shadow-sm"
+                  className={`rounded-2xl border border-border bg-warm-white px-4 shadow-sm ${INTERACTIVE_CARD_HOVER}`}
                 >
                   <AccordionTrigger className="items-center gap-4 rounded-xl px-2 py-5 text-left ds-faq font-bold text-dark-green hover:no-underline md:py-6 [&_[data-slot=accordion-trigger-icon]]:size-5 [&_[data-slot=accordion-trigger-icon]]:shrink-0 [&_[data-slot=accordion-trigger-icon]]:text-dark-green">
                     {faq.question}

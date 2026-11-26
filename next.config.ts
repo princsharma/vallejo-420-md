@@ -39,6 +39,19 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "@base-ui/react"],
   },
+  async headers() {
+    return [
+      {
+        source: "/media/sitemap.xsl",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "text/xsl; charset=utf-8",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     const policySlugs = [
       "privacy-policy",

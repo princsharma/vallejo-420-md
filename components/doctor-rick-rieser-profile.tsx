@@ -17,6 +17,7 @@ import {
   DISCUSSED_CONDITIONS,
   DOCTORS_PAGE_HERO_BG,
 } from "@/lib/doctors-hub-content";
+import { INTERACTIVE_CARD_HOVER } from "@/lib/interactive-card-hover";
 import { contactInfo } from "@/lib/site-data";
 
 export function DoctorRickRieserProfileView({
@@ -124,7 +125,7 @@ export function DoctorRickRieserProfileView({
             {profile.education.map((item) => (
               <li
                 key={item.title}
-                className="rounded-2xl border border-border bg-[#CFEED2] p-6 md:p-8"
+                className={`rounded-2xl border border-border bg-light-green p-6 md:p-8 ${INTERACTIVE_CARD_HOVER}`}
               >
                 <h3 className="ds-h4 text-balance">{item.title}</h3>
                 <p className="ds-label mt-2 text-amber">{item.subtitle}</p>
@@ -223,7 +224,7 @@ export function DoctorRickRieserProfileView({
             {profile.approachItems.map((item) => (
               <li
                 key={item.title}
-                className="rounded-2xl border border-border bg-[#CFEED2] p-6 md:p-8"
+                className={`rounded-2xl border border-border bg-light-green p-6 md:p-8 ${INTERACTIVE_CARD_HOVER}`}
               >
                 <span className="flex size-11 items-center justify-center rounded-xl bg-amber text-white">
                   <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
@@ -251,7 +252,7 @@ export function DoctorRickRieserProfileView({
             {profile.scheduleSteps.map((step) => (
               <li
                 key={step.number}
-                className="flex gap-4 rounded-2xl border border-border bg-[#CFEED2] p-5 md:p-6"
+                className={`flex gap-4 rounded-2xl border border-border bg-light-green p-5 md:p-6 ${INTERACTIVE_CARD_HOVER}`}
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-amber text-sm font-bold text-white">
                   {step.number}
@@ -291,7 +292,7 @@ export function DoctorRickRieserProfileView({
               <AccordionItem
                 key={faq.question}
                 value={`dr-faq-${index}`}
-                className="rounded-2xl border border-border bg-warm-white px-4 shadow-sm"
+                className={`rounded-2xl border border-border bg-warm-white px-4 shadow-sm ${INTERACTIVE_CARD_HOVER}`}
               >
                 <AccordionTrigger className="items-center gap-4 rounded-xl px-2 py-5 text-left ds-faq font-bold text-dark-green hover:no-underline md:py-6 [&_[data-slot=accordion-trigger-icon]]:size-5 [&_[data-slot=accordion-trigger-icon]]:text-dark-green">
                   {faq.question}

@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Accessibility,
   ArrowRight,
   FileText,
+  ShieldCheck,
   Lock,
   RotateCcw,
   Scale,
@@ -16,15 +16,14 @@ import {
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SiteFooter } from "@/components/site-footer";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Policies & Compliance | Vallejo 420 MD",
   description:
     "Read Vallejo 420 MD’s privacy, HIPAA, telehealth consent, refund, shipping, and accessibility policies, plus our terms of use and medical disclaimer.",
-  alternates: {
-    canonical: "/policy/",
-  },
-};
+  canonical: "/policy/",
+});
 
 const POLICIES: {
   title: string;
@@ -144,9 +143,9 @@ export default function PolicyHubPage() {
             <div className="mt-6 flex justify-center md:mt-8">
               <div className="flex w-full max-w-3xl flex-col items-center rounded-3xl border border-border bg-white px-5 py-4 text-center sm:px-8 sm:py-5">
                 <span className="flex size-10 items-center justify-center rounded-xl bg-amber text-white">
-                  <ShieldAlert className="size-4" strokeWidth={1.75} aria-hidden />
+                  <ShieldCheck className="size-5" strokeWidth={1.85} aria-hidden />
                 </span>
-                <h2 className="ds-label mt-3 text-foreground">Medical Disclaimer</h2>
+                <h2 className="ds-label mt-3 text-dark-green">Medical Disclaimer</h2>
                 <p className="ds-small mt-2 max-w-2xl text-pretty text-black/90">
                   Medical Marijuana Card Vallejo connects patients in Vallejo
                   and throughout California with state-licensed physicians for

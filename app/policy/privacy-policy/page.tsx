@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo, siteConfig } from "@/lib/site-data";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Privacy Policy | Vallejo 420 MD",
   description:
     "Read the Vallejo 420 MD Privacy Policy to learn how we collect, use, store, and protect your personal and medical information.",
-  alternates: {
-    canonical: "/policy/privacy-policy/",
-  },
-};
+  canonical: "/policy/privacy-policy/",
+});
 
 export default function PrivacyPolicyPage() {
   return (

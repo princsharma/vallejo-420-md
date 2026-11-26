@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalDocument } from "@/components/legal-document";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Consent to Telehealth | Vallejo 420 MD",
   description:
     "Review our telehealth consent policy to understand online medical consultations, potential risks, benefits, and your responsibilities as a patient.",
-  alternates: {
-    canonical: "/policy/consent-to-telehealth/",
-  },
-};
+  canonical: "/policy/consent-to-telehealth/",
+});
 
 export default function ConsentToTelehealthPage() {
   return (

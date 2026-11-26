@@ -94,11 +94,11 @@ const VISIT_ITEMS = [
 export function SiteFooter() {
   return (
     <footer id="contact" className="bg-[var(--brand-footer)] text-white">
-      <div className="ds-container py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div className="ds-container py-12 md:py-14 lg:py-16">
+        <div className="grid gap-8 md:grid-cols-2 md:items-start md:gap-6 lg:grid-cols-4 lg:gap-10">
 
           {/* Logo */}
-          <div className="lg:col-span-1">
+          <div className="md:col-span-2 md:row-start-1 lg:col-span-1 lg:row-auto">
             <Link
               href="/"
               aria-label="Vallejo 420 MD home"
@@ -120,7 +120,7 @@ export function SiteFooter() {
           </div>
 
           {/* Resource */}
-          <div>
+          <div className="md:col-start-1 md:row-start-2 lg:col-auto lg:row-auto">
             <h2 className="text-md font-semibold tracking-[0.4px] text-white">
               Resource
             </h2>
@@ -143,7 +143,7 @@ export function SiteFooter() {
           </div>
 
           {/* Information */}
-          <div>
+          <div className="md:col-start-2 md:row-span-2 md:row-start-2 lg:col-auto lg:row-span-1 lg:row-auto">
             <h2 className="text-md font-semibold tracking-[0.4px] text-white">
               Information
             </h2>
@@ -171,12 +171,12 @@ export function SiteFooter() {
           </div>
 
           {/* Contact Details -  */}
-          <div>
+          <div className="md:col-start-1 md:row-start-3 lg:col-span-1 lg:row-auto">
             <h2 className="text-md font-semibold tracking-[0.4px] text-white">
               Contact Details
             </h2>
 
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-3 space-y-3 md:mt-4 md:space-y-3 lg:space-y-4">
               {VISIT_ITEMS.map(({ id, Icon, content }) => (
                 <li key={id} className="flex items-start gap-3">
                   <Icon className="size-5 shrink-0 mt-1" strokeWidth={2} />

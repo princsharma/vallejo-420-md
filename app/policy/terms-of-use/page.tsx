@@ -1,17 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo, siteConfig } from "@/lib/site-data";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Terms of Use | Vallejo 420 MD",
   description:
     "Review the Vallejo 420 MD Terms of Use to understand website policies, service conditions, eligibility requirements, and user responsibilities.",
-  alternates: {
-    canonical: "/policy/terms-of-use/",
-  },
-};
+  canonical: "/policy/terms-of-use/",
+});
 
 export default function TermsOfUsePage() {
   return (

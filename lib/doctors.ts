@@ -45,6 +45,8 @@ export const doctors: Doctor[] = [
   },
 ];
 
+export const doctorsHubOgImageSrc = "/media/our-doctors-opengraph.webp";
+
 export function doctorBySlug(slug: string): Doctor | undefined {
   return doctors.find((doctor) => doctor.slug === slug);
 }

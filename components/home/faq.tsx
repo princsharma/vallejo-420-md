@@ -13,17 +13,17 @@ export function HomeFaq() {
   return (
     <section id="faq" className="ds-section bg-white">
       <div className="ds-container grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:gap-14 xl:gap-16">
-        <div className="min-w-0">
+        <div className="min-w-0 text-center lg:text-left">
           <h2 className="ds-h2 text-balance">
             <span className="block text-dark-green">Frequently Asked</span>
             <span className="block text-amber">Questions</span>
           </h2>
-          <p className="ds-body ds-mt-after-heading text-pretty text-black/90">
+          <p className="ds-body ds-mt-after-heading mx-auto max-w-xl text-pretty text-black/90 lg:mx-0 lg:max-w-none">
             Learn more about eligibility, appointments, privacy, pricing, and the difference between a
             recommendation and an MMIC.
           </p>
-          <div className="mt-8 rounded-2xl bg-light-green p-5 md:p-6">
-            <div className="flex items-start gap-4">
+          <div className="mt-8 rounded-2xl bg-light-green p-5 text-center md:p-6 lg:text-left">
+            <div className="flex flex-col items-center gap-3 lg:flex-row lg:items-start lg:gap-4">
               <Clock className="size-5 shrink-0 text-dark-green" strokeWidth={2} aria-hidden />
               <div className="min-w-0">
                 <p className="ds-body font-bold text-dark-green">Still have questions?</p>
@@ -36,7 +36,7 @@ export function HomeFaq() {
         </div>
 
         <Accordion
-          className="min-w-0 w-full gap-3"
+          className="mx-auto min-w-0 w-full max-w-2xl gap-3 lg:mx-0 lg:max-w-none"
           defaultValue={["faq-0"]}
           keepMounted
         >

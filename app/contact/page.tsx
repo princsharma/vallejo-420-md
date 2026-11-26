@@ -4,14 +4,50 @@ import { ArrowRight, ArrowUpRight, Clock3, Mail, MapPin, Phone } from "lucide-re
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SiteFooter } from "@/components/site-footer";
-import { contactInfo } from "@/lib/site-data";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
+import { contactInfo, siteConfig } from "@/lib/site-data";
+
+const CONTACT_TITLE = "Contact Vallejo 420 MD | Call, Email or Visit Our Office";
+const CONTACT_DESCRIPTION =
+  "Get in touch with Vallejo 420 MD by phone, email, or visit us at 630 Tennessee St Unit 2 in Vallejo, California.";
+const CONTACT_OG_IMAGE_PATH = "/media/contact-opengraph.jpg";
+const CONTACT_OG_ALT =
+  "Vallejo 420 MD reception team member ready to help by phone at the front desk";
+
+const contactOgImageUrl = new URL(
+  CONTACT_OG_IMAGE_PATH,
+  getMetadataBaseUrl(),
+).toString();
 
 export const metadata: Metadata = {
-  title: "Contact Vallejo 420 MD | Call, Email or Visit Our Office",
-  description:
-    "Get in touch with Vallejo 420 MD by phone, email, or visit us at 630 Tennessee St Unit 2 in Vallejo, California.",
+  title: CONTACT_TITLE,
+  description: CONTACT_DESCRIPTION,
   alternates: {
     canonical: "/contact/",
+  },
+  openGraph: {
+    title: CONTACT_TITLE,
+    description: CONTACT_DESCRIPTION,
+    url: new URL("/contact/", getMetadataBaseUrl()).toString(),
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: contactOgImageUrl,
+        secureUrl: contactOgImageUrl,
+        width: 1200,
+        height: 630,
+        alt: CONTACT_OG_ALT,
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: CONTACT_TITLE,
+    description: CONTACT_DESCRIPTION,
+    images: [contactOgImageUrl],
   },
 };
 
@@ -19,6 +55,12 @@ const mapUrl =
   "https://www.google.com/maps?q=630%20Tennessee%20St%20Unit%202%2C%20Vallejo%2C%20CA%2094590&output=embed";
 const directionsUrl =
   "https://www.google.com/maps/search/?api=1&query=630%20Tennessee%20St%20Unit%202%2C%20Vallejo%2C%20CA%2094590";
+
+const CONTACT_METHOD_CARD =
+  "group flex h-full flex-col rounded-2xl border border-primary/15 border-t-4 border-t-primary/30 bg-light-green p-6 shadow-[0_4px_20px_rgb(11_93_42_/_6%)] transition-[transform,border-color,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:border-t-primary hover:bg-section-green hover:shadow-[0_8px_24px_rgb(11_93_42_/_12%)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7";
+
+const CONTACT_METHOD_ICON =
+  "flex size-12 items-center justify-center rounded-xl bg-white text-primary shadow-sm transition-colors duration-200 group-hover:bg-primary group-hover:text-white motion-reduce:transition-none";
 
 export default function ContactPage() {
   return (
@@ -84,57 +126,52 @@ export default function ContactPage() {
                 href={directionsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-transparent bg-[#CFEED2] p-6 shadow-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:-translate-y-1 hover:border-amber/70 hover:border-t-amber hover:shadow-[0_16px_36px_rgb(0_0_0_/_22%)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7"
+                className={CONTACT_METHOD_CARD}
               >
-                <span className="flex size-12 items-center justify-center rounded-xl bg-amber/10 text-[#c47a15] transition-colors duration-200 group-hover:bg-amber group-hover:text-white motion-reduce:transition-none">
+                <span className={CONTACT_METHOD_ICON}>
                   <MapPin className="size-5" aria-hidden />
                 </span>
-                <h3 className="ds-h4 mt-5 text-dark-green transition-colors duration-200 group-hover:text-[#b87317]">
-                  Find us
-                </h3>
-                <address className="ds-body mt-2 not-italic text-foreground transition-colors duration-200 group-hover:text-dark-green">
+                <h3 className="ds-h4 mt-5 text-dark-green">Find us</h3>
+                <address className="ds-body mt-2 not-italic font-semibold text-dark-green underline-offset-4 group-hover:underline">
                   {contactInfo.streetAddress}
                   <br />
                   {contactInfo.addressLocality}, {contactInfo.addressRegion}{" "}
                   {contactInfo.postalCode}
                 </address>
-                <p className="ds-small mt-3 text-black/90 transition-colors duration-200 group-hover:text-foreground">
+                <p className="ds-small mt-3 text-black/90">
                   Visit us during opening hours, or write to us at this address.
                 </p>
               </a>
 
               <a
                 href={contactInfo.phoneHref}
-                className="group flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-transparent bg-[#CFEED2] p-6 shadow-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:-translate-y-1 hover:border-amber/70 hover:border-t-amber hover:shadow-[0_16px_36px_rgb(0_0_0_/_22%)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7"
+                className={CONTACT_METHOD_CARD}
               >
-                <span className="flex size-12 items-center justify-center rounded-xl bg-amber/10 text-[#c47a15] transition-colors duration-200 group-hover:bg-amber group-hover:text-white motion-reduce:transition-none">
+                <span className={CONTACT_METHOD_ICON}>
                   <Phone className="size-5" aria-hidden />
                 </span>
-                <h3 className="ds-h4 mt-5 text-dark-green transition-colors duration-200 group-hover:text-[#b87317]">
-                  Phone
-                </h3>
-                <span className="ds-body mt-2 inline-flex font-semibold text-amber underline-offset-4 transition-colors duration-200 group-hover:text-[#b87317] group-hover:underline">
+                <h3 className="ds-h4 mt-5 text-dark-green">Phone</h3>
+                <span className="ds-body mt-2 inline-flex font-semibold text-dark-green underline-offset-4 group-hover:underline">
                   {contactInfo.phone}
                 </span>
-                <p className="ds-small mt-3 text-black/90 transition-colors duration-200 group-hover:text-foreground">
+                <p className="ds-small mt-3 text-black/90">
                   Best for quick questions or anything time-sensitive.
                 </p>
+
               </a>
 
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="group flex h-full flex-col rounded-2xl border border-border border-t-4 border-t-transparent bg-[#CFEED2] p-6 shadow-sm transition-[transform,border-color,box-shadow,background-color] duration-200 hover:-translate-y-1 hover:border-amber/70 hover:border-t-amber hover:shadow-[0_16px_36px_rgb(0_0_0_/_22%)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7"
+                className={CONTACT_METHOD_CARD}
               >
-                <span className="flex size-12 items-center justify-center rounded-xl bg-amber/10 text-[#c47a15] transition-colors duration-200 group-hover:bg-amber group-hover:text-white motion-reduce:transition-none">
+                <span className={CONTACT_METHOD_ICON}>
                   <Mail className="size-5" aria-hidden />
                 </span>
-                <h3 className="ds-h4 mt-5 text-dark-green transition-colors duration-200 group-hover:text-[#b87317]">
-                  Email
-                </h3>
-                <span className="ds-body mt-2 inline-flex break-all font-semibold text-amber underline-offset-4 transition-colors duration-200 group-hover:text-[#b87317] group-hover:underline">
+                <h3 className="ds-h4 mt-5 text-dark-green">Email</h3>
+                <span className="ds-body mt-2 inline-flex break-all font-semibold text-dark-green underline-offset-4 group-hover:underline">
                   {contactInfo.email}
                 </span>
-                <p className="ds-small mt-3 text-black/90 transition-colors duration-200 group-hover:text-foreground">
+                <p className="ds-small mt-3 text-black/90">
                   Great for anything non-urgent. We reply within one business day.
                 </p>
               </a>
@@ -150,9 +187,14 @@ export default function ContactPage() {
                 <span className="text-dark-green">Visit us </span>
                 <span className="text-amber">in Vallejo</span>
               </h2>
-              <p className="ds-body ds-mt-after-heading text-dark-green">
+              <a
+                href={directionsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="ds-body ds-mt-after-heading inline-block font-semibold text-dark-green underline-offset-4 hover:underline"
+              >
                 {contactInfo.address}
-              </p>
+              </a>
               <div className="mt-6 flex items-start gap-3 rounded-xl border border-border/70 bg-white p-4">
                 <Clock3 className="mt-0.5 size-5 shrink-0 text-amber" aria-hidden />
                 <div>

@@ -16,6 +16,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { DoctorPhotoPlaceholder } from "@/components/doctor-photo-placeholder";
 import { SiteFooter } from "@/components/site-footer";
 import { doctorProfilePath } from "@/lib/doctors";
+import { INTERACTIVE_CARD_HOVER } from "@/lib/interactive-card-hover";
 import { contactInfo } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -150,7 +151,7 @@ function EditorialProfileCard({
                     {name}
                 </h4>
 
-                <p className="ds-small mt-0 min-h-[2.5rem] font-semibold text-amber">
+                <p className="ds-small mt-0 min-h-[2.5rem] font-semibold text-dark-green">
                     {role}
                 </p>
 
@@ -251,19 +252,19 @@ export default function EditorialTeamPage() {
                     </div>
                 </section>
 
-                <section className="ds-section bg-dark-green" id="quality">
+                <section className="ds-section bg-warm-white" id="quality">
                     <div className="ds-container">
                         <div className="mx-auto max-w-3xl text-center">
                             <h2 className="ds-h2 mt-2 text-balance">
-                                <span className="text-white">Our Commitment to </span>
+                                <span className="text-dark-green">Our Commitment to </span>
                                 <span className="text-amber">Quality Content</span>
                             </h2>
                         </div>
-                        <div className="mt-8 grid gap-5 md:grid-cols-3">
+                        <div className="mt-8 grid gap-5 md:grid-cols-3 md:items-stretch">
                             {QUALITY_COMMITMENTS.map(({ title, description, Icon }) => (
                                 <article
                                     key={title}
-                                    className="rounded-2xl border border-border bg-[#CFEED2] p-6 shadow-sm md:p-7"
+                                    className={`flex h-full flex-col rounded-2xl border border-border bg-white p-6 md:p-7 ${INTERACTIVE_CARD_HOVER}`}
                                 >
                                     <span className="flex size-14 items-center mx-auto justify-center rounded-xl bg-amber text-white">
                                         <Icon className="size-5" aria-hidden />
@@ -299,13 +300,13 @@ export default function EditorialTeamPage() {
                             {CONTENT_STEPS.map(({ title, description, Icon }, index) => (
                                 <li
                                     key={title}
-                                    className="relative grid grid-cols-[60px_minmax(0,1fr)] items-stretch gap-4 sm:gap-5 md:gap-6"
+                                    className="group relative grid grid-cols-[60px_minmax(0,1fr)] items-stretch gap-4 sm:gap-5 md:gap-6"
                                 >
                                     {/* Icon and Connecting Line */}
                                     <div className="relative flex justify-center">
-                                        <div className="relative z-10 flex size-[60px] shrink-0 items-center justify-center rounded-2xl border border-[#dfe9e1] bg-[#CFEED2] shadow-sm">
+                                        <div className="relative z-10 flex size-[60px] shrink-0 items-center justify-center rounded-2xl border border-border bg-white text-primary shadow-[0_2px_8px_rgb(11_93_42_/_4%)] transition-[border-color,background-color,box-shadow,transform] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/30 group-hover:bg-light-green group-hover:shadow-[0_6px_20px_rgb(11_93_42_/_10%)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
                                             <Icon
-                                                className="size-9 text-dark-green hover:text-amber transition-all duration-200"
+                                                className="size-9 transition-colors duration-200 group-hover:text-amber"
                                                 strokeWidth={1.8}
                                                 aria-hidden
                                             />
@@ -314,16 +315,16 @@ export default function EditorialTeamPage() {
                                         {index !== CONTENT_STEPS.length - 1 && (
                                             <span
                                                 aria-hidden="true"
-                                                className="absolute left-1/2 top-[72px] bottom-[-24px] w-px -translate-x-1/2 bg-[#008b45]/30"
+                                                className="absolute left-1/2 top-[72px] bottom-[-24px] w-px -translate-x-1/2 bg-primary/30"
                                             />
                                         )}
                                     </div>
 
                                     {/* Step Content Card */}
-                                    <article className="flex min-h-[150px] flex-col justify-center rounded-[20px] border border-[#e0e9e2] bg-[#CFEED2] px-5 py-6 sm:px-7 sm:py-7 md:px-8 hover:shadow-[0_8px_24px_rgb(11_93_42_/_8%)] transition-shadow duration-200">
+                                    <article className="flex min-h-[150px] flex-col justify-center rounded-2xl border border-border bg-white px-5 py-6 transition-[border-color,box-shadow,transform] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-[0_10px_28px_rgb(11_93_42_/_10%)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:px-7 sm:py-7 md:px-8">
                                         {/* Number and Heading */}
                                         <div className="flex items-center gap-3 sm:gap-4">
-                                            <span className="ds-md flex size-10 shrink-0 items-center justify-center rounded-full bg-[#efa332] font-semibold text-white">
+                                            <span className="ds-md flex size-10 shrink-0 items-center justify-center rounded-full bg-amber font-semibold text-white transition-colors duration-200 group-hover:bg-dark-green">
                                                 {index + 1}
                                             </span>
 

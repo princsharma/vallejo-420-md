@@ -7,13 +7,15 @@ export function HomeEvaluation() {
   return (
     <section id="evaluation" className="ds-section bg-dark-green">
       <div className="ds-container grid items-center gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
-        <div className="min-w-0 text-white">
-          <h2 className="ds-h2">
+        <div className="min-w-0 text-center text-white lg:text-left">
+          <h2 className="ds-h2 text-balance">
             <span className="text-white">Start Your Vallejo </span>
             <span className="text-amber">Medical Marijuana Evaluation Today</span>
           </h2>
-          <p className="ds-lead ds-mt-after-heading text-pretty text-white/85">{homeEvaluation.body}</p>
-          <div className="mt-8 flex items-start gap-3">
+          <p className="ds-lead ds-mt-after-heading mx-auto max-w-xl text-pretty text-white/85 lg:mx-0 lg:max-w-none">
+            {homeEvaluation.body}
+          </p>
+          <div className="mt-8 flex items-start justify-center gap-3 text-left lg:justify-start">
             <span
               className="flex size-8 shrink-0 items-center justify-center rounded-full  text-white"
               aria-hidden

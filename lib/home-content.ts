@@ -65,6 +65,8 @@ export const homeBenefits = {
     {
       title: "Convenient Online Evaluations",
       body: "Meet with a California-licensed physician through a video consultation without traveling to a clinic. Discuss your medical history and explore whether medical cannabis is appropriate for your needs.",
+      bodyExtra:
+        "Join securely from any device at a time that suits you, and get your questions answered before and after your visit.",
     },
     {
       title: "Personalized Medical Assessment",

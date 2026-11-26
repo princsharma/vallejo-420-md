@@ -15,6 +15,8 @@ import {
   doctorProfilePath,
   doctors,
 } from "@/lib/doctors";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
+import { siteConfig } from "@/lib/site-data";
 import { getExtendedDoctorProfile } from "@/lib/doctor-profiles/rick-rieser";
 import { johnathanMillerProfile } from "@/lib/doctor-profiles/johnathan-miller";
 import { DOCTORS_PAGE_HERO_BG } from "@/lib/doctors-hub-content";
@@ -33,11 +35,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!doctor) {
     return { title: "Doctor Not Found" };
   }
+  const doctorOgImageUrl = new URL(
+    doctor.photoSrc,
+    getMetadataBaseUrl(),
+  ).toString();
+
   return {
     title: doctor.metaTitle,
     description: doctor.metaDescription,
     alternates: {
       canonical: doctorProfilePath(slug),
+    },
+    openGraph: {
+      title: doctor.metaTitle,
+      description: doctor.metaDescription,
+      url: new URL(doctorProfilePath(slug), getMetadataBaseUrl()).toString(),
+      siteName: siteConfig.name,
+      type: "website",
+      locale: "en_US",
+      images: [
+        {
+          url: doctorOgImageUrl,
+          secureUrl: doctorOgImageUrl,
+          width: 1200,
+          height: 1200,
+          alt: `${doctor.name} | ${siteConfig.name}`,
+          type: "image/webp",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doctor.metaTitle,
+      description: doctor.metaDescription,
+      images: [doctorOgImageUrl],
     },
   };
 }

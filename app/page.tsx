@@ -12,7 +12,14 @@ import { HomeReviews } from "@/components/home/reviews";
 import { HomeServiceAreas } from "@/components/home/service-areas";
 import { SiteFooter } from "@/components/site-footer";
 import { homeFaqs, homeMeta, homeProcess } from "@/lib/home-content";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
 import { siteConfig } from "@/lib/site-data";
+
+const HOME_OG_IMAGE_PATH = "/media/home-opengraph.webp";
+const HOME_OG_ALT =
+  "Patient at home on a video call with a California-licensed physician";
+
+const homeOgImageUrl = new URL(HOME_OG_IMAGE_PATH, getMetadataBaseUrl()).toString();
 
 export const metadata: Metadata = {
   title: {
@@ -31,10 +38,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/opengraph-image",
+        url: homeOgImageUrl,
+        secureUrl: homeOgImageUrl,
         width: 1200,
         height: 630,
-        alt: homeMeta.title,
+        alt: HOME_OG_ALT,
+        type: "image/webp",
       },
     ],
   },
@@ -42,6 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: homeMeta.title,
     description: homeMeta.description,
+    images: [homeOgImageUrl],
   },
 };
 

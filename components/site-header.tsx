@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ChevronRight, Mail, Menu, Phone, UserRound, X } from "lucide-react";
+import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
 
-import { BookingButton } from "@/components/booking-dialog";
+import { EvaluationFormDialog } from "@/components/booking-dialog";
+import { Button } from "@/components/ui/button";
 import { contactInfo } from "@/lib/site-data";
 
 const NAV_LINKS = [
@@ -14,8 +15,12 @@ const NAV_LINKS = [
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/faq/" },
   { label: "Our Doctors", href: "/our-doctors/" },
-  {label: "Contact", href: "/contact/" },
+  { label: "Contact", href: "/contact/" },
 ];
+
+/** Same surface as home hero (`components/home/hero.tsx`). */
+const MOBILE_OPEN_MENU_BG =
+  "bg-gradient-to-br from-[#f8faf7] via-[#fcfdfb] to-[#e8f5ea]";
 
 const MOBILE_MEDIA = "(max-width: 767px)";
 
@@ -25,6 +30,12 @@ function isMobileViewport() {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [evaluationOpen, setEvaluationOpen] = useState(false);
+
+  const openEvaluationForm = () => {
+    setOpen(false);
+    setEvaluationOpen(true);
+  };
 
   useEffect(() => {
     const desktopMq = window.matchMedia("(min-width: 768px)");
@@ -67,8 +78,10 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 border-b border-border bg-white/95 ${
-        open ? "z-[110]" : "z-20 backdrop-blur"
+      className={`sticky top-0 border-b border-border bg-white/95 backdrop-blur ${
+        open
+          ? "z-[110] max-md:fixed max-md:inset-x-0 max-md:top-0"
+          : "z-20"
       }`}
     >
       <div className="ds-container">
@@ -81,10 +94,14 @@ export function SiteHeader() {
             <Image
               src="/media/vallejo-420-md-logo.webp"
               alt="vallejo 420 md logo"
-              width={120}
-              height={45}
+              width={126}
+              height={57}
               priority
-              className="h-9 w-[96px] object-contain md:h-8 md:w-[88px] lg:h-10 lg:w-[112px]"
+              className={
+                open
+                  ? "h-9 w-[104px] object-contain"
+                  : "h-[57px] w-[126px] object-contain"
+              }
             />
           </Link>
 
@@ -100,102 +117,93 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <BookingButton
-            className="hidden h-10 shrink-0 rounded-lg px-3 text-sm font-semibold shadow-none md:inline-flex lg:h-11 lg:px-5 lg:text-base"
+          <Button
+            type="button"
             size="lg"
+            onClick={openEvaluationForm}
+            className="hidden h-10 shrink-0 rounded-lg px-3 text-sm font-semibold shadow-none md:inline-flex lg:h-11 lg:px-5 lg:text-base"
           >
             Book evaluation
-          </BookingButton>
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex size-11 items-center justify-center rounded-lg border border-border text-dark-green md:hidden"
-          >
-            {open ? <X className="size-6" /> : <Menu className="size-6" />}
-          </button>
-        </div>
-      </div>
+          </Button>
 
-      {open ? (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 z-[100] flex flex-col overflow-y-auto overscroll-contain border-t-4 border-primary bg-white pb-[max(1.75rem,env(safe-area-inset-bottom))] text-foreground shadow-[0_18px_32px_rgba(11,93,42,0.18)] md:hidden"
-        >
-          <div className="mx-auto flex w-full max-w-lg flex-1 flex-col px-4">
-            <div className="flex min-h-[60px] items-center gap-2 border-b border-border">
-                <div className="flex min-w-0 flex-1 items-center">
-                <Link
-                  href="/"
-                  aria-label="Vallejo 420 MD home"
-                  onClick={() => setOpen(false)}
-                    className="flex h-10 w-[104px] shrink-0 items-center justify-center rounded-md  px-1"
-                >
-                  <Image
-                    src="/media/vallejo-420-md-logo.webp"
-                    alt="Vallejo 420 MD"
-                      width={96}
-                      height={38}
-                      className="h-[38px] w-24 object-contain"
-                  />
-                </Link>
-                </div>
+          <div className="flex shrink-0 items-center gap-1.5 md:hidden">
+            {open ? (
+              <>
                 <a
                   href={`mailto:${contactInfo.email}`}
                   aria-label="Email Vallejo 420 MD"
                   className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-dark-green hover:bg-light-green"
                 >
-                  <Mail className="size-4" aria-hidden />
+                  <Mail className="size-[18px]" strokeWidth={2} aria-hidden />
                 </a>
                 <a
                   href={contactInfo.phoneHref}
                   aria-label={`Call ${contactInfo.phone}`}
                   className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-dark-green hover:bg-light-green"
                 >
-                  <Phone className="size-4" aria-hidden />
+                  <Phone className="size-[18px]" strokeWidth={2} aria-hidden />
                 </a>
-                <Link
-                  href="/contact/"
-                  aria-label="Get your medical marijuana card"
-                  onClick={() => setOpen(false)}
-                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-md  bg-white text-dark-green hover:bg-light-green"
-                >
-                  <UserRound className="size-4" aria-hidden />
-                </Link>
-                <BookingButton
-                  size="sm"
-                  className="h-9 shrink-0 rounded-md bg-primary px-2.5 text-[11px] font-bold uppercase text-white hover:bg-dark-green"
-                >
-                  Start here
-                </BookingButton>
-              <button
-                type="button"
-                aria-label="Close menu"
-                onClick={() => setOpen(false)}
-                  className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-foreground hover:bg-muted"
-              >
-                  <X className="size-4" />
-              </button>
-            </div>
-
-            <nav className="flex w-full flex-col">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                    className="flex min-h-12 w-[4/5] items-center justify-between border-b border-border py-3  mt-4 text-left text-sm font-medium text-foreground transition-colors hover:text-primary"
-                >
-                  {link.label}
-                    <ChevronRight className="size-4 text-dark-green" aria-hidden />
-                </Link>
-              ))}
-            </nav>
+              </>
+            ) : null}
+            <Button
+              type="button"
+              size="sm"
+              onClick={openEvaluationForm}
+              className="h-9 shrink-0 rounded-md bg-primary px-2.5 text-[10px] font-bold uppercase tracking-wide text-white hover:bg-dark-green"
+            >
+              Start here
+            </Button>
+            <button
+              type="button"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex size-11 items-center justify-center rounded-lg border border-border text-dark-green"
+            >
+              {open ? <X className="size-6" /> : <Menu className="size-6" />}
+            </button>
           </div>
         </div>
+      </div>
+
+      {open ? (
+        <>
+          <button
+            type="button"
+            aria-label="Close menu"
+            className="fixed inset-0 z-[90] bg-transparent md:hidden"
+            onClick={() => setOpen(false)}
+          />
+          <div
+            id="mobile-menu"
+            className={`absolute inset-x-0 top-full z-[100] flex w-full flex-col rounded-b-2xl border border-border/60 text-foreground shadow-[0_16px_36px_rgba(11,93,42,0.14)] md:hidden ${MOBILE_OPEN_MENU_BG}`}
+          >
+          <nav
+            aria-label="Mobile primary"
+            className={`mx-auto w-full max-w-lg px-4 pb-6 pt-1 ${MOBILE_OPEN_MENU_BG}`}
+          >
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="flex min-h-[52px] w-full items-center justify-between border-b border-border/90 py-2 text-left text-[15px] font-medium text-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+                <ChevronDown
+                  className="size-[18px] shrink-0 text-dark-green/80"
+                  strokeWidth={2}
+                  aria-hidden
+                />
+              </Link>
+            ))}
+          </nav>
+          </div>
+        </>
       ) : null}
+
+      <EvaluationFormDialog open={evaluationOpen} onOpenChange={setEvaluationOpen} />
     </header>
   );
 }

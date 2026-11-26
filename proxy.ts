@@ -46,6 +46,7 @@ export function proxy(request: NextRequest) {
 
   if (
     pathname !== "/" &&
+    pathname !== "/opengraph-image" &&
     !pathname.endsWith("/") &&
     !pathname.match(/((?!\.well-known(?:\/.*)?)(?:[^/]+\/)*[^/]+\.\w+)/)
   ) {

@@ -5,6 +5,7 @@ import { BRAND_DARK_HEX } from "@/lib/brand-colors";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
 import { DeferredAnalytics } from "@/components/analytics/deferred-analytics";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
 import { contactInfo, siteConfig } from "@/lib/site-data";
 
 const dmSans = DM_Sans({
@@ -29,7 +30,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(getMetadataBaseUrl()),
   title: {
     default: siteConfig.title,
     template: ``,

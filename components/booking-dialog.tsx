@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { VariantProps } from "class-variance-authority";
 import { CalendarHeart } from "lucide-react";
 
@@ -11,7 +11,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 
@@ -26,17 +25,18 @@ const LeadCaptureForm = dynamic(
   }
 );
 
-interface BookingButtonProps extends VariantProps<typeof buttonVariants> {
-  className?: string;
-  children: ReactNode;
-}
+type EvaluationFormDialogProps = {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+};
 
-export function BookingButton({ variant, size, className, children }: BookingButtonProps) {
+/** Controlled evaluation / lead-capture popup (portal, above mobile nav). */
+export function EvaluationFormDialog({
+  open,
+  onOpenChange,
+}: EvaluationFormDialogProps) {
   return (
-    <Dialog>
-      <DialogTrigger render={<Button variant={variant} size={size} className={className} />}>
-        {children}
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="gap-0 overflow-hidden rounded-3xl border-none p-0 shadow-2xl sm:max-w-md">
         <div className="relative overflow-hidden bg-accent px-6 pt-8 pb-6 sm:px-8">
           <div
@@ -52,18 +52,46 @@ export function BookingButton({ variant, size, className, children }: BookingBut
               <CalendarHeart className="size-5" />
             </div>
             <DialogTitle className="text-xl font-bold text-foreground">
-              Book Your Consultation
+              Book Your Evaluation
             </DialogTitle>
             <DialogDescription className="text-sm leading-relaxed">
-              Fill out the form below and we&apos;ll get you scheduled right
-              away.
+              Takes about 2 minutes. Fill out the form below to get started.
             </DialogDescription>
           </DialogHeader>
         </div>
         <div className="px-6 pt-6 pb-8 sm:px-8">
-          <LeadCaptureForm />
+          <LeadCaptureForm submitLabel="Start My Evaluation" />
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+interface BookingButtonProps extends VariantProps<typeof buttonVariants> {
+  className?: string;
+  children: ReactNode;
+}
+
+export function BookingButton({
+  variant,
+  size,
+  className,
+  children,
+}: BookingButtonProps) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button
+        type="button"
+        variant={variant}
+        size={size}
+        className={className}
+        onClick={() => setOpen(true)}
+      >
+        {children}
+      </Button>
+      <EvaluationFormDialog open={open} onOpenChange={setOpen} />
+    </>
   );
 }

@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LegalDocument } from "@/components/legal-document";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Accessibility Statement | Vallejo 420 MD",
   description:
     "Discover how Vallejo 420 MD works to improve website accessibility and provide a user-friendly telehealth experience for everyone.",
-  alternates: {
-    canonical: "/policy/accessibility-statement/",
-  },
-};
+  canonical: "/policy/accessibility-statement/",
+});
 
 export default function AccessibilityStatementPage() {
   return (

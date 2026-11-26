@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import {
+  ArrowRight,
   BadgeCheck,
   Ban,
   CalendarCheck,
@@ -20,13 +22,51 @@ import { BookingButton } from "@/components/booking-dialog";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { DoctorPhotoPlaceholder } from "@/components/doctor-photo-placeholder";
 import { SiteFooter } from "@/components/site-footer";
+import { Button } from "@/components/ui/button";
+import { doctorProfilePath, doctors } from "@/lib/doctors";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
+import { siteConfig } from "@/lib/site-data";
+
+const ABOUT_TITLE = "About Us | Vallejo 420 MD ";
+const ABOUT_DESCRIPTION =
+  "Based at 630 Tennessee St., Vallejo 420 MD offers video evaluations with California-licensed physicians. Clear pricing, refund terms, and respectful care.";
+const ABOUT_OG_IMAGE_PATH = "/media/about-us-opengraph.jpg";
+const ABOUT_OG_WIDTH = 1200;
+const ABOUT_OG_HEIGHT = 630;
+const ABOUT_OG_ALT =
+  "California physician and patient on a video telehealth consultation";
+
+const aboutOgImageUrl = new URL(ABOUT_OG_IMAGE_PATH, getMetadataBaseUrl()).toString();
 
 export const metadata: Metadata = {
-  title: "About Us | Vallejo 420 MD ",
-  description:
-    "Based at 630 Tennessee St., Vallejo 420 MD offers video evaluations with California-licensed physicians. Clear pricing, refund terms, and respectful care.",
+  title: ABOUT_TITLE,
+  description: ABOUT_DESCRIPTION,
   alternates: {
     canonical: "/about-us/",
+  },
+  openGraph: {
+    title: ABOUT_TITLE,
+    description: ABOUT_DESCRIPTION,
+    url: new URL("/about-us/", getMetadataBaseUrl()).toString(),
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: aboutOgImageUrl,
+        secureUrl: aboutOgImageUrl,
+        width: ABOUT_OG_WIDTH,
+        height: ABOUT_OG_HEIGHT,
+        alt: ABOUT_OG_ALT,
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: ABOUT_TITLE,
+    description: ABOUT_DESCRIPTION,
+    images: [aboutOgImageUrl],
   },
 };
 
@@ -81,21 +121,6 @@ const STEPS = [
     description:
       "If the physician determines that medical cannabis is appropriate, you will receive the relevant medical documentation. A physician's recommendation is not the same as a state-issued Medical Marijuana Identification Card (MMIC).",
     icon: FileCheck,
-  },
-];
-
-const DOCTORS = [
-  {
-    name: "Dr. Rick Rieser, MD",
-    role: "General Medicine · California license to be verified",
-    photoSrc: "/media/rick-rieser.webp",
-    bio: "Dr. Rieser's specialty, clinical experience, and role in medical cannabis evaluations should be confirmed against reliable professional records before publication.",
-  },
-  {
-    name: "Dr. Johnathan Miller, MD",
-    role: "General Medicine · California license to be verified",
-    photoSrc: "/media/johnathan-miller.webp",
-    bio: "Dr. Miller's professional credentials, years of experience, and role in medical cannabis evaluations should be confirmed before publication.",
   },
 ];
 
@@ -165,7 +190,8 @@ const COMMITMENTS = [
 
 
 
-const LICENSE_LOOKUP = "https://www.mbc.ca.gov/License-Verification/";
+const ABOUT_CARD_HOVER =
+  "transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_8px_24px_rgb(11_93_42_/_8%)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 export default function AboutUsPage() {
   return (
@@ -217,13 +243,13 @@ export default function AboutUsPage() {
 
         <section className="ds-section bg-white">
           <div className="ds-container">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
-              <div>
+            <div className="grid gap-8 md:grid-cols-2 md:items-stretch md:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+              <div className="min-w-0 text-center md:text-left">
                 <h2 className="ds-h2 text-balance">
                   <span className="text-dark-green">Why We started </span>
                   <span className="text-amber">Vallejo 420 MD</span>
                 </h2>
-                <div className="ds-lead mt-4 space-y-4 text-pretty text-black/90">
+                <div className="ds-lead mx-auto mt-4 max-w-xl space-y-4 text-pretty text-black/90 md:mx-0 md:max-w-none">
                   <p>
                     Many people in Vallejo may benefit from medical cannabis but
                     never take the first step. Some aren't sure which
@@ -239,9 +265,11 @@ export default function AboutUsPage() {
                   </p>
                 </div>
               </div>
-              <aside className="rounded-2xl bg-section-green p-6 md:p-8">
+              <aside
+                className={`flex w-full flex-col justify-start self-start rounded-2xl border border-border/70 bg-section-green px-6 pt-6 pb-4 text-center sm:px-8 sm:pt-8 sm:pb-5 md:self-end md:px-9 md:pt-9 md:pb-6 md:text-left lg:px-10 lg:pt-10 lg:pb-7 ${ABOUT_CARD_HOVER}`}
+              >
                 <h2 className="ds-h3">Our Mission</h2>
-                <p className="ds-body mt-3 text-pretty text-black/90">
+                <p className="ds-body mx-auto mt-4 max-w-xl text-pretty text-black/90 md:mx-0 md:mt-5 md:max-w-none">
                   To provide patients with a straightforward, respectful, and
                   transparent medical marijuana evaluation process, with their
                   well-being at the center of our approach.
@@ -261,11 +289,11 @@ export default function AboutUsPage() {
               {DIFFERENTIATORS.map((item,index) => (
                <li
                   key={item.title}
-                  className={`rounded-2xl border border-border bg-white p-6 transition-all hover:border-primary/40 hover:shadow-sm md:p-8 lg:col-span-2 ${
+                  className={`rounded-2xl border border-border bg-white p-6 text-center md:p-8 md:text-left lg:col-span-2 ${ABOUT_CARD_HOVER} ${
                     index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : ""
                   }`}
                 >
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-amber text-white">
+                  <span className="mx-auto flex size-11 items-center justify-center rounded-xl bg-amber text-white md:mx-0">
                     <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
                   </span>
                   <h3 className="ds-h4 mt-5">{item.title}</h3>
@@ -278,20 +306,20 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        <section className="ds-section bg-white">
+        <section className="ds-section bg-warm-white">
           <div className="ds-container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <div className="min-w-0">
+            <div className="min-w-0 text-center md:text-left">
               <h2 className="ds-h2 text-balance">
                 <span className="text-dark-green">How It </span>
                 <span className="text-amber">Works</span>
               </h2>
-              <p className="ds-lead ds-mt-after-heading text-pretty text-black/90">
+              <p className="ds-lead ds-mt-after-heading mx-auto max-w-xl text-pretty text-left md:text-left text-black/90 lg:mx-0 lg:max-w-none">
                 Sign up, meet a California-licensed physician by video, and
                 receive medical documentation only if the physician decides a
                 recommendation is appropriate.
               </p>
-              <div className="mt-8 rounded-2xl border border-border bg-light-green/70 p-5 md:p-6">
-                <div className="flex items-center gap-3">
+              <div className="mt-8 rounded-2xl border border-border bg-light-green/70 p-5 text-center transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_8px_24px_rgb(11_93_42_/_8%)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-6 lg:text-left">
+                <div className="flex items-center justify-center gap-3 lg:justify-start">
                   <span
                     className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber text-white"
                     aria-hidden
@@ -316,20 +344,24 @@ export default function AboutUsPage() {
                 return (
                   <li
                     key={step.title}
-                    className="grid grid-cols-[3rem_minmax(0,1fr)] gap-x-4"
+                    className="group grid grid-cols-[3rem_minmax(0,1fr)] gap-x-4"
                   >
                     <div className="flex flex-col items-center self-stretch">
-                      <span className="relative z-10 mt-5 flex size-12 shrink-0 items-center justify-center rounded-xl border border-border bg-white text-primary shadow-[0_2px_8px_rgb(11_93_42_/_4%)] md:mt-6">
-                        <step.icon className="size-6" strokeWidth={1.75} aria-hidden />
+                      <span className="relative z-10 mt-5 flex size-12 shrink-0 items-center justify-center rounded-xl border border-border bg-white text-primary shadow-[0_2px_8px_rgb(11_93_42_/_4%)] transition-[border-color,background-color,box-shadow,transform] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/30 group-hover:bg-light-green group-hover:shadow-[0_6px_20px_rgb(11_93_42_/_10%)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 md:mt-6">
+                        <step.icon
+                          className="size-6 transition-colors duration-200 group-hover:text-amber"
+                          strokeWidth={1.75}
+                          aria-hidden
+                        />
                       </span>
                       {!isLast ? (
                         <span aria-hidden className="mt-3 w-px flex-1 bg-border" />
                       ) : null}
                     </div>
-                    <article className="min-w-0 rounded-2xl border border-border bg-warm-white p-5 md:p-6">
-                      <div className="flex items-center gap-3">
+                    <article className="min-w-0 rounded-2xl border border-border bg-white p-5 transition-[border-color,box-shadow,transform] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-[0_10px_28px_rgb(11_93_42_/_10%)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 max-md:text-center md:p-6">
+                      <div className="flex items-center justify-center gap-3 max-md:flex-wrap md:justify-start">
                         <span
-                          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber ds-small font-semibold text-white"
+                          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber ds-small font-semibold text-white transition-colors duration-200 group-hover:bg-dark-green"
                           aria-hidden
                         >
                           {index + 1}
@@ -347,7 +379,7 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        <section className="ds-section bg-section-green">
+        <section className="ds-section bg-white">
           <div className="ds-container">
             <div className="mx-auto max-w-3xl text-center">
               <p className="ds-eyebrow">Meet the physicians</p>
@@ -362,34 +394,41 @@ export default function AboutUsPage() {
               </p>
             </div>
             <ul className="mt-10 grid list-none gap-6 md:grid-cols-2">
-              {DOCTORS.map((doctor) => (
-                <li
-                  key={doctor.name}
-                  className="flex flex-col rounded-2xl border border-border bg-white p-5 shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7"
-                >
-                  <DoctorPhotoPlaceholder
-                    label={doctor.name}
-                    photoSrc={doctor.photoSrc}
-                    className="aspect-[16/9]"
-                  />
-                  <h3 className="ds-h4 mt-5">{doctor.name}</h3>
-                  <p className="ds-small mt-2 font-semibold text-primary">
-                    {doctor.role}
-                  </p>
-                  <p className="ds-body mt-3 flex-1 text-pretty text-black/90">
-                    {doctor.bio}
-                  </p>
-                  <p className="ds-small mt-4 text-black/90">
-                    California Medical Board License: To be verified
-                  </p>
-                  <a
-                    href={LICENSE_LOOKUP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ds-small mt-2 font-semibold text-primary underline-offset-2 hover:underline"
-                  >
-                    Verify a Physician&apos;s License
-                  </a>
+              {doctors.map((doctor) => (
+                <li key={doctor.slug} className="min-h-0">
+                  <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-section-green shadow-[0_4px_20px_rgb(11_93_42_/_6%)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgb(11_93_42_/_10%)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                    <DoctorPhotoPlaceholder
+                      label={doctor.name}
+                      photoSrc={doctor.photoSrc}
+                      className="aspect-[16/10] shrink-0 rounded-none"
+                    />
+                    <div className="flex min-h-0 flex-1 flex-col p-6 text-center md:p-8 md:text-left">
+                      <h3 className="ds-h4 text-balance">{doctor.name}</h3>
+                      <p className="ds-small mt-2 font-semibold text-dark-green">
+                        {doctor.licenseLabel} · {doctor.credentials}
+                      </p>
+                      <p className="ds-small mt-1 text-black/90">
+                        Experience: {doctor.experience}
+                      </p>
+                      <p className="ds-body mt-3 min-h-20 flex-1 text-pretty text-black/90">
+                        {doctor.hubBio}
+                      </p>
+                      <div className="mt-6 flex justify-center border-t border-border/60 pt-6">
+                        <Button
+                          className="h-12 w-[70%] rounded-lg font-semibold"
+                          render={<Link href={doctorProfilePath(doctor.slug)} />}
+                          nativeButton={false}
+                        >
+                          View profile
+                          <ArrowRight
+                            className="size-4"
+                            strokeWidth={2}
+                            aria-hidden
+                          />
+                        </Button>
+                      </div>
+                    </div>
+                  </article>
                 </li>
               ))}
             </ul>
@@ -400,9 +439,9 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        <section className="ds-section bg-white">
+        <section className="ds-section bg-warm-white">
           <div className="ds-container">
-            <h2 className="ds-h2 text-balance">
+            <h2 className="ds-h2 text-balance text-center md:text-center">
               <span className="text-dark-green">What Happens During  </span>
               <span className="text-amber"> Your  Evaluation</span>
             </h2>
@@ -410,9 +449,9 @@ export default function AboutUsPage() {
               {EVALUATION.map((item) => (
                 <li
                   key={item.title}
-                  className="rounded-2xl border border-border bg-white p-6 md:p-8"
+                  className={`rounded-2xl border border-border bg-white p-6 text-center md:p-8 md:text-left ${ABOUT_CARD_HOVER}`}
                 >
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-amber text-white">
+                  <span className="mx-auto flex size-11 items-center justify-center rounded-xl bg-amber text-white md:mx-0">
                     <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
                   </span>
                   <h3 className="ds-h4 mt-5">{item.title}</h3>
@@ -427,25 +466,29 @@ export default function AboutUsPage() {
 
         <section className="ds-section bg-section-green">
           <div className="ds-container">
-            <h2 className="ds-h2 text-balance">
+            <h2 className="ds-h2 text-balance text-center md:text-center">
               <span className="text-dark-green">What We Do and </span>
               <span className="text-amber"> What We Don&apos;t</span>
             </h2>
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
-              <div className="rounded-2xl bg-section-green p-6 md:p-8">
+            <div className="mt-8 grid gap-5 md:gap-6 lg:grid-cols-2 lg:items-stretch">
+              <div
+                className={`flex h-full flex-col rounded-2xl border border-border bg-warm-white p-6 text-center md:p-8 md:text-left ${ABOUT_CARD_HOVER}`}
+              >
                 <h3 className="ds-h3">Included</h3>
-                <ul className="mt-5 space-y-4">
+                <ul className="mt-5 flex-1 space-y-4">
                   {INCLUDED.map((item) => (
                     <li key={item} className="flex gap-3">
                       <Check className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
-                      <span className="ds-body text-pretty text-foreground">{item}</span>
+                      <span className="ds-body text-pretty text-black/90">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="rounded-2xl border border-border bg-warm-white p-6 md:p-8">
+              <div
+                className={`flex h-full flex-col rounded-2xl border border-border bg-warm-white p-6 text-center md:p-8 md:text-left ${ABOUT_CARD_HOVER}`}
+              >
                 <h3 className="ds-h3">Not Included</h3>
-                <ul className="mt-5 space-y-4">
+                <ul className="mt-5 flex-1 space-y-4">
                   {NOT_INCLUDED.map((item) => (
                     <li key={item} className="flex gap-3">
                       <Ban className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
@@ -475,16 +518,19 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        <section className="ds-section bg-white">
+        <section className="ds-section bg-warm-white">
           <div className="ds-container">
-            <h2 className="ds-h2 text-balance">
+            <h2 className="ds-h2 text-balance text-center md:text-center">
               <span className="text-dark-green">Our Commitment </span>
               <span className="text-amber">to  You</span>
             </h2>
             <ul className="mt-8 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {COMMITMENTS.map((item) => (
-                <li key={item.title} className="rounded-2xl bg-section-green p-6">
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-amber text-white">
+                <li
+                  key={item.title}
+                  className={`rounded-2xl border border-border bg-white p-6 text-center md:p-7 md:text-left ${ABOUT_CARD_HOVER}`}
+                >
+                  <span className="mx-auto flex size-11 items-center justify-center rounded-xl bg-amber text-white md:mx-0">
                     <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
                   </span>
                   <h3 className="ds-h4 mt-5">{item.title}</h3>
@@ -547,7 +593,7 @@ export default function AboutUsPage() {
           </div>
         </section> */}
 
-        <section className="ds-section bg-primary">
+        <section className="ds-section bg-dark-green">
           <div className="ds-container">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="ds-h2 text-white">Ready to Get Started?</h2>

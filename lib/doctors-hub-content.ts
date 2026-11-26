@@ -17,9 +17,11 @@ import {
   Ribbon,
   Shield,
   Stethoscope,
+  Utensils,
   Video,
+  Waves,
   Wifi,
-   Utensils,
+  Zap,
 } from "lucide-react";
 
 /** Shared hero background for Our Doctors hub and individual doctor profiles. */
@@ -86,10 +88,10 @@ export const DISCUSSED_CONDITIONS: { label: string; icon: LucideIcon }[] = [
   { label: "Chronic Pain", icon: Activity },
   { label: "Anxiety", icon: Brain },
   { label: "Insomnia", icon: Moon },
-  { label: "Migraines", icon: Brain },
+  { label: "Migraines", icon: Zap },
   { label: "PTSD", icon: Heart },
   { label: "Nausea", icon: Stethoscope },
-  { label: "Muscle Spasms", icon: Activity },
+  { label: "Muscle Spasms", icon: Waves },
   { label: "Loss of Appetite", icon: Utensils },
 ];
 

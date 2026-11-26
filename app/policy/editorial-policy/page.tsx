@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo } from "@/lib/site-data";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Editorial Policy | Vallejo 420 MD",
   description:
     "Learn about our editorial standards, content review process, fact-checking practices, and commitment to reliable medical marijuana information.",
-  alternates: {
-    canonical: "/policy/editorial-policy/",
-  },
-};
+  canonical: "/policy/editorial-policy/",
+});
 
 export default function EditorialPolicyPage() {
   return (

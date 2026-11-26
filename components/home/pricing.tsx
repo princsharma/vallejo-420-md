@@ -17,7 +17,7 @@ export function HomePricing() {
           {homePricing.plans.map((plan) => (
             <article
               key={plan.name}
-              className={`relative flex h-full flex-col rounded-2xl border p-6 md:p-8 ${
+              className={`relative flex h-full flex-col rounded-2xl border p-6 md:p-8 transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-lg motion-reduce:transition-none ${
                 plan.featured
                   ? "border-dark-green bg-dark-green text-white"
                   : "border-border bg-white"
@@ -42,7 +42,7 @@ export function HomePricing() {
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 ds-body">
                     <CircleCheck
-                      className={`mt-0.5 size-5 shrink-0 ${plan.featured ? "text-amber" : "text-primary"}`}
+                      className={`mt-0.5 size-5 shrink-0 ${plan.featured ? "text-white md:text-amber" : "text-primary"}`}
                       strokeWidth={1.75}
                       aria-hidden
                     />
@@ -63,9 +63,13 @@ export function HomePricing() {
           ))}
         </div>
 
-        <div className="mx-auto mt-8 flex max-w-3xl items-start justify-center gap-3 md:mt-10">
-          <ShieldCheck className="size-6 shrink-0 text-dark-green" strokeWidth={2} aria-hidden />
-          <p className="ds-small text-center text-pretty text-black/90">
+        <div className="mx-auto mt-8 flex max-w-3xl items-start justify-center gap-1.5 md:mt-10 md:gap-3">
+          <ShieldCheck
+            className="mt-0.5 size-5 shrink-0 text-dark-green md:mt-0 md:size-6"
+            strokeWidth={2}
+            aria-hidden
+          />
+          <p className="ds-small min-w-0 text-left text-pretty text-black/90 md:text-center">
             {homePricing.transparency.prefix}
             <Link
               href="/policy/refund-policy/"

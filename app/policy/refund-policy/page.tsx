@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo } from "@/lib/site-data";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
-  title: "Refund Policy  | Vallejo 420 MD",
+export const metadata = createPolicyMetadata({
+  title: "Refund Policy | Vallejo 420 MD",
   description:
     "Learn about refund eligibility, our 100% money-back guarantee, processing timelines, and refund conditions at Vallejo 420 MD.",
-  alternates: {
-    canonical: "/policy/refund-policy/",
-  },
-};
+  canonical: "/policy/refund-policy/",
+});
 
 
 export default function RefundPolicyPage() {

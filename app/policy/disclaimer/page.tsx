@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
-
 import { LegalDocument } from "@/components/legal-document";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Disclaimer | Vallejo 420 MD",
   description:
     "Review our medical disclaimer to understand the limitations of website information, healthcare guidance, and online medical marijuana evaluations.",
-  alternates: {
-    canonical: "/policy/disclaimer/",
-  },
-};
+  canonical: "/policy/disclaimer/",
+});
 
 export default function DisclaimerPage() {
   return (

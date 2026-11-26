@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-
 import { LegalDocument } from "@/components/legal-document";
 import { contactInfo } from "@/lib/site-data";
+import { createPolicyMetadata } from "@/lib/policy-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPolicyMetadata({
   title: "Shipping Policy | Vallejo 420 MD",
   description:
     "Find details about medical marijuana card processing, shipping timelines, tracking information, and delivery support at Vallejo 420 MD.",
-  alternates: {
-    canonical: "/policy/shipping-policy/",
-  },
-};
+  canonical: "/policy/shipping-policy/",
+});
 
 export default function ShippingPolicyPage() {
   return (
