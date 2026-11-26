@@ -9,17 +9,51 @@ import {
     AccordionItem
 } from "@/components/ui/accordion";
 import { homeFaqs } from "@/lib/home-content";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
+import { siteConfig } from "@/lib/site-data";
 import { SiteFooter } from "@/components/site-footer";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
+const FAQ_TITLE = "Frequently Asked Questions | Vallejo 420 MD";
+const FAQ_DESCRIPTION =
+  "Find answers to common questions about medical marijuana cards in Vallejo, CA, including eligibility, costs, online evaluations, and renewals.";
+const HOME_OG_IMAGE_PATH = "/media/home-opengraph.webp";
+const HOME_OG_ALT =
+  "Patient at home on a video call with a California-licensed physician";
 
-export const metadata:Metadata = {
-    title:"Frequently Asked Questions | Vallejo 420 MD",
-    description:"Find answers to common questions about medical marijuana cards in Vallejo, CA, including eligibility, costs, online evaluations, and renewals.",
-    alternates: {
-        canonical:"/faq/"
-    }
-}
+const faqOgImageUrl = new URL(HOME_OG_IMAGE_PATH, getMetadataBaseUrl()).toString();
+
+export const metadata: Metadata = {
+  title: FAQ_TITLE,
+  description: FAQ_DESCRIPTION,
+  alternates: {
+    canonical: "/faq/",
+  },
+  openGraph: {
+    title: FAQ_TITLE,
+    description: FAQ_DESCRIPTION,
+    url: new URL("/faq/", getMetadataBaseUrl()).toString(),
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: faqOgImageUrl,
+        secureUrl: faqOgImageUrl,
+        width: 1200,
+        height: 630,
+        alt: HOME_OG_ALT,
+        type: "image/webp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: FAQ_TITLE,
+    description: FAQ_DESCRIPTION,
+    images: [faqOgImageUrl],
+  },
+};
 
 export default function FaqPage() {
     return (
