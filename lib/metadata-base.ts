@@ -7,13 +7,14 @@ export function getMetadataBaseUrl(): string {
     return fromEnv.replace(/\/$/, "");
   }
 
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`.replace(/\/$/, "");
-  }
-
   if (process.env.NODE_ENV === "development") {
     const port = process.env.PORT ?? "3001";
     return `http://localhost:${port}`;
+  }
+
+  /** Preview deploys only — production must use the public domain, not *.vercel.app. */
+  if (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`.replace(/\/$/, "");
   }
 
   return siteConfig.url.replace(/\/$/, "");
