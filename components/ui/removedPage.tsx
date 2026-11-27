@@ -32,13 +32,11 @@ export function RemovedPage() {
             </p>
 
             <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
-              <BookingButton className="inline-flex h-14 items-center justify-center rounded-full bg-[#0E3B2E] px-8 text-base font-semibold text-white shadow-lg shadow-[#0E3B2E]/20 transition-colors hover:bg-[#124A3A]">
-                Get your medical card
-              </BookingButton>
+
 
               <Link
                 href="/"
-                className="inline-flex h-14 items-center justify-center rounded-full border-2 border-[#0E3B2E] px-8 text-base font-medium text-[#0E3B2E] transition-colors hover:bg-[#0E3B2E]/5"
+                className="inline-flex h-14 items-center  justify-center rounded-full border-2 border-[#0E3B2E] px-8 text-base font-medium text-[#0E3B2E] transition-colors hover:bg-[#0E3B2E]/5"
               >
                 Go to homepage
               </Link>

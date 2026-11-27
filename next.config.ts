@@ -23,10 +23,8 @@ const nextConfig: NextConfig = {
         .map((origin) => origin.trim())
         .filter(Boolean)
     : getLocalIPv4DevOrigins(),
-  // Canonicalizes to /path/ while allowing exact redirects to run first.
-  // Proxy handles slash normalization; static file URLs remain exempt.
+  // Canonical URLs use a trailing slash; Next.js 308-redirects /path → /path/.
   trailingSlash: true,
-  skipTrailingSlashRedirect: true,
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -86,6 +84,11 @@ const nextConfig: NextConfig = {
         destination: "/",
         statusCode: 301,
       },
+      {
+        source:"/author",
+        destination:"/editorial-team",
+        statusCode: 301,
+      }
     ];
   },
   async rewrites() {
