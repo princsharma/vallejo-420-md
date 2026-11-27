@@ -16,17 +16,61 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { DoctorPhotoPlaceholder } from "@/components/doctor-photo-placeholder";
 import { SiteFooter } from "@/components/site-footer";
 import { doctorProfilePath } from "@/lib/doctors";
+import {
+    DAALON_B_ECHOLS_SLUG,
+    medicalAuthorProfilePath,
+    OCTAVIA_WYCHE_SLUG,
+} from "@/lib/medical-authors";
 import { INTERACTIVE_CARD_HOVER } from "@/lib/interactive-card-hover";
-import { contactInfo } from "@/lib/site-data";
+import { getMetadataBaseUrl } from "@/lib/metadata-base";
+import { contactInfo, siteConfig } from "@/lib/site-data";
+
+const EDITORIAL_HUB_TITLE = "Medical Authors & Reviewers | Vallejo 420 MD";
+const EDITORIAL_HUB_DESCRIPTION =
+    "Meet the medical writers and reviewers behind Vallejo 420 MD’s cannabis guides. See our sources, editorial workflow, and review standards for accuracy. ";
+const EDITORIAL_HUB_OG_IMAGE_PATH =
+    "/media/medical-author-writing-cannabis-notes.webp";
+const EDITORIAL_HUB_OG_WIDTH = 1408;
+const EDITORIAL_HUB_OG_HEIGHT = 768;
+const EDITORIAL_HUB_OG_ALT =
+    "Medical author in professional attire reviewing cannabis education notes on a tablet at a desk";
+
+const editorialHubOgImageUrl = new URL(
+    EDITORIAL_HUB_OG_IMAGE_PATH,
+    getMetadataBaseUrl(),
+).toString();
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Medical Authors & Reviewers | Vallejo 420 MD",
+        absolute: EDITORIAL_HUB_TITLE,
     },
-    description:
-        "Meet the medical writers and reviewers behind Vallejo 420 MD’s cannabis guides. See our sources, editorial workflow, and review standards for accuracy. ",
+    description: EDITORIAL_HUB_DESCRIPTION,
     alternates: {
         canonical: "/editorial-team/",
+    },
+    openGraph: {
+        title: EDITORIAL_HUB_TITLE,
+        description: EDITORIAL_HUB_DESCRIPTION,
+        url: new URL("/editorial-team/", getMetadataBaseUrl()).toString(),
+        siteName: siteConfig.name,
+        type: "website",
+        locale: "en_US",
+        images: [
+            {
+                url: editorialHubOgImageUrl,
+                secureUrl: editorialHubOgImageUrl,
+                width: EDITORIAL_HUB_OG_WIDTH,
+                height: EDITORIAL_HUB_OG_HEIGHT,
+                alt: EDITORIAL_HUB_OG_ALT,
+                type: "image/webp",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: EDITORIAL_HUB_TITLE,
+        description: EDITORIAL_HUB_DESCRIPTION,
+        images: [editorialHubOgImageUrl],
     },
 };
 
@@ -90,14 +134,16 @@ const MEDICAL_WRITERS = [
         role: "Neurologist · Health & Medical Content Writer",
         photoSrc: "/media/daalonb-echols.webp",
         bio: "Dr. Daalon B. Echols is a board-certified physician with more than 21 years of clinical experience in neurology, neurophysiology, and internal medicine. He brings that background to healthcare writing, explaining complex medical topics, including medical cannabis and qualifying conditions, in clear, patient-friendly language.",
-        profileHref: "/",
+        profileHref: medicalAuthorProfilePath(DAALON_B_ECHOLS_SLUG),
+        ctaLabel: "View Details",
     },
     {
         name: "Octavia Wyche",
         role: "Paralegal Certified · Healthcare & Regulatory Content",
         photoSrc: "/media/octavia-wyche.webp",
         bio: "Octavia Wyche is a technical writer and documentation specialist with a background in healthcare and regulated government environments. She holds a B.S. in Biology (minor in Chemistry) and a Paralegal Administrative Officer Certification, which supports her work on healthcare regulations, medical cannabis programs, and compliance-focused content.",
-        profileHref: "/",
+        profileHref: medicalAuthorProfilePath(OCTAVIA_WYCHE_SLUG),
+        ctaLabel: "View Details",
     },
 ] as const;
 
@@ -124,12 +170,14 @@ function EditorialProfileCard({
     photoSrc,
     bio,
     profileHref,
+    ctaLabel = "View Profile",
 }: {
     name: string;
     role: string;
     photoSrc: string;
     bio: string;
     profileHref?: string;
+    ctaLabel?: string;
 }) {
     return (
 
@@ -165,7 +213,7 @@ function EditorialProfileCard({
                         href={profileHref}
                         className="mt-6 inline-flex h-12 w-[70%]  mx-auto shrink-0 items-center justify-center gap-2 rounded-lg bg-amber px-5 text-base font-semibold text-white transition-colors hover:bg-[#d4922f]"
                     >
-                        View Profile
+                        {ctaLabel}
                         <ArrowRight className="size-4" aria-hidden />
                     </Link>
                 ) : null}
@@ -229,7 +277,7 @@ export default function EditorialTeamPage() {
                                 Our Medical Writers
                             </h3>
                             <div className="mt-4 grid gap-5 md:grid-cols-2">
-                                {MEDICAL_WRITERS.map(({ profileHref: _profileHref, ...writer }) => (
+                                {MEDICAL_WRITERS.map((writer) => (
                                     <EditorialProfileCard key={writer.name} {...writer} />
                                 ))}
                             </div>

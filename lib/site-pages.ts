@@ -50,6 +50,20 @@ export const sitePages: SitePage[] = [
     inSitemap: true,
   },
   {
+    label: "Daalon B. Echols, MD",
+    path: "/editorial-team/daalon-b-echols/",
+    description:
+      "Daalon B. Echols, MD — board-certified neurologist and medical author for Vallejo 420 MD's patient education on medical cannabis.",
+    inSitemap: true,
+  },
+  {
+    label: "Octavia Wyche",
+    path: "/editorial-team/octavia-wyche/",
+    description:
+      "Octavia Wyche — healthcare and regulatory content writer for Vallejo 420 MD's compliance-focused medical cannabis education.",
+    inSitemap: true,
+  },
+  {
     label: "Dr. Rick Rieser",
     path: "/our-doctors/rick-rieser/",
     description:

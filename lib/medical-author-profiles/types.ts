@@ -1,0 +1,27 @@
+export type MedicalAuthorProfile = {
+  slug: string;
+  name: string;
+  shortName: string;
+  tagline: string;
+  photoSrc: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroIntro: readonly string[];
+  heroCtaLabel: string;
+  heroCtaHref: string;
+  glanceIntro: string;
+  glanceItems: readonly { label: string; value: string }[];
+  aboutParagraphs: readonly string[];
+  educationItems: readonly string[];
+  experienceItems: readonly string[];
+  expertiseAreas: readonly string[];
+  coverageIntro: string;
+  coverageCities: readonly string[];
+  contactIntro: string;
+  email: string;
+  linkedIn: { label: string; href: string };
+  externalLinksLabel: string;
+  externalLinks: readonly { label: string; href: string }[];
+  disclaimerTitle: string;
+  disclaimer: string;
+};
